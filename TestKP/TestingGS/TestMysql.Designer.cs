@@ -1,4 +1,4 @@
-namespace TestKP
+namespace KPSonar
 {
     partial class TestMysql
     {

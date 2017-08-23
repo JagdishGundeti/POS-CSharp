@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestKP
+namespace KPSonar
 {
     public partial class TestMysql : Form
     {

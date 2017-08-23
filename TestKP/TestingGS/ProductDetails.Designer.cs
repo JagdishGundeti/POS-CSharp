@@ -1,4 +1,4 @@
-﻿namespace TestKP
+﻿namespace KPSonar
 {
     partial class ProductDetails
     {
@@ -39,6 +39,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblProductGroup = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.btnUse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,11 +151,22 @@
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
             this.cmbCategory.TabIndex = 22;
             // 
+            // btnUse
+            // 
+            this.btnUse.Location = new System.Drawing.Point(424, 382);
+            this.btnUse.Name = "btnUse";
+            this.btnUse.Size = new System.Drawing.Size(75, 23);
+            this.btnUse.TabIndex = 23;
+            this.btnUse.Text = "Use";
+            this.btnUse.UseVisualStyleBackColor = true;
+            this.btnUse.Click += new System.EventHandler(this.btnUse_Click);
+            // 
             // ProductDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 428);
+            this.Controls.Add(this.btnUse);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.lblProductGroup);
             this.Controls.Add(this.btnDelete);
@@ -168,6 +180,7 @@
             this.Controls.Add(this.lblName);
             this.Name = "ProductDetails";
             this.Text = "Product Details";
+            this.Load += new System.EventHandler(this.ProductDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -187,5 +200,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label lblProductGroup;
         private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Button btnUse;
     }
 }

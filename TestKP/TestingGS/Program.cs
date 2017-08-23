@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace TestKP
+namespace KPSonar
 {
     static class Program
     {

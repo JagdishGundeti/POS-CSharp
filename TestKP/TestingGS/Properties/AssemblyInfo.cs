@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TestKP")]
+[assembly: AssemblyTitle("KPSonar")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NX8220")]
-[assembly: AssemblyProduct("TestKP")]
+[assembly: AssemblyProduct("KPSonar")]
 [assembly: AssemblyCopyright("Copyright © NX8220 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

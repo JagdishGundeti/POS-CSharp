@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestKP
+namespace KPSonar
 {
     public partial class ProductDetails : Form
     {
@@ -26,26 +26,6 @@ namespace TestKP
             dbConnect = new DBConnect();
         }
 
-        //private void btnSave_Click(object sender, EventArgs e)
-        //{
-
-        //    string strQuery =
-        //                        "INSERT INTO "
-        //                        + m_strTableName
-        //                        + "("
-        //                        + m_strName + ","
-        //                        + m_strDetails
-        //                        + ") VALUES("
-        //                        + "'" + txtName.Text + "', "
-        //                        + "'" + txtDetails.Text + "'"
-        //                        + ")";
-
-        //    bool bReturn = dbConnect.Insert(strQuery);
-        //    if(bReturn==true)
-        //    {
-        //        MessageBox.Show("Record inserted");
-        //    }
-        //}
 
         //Clear Data  
         private void ClearData()
@@ -57,7 +37,6 @@ namespace TestKP
 
         private void DisplayData()
         {
-            // set query to fetch data "Select * from  tabelname"; 
             string query =
                 " SELECT * FROM  " + m_strTableName
                 + " WHERE "
@@ -237,5 +216,25 @@ namespace TestKP
             }
         }
 
+        private void btnUse_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        public string GetName()
+        {
+            return txtName.Text;
+        }
+
+        public int GetID()
+        {
+            return m_nID;
+        }
+
+        private void ProductDetails_Load(object sender, EventArgs e)
+        {
+            DisplayData();
+        }
     }
 }

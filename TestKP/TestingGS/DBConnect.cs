@@ -8,7 +8,7 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace TestKP
+namespace KPSonar
 {
     class DBConnect
     {
@@ -28,7 +28,7 @@ namespace TestKP
         private void Initialize()
         {
             server = "localhost";
-            database = "TestKP";
+            database = "connectcsharptomysql";
             uid = "jagdish";
             password = "jagdish";
             string connectionString;

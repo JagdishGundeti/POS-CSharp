@@ -7,20 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestKP
+namespace KPSonar
 {
     public partial class CustomerDetails : Form
     {
         private DBConnect dbConnect;
+        private int m_nID = 0;
 
         private string m_strTableName = "Customer";
-        private int m_nID = 0;
         private string m_strID = "id";
         private string m_strFirstName = "firstname";
         private string m_strMiddleName = "middlename";
         private string m_strLastName = "lastname";
         private string m_strAddress = "address";
         private string m_strPhone = "phone_no";
+
+
         public CustomerDetails()
         {
             InitializeComponent();
@@ -224,5 +226,25 @@ namespace TestKP
             txtPhoneNo.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
         }
 
+        private void btnUse_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        public string GetFirstName()
+        {
+            return txtFirstName.Text;
+        }
+
+        public int GetID()
+        {
+            return m_nID;
+        }
+
+        private void CustomerDetails_Load(object sender, EventArgs e)
+        {
+            DisplayData();
+        }
     }
 }

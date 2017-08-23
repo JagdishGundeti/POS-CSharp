@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestKP
+namespace KPSonar
 {
     public partial class MDISonar : Form
     {
@@ -123,6 +123,13 @@ namespace TestKP
             ProductDetails frmProductDetails = new ProductDetails();
             frmProductDetails.MdiParent = this;
             frmProductDetails.Show();
+        }
+
+        private void orderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OrderDetails frmOrderDetails = new OrderDetails();
+            frmOrderDetails.MdiParent = this;
+            frmOrderDetails.Show();
         }
     }
 }
