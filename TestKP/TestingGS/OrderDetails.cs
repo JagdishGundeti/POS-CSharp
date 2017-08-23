@@ -45,19 +45,40 @@ namespace KPSonar
         }
         
         private void DisplayData()
-        {
-            // set query to fetch data "Select * from  tabelname"; 
+        {            
+            //string query = 
+            //    " SELECT * FROM  " + m_strTableName 
+            //    + " WHERE "
+            //    + " 1 = 1 "
+            //    + " AND " + m_strCustomerID + "=" + m_nCustomerID
             string query = 
-                " SELECT * FROM  " + m_strTableName 
+                " SELECT "
+                + " customer.firstname,"
+                + " customer.phone_no,"
+                + " product.name,"
+                + " product.details,"
+                + " product.category,"
+                + " order_txn.quantity,"
+                + " order_txn.price,"
+                + " order_txn.ModifiedOn "
+                //+ " FROM  " + m_strTableName 
+                + " FROM  order_txn "
+                + " JOIN customer "
+                + "   ON (customer.id = order_txn.customer_id) "
+                + " JOIN product "
+                + "   ON (product.id = order_txn.product_id) "
                 + " WHERE "
                 + " 1 = 1 "
+                + " AND " + m_strCustomerID + "=" + m_nCustomerID
+                ;
+
                 //+ " AND " + m_strFirstName + " like '%" + txtFirstName.Text + "%'"
                 //+ " AND " + m_strMiddleName + " like '%" + txtMiddleName.Text + "%'"
                 //+ " AND " + m_strLastName + " like '%" + txtLastName.Text + "%'"
                 //+ " AND " + m_strAddress + " like '%" + txtLastName.Text + "%'"
                 //+ " AND " + m_strPhone + " like '%" + txtPhoneNo.Text + "%'"
                 ;
-
+             
             dbConnect.GridDisplay(dataGridView1, query);
         }
         private void btnFirstName_Click(object sender, EventArgs e)
@@ -71,6 +92,7 @@ namespace KPSonar
                 txtFirstName.Text = frmCustomerDetails.GetFirstName();
                 m_nCustomerID = frmCustomerDetails.GetID();
                 frmCustomerDetails.Dispose();
+                DisplayData();
             }
             else
             {
@@ -105,15 +127,17 @@ namespace KPSonar
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            bool bReturn = false;
+            bool bReturn = true;
 
-            if (txtFirstName.Text != "")
+            if (txtFirstName.Text == "")
             {
-                bReturn = true;
-            }
-            else
-            {
+                bReturn = false;
                 MessageBox.Show("First Name sould not be empty");
+            }
+            if ((m_nCustomerID == 0) || (m_nProductID == 0))
+            {
+                bReturn = false;
+                MessageBox.Show("Customer or Product is not selected");
             }
 
             if (bReturn == true)
@@ -121,11 +145,7 @@ namespace KPSonar
                 DialogResult dialogResult =
                     MessageBox.Show("Your are trying to Insert record", "Insert", MessageBoxButtons.YesNo);
 
-                if (dialogResult == DialogResult.Yes)
-                {
-                    bReturn = true;
-                }
-                else if (dialogResult == DialogResult.No)
+                if (dialogResult == DialogResult.No)
                 {
                     bReturn = false;
                 }
