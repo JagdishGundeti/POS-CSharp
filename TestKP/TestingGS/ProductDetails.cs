@@ -214,6 +214,10 @@ namespace KPSonar
                 txtDetails.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 cmbCategory.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
+            else
+            {
+                m_nID = 0;
+            }
         }
 
         private void btnUse_Click(object sender, EventArgs e)
