@@ -48,8 +48,8 @@
             this.btnInsert.Location = new System.Drawing.Point(121, 382);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
-            this.btnInsert.TabIndex = 16;
-            this.btnInsert.Text = "Insert";
+            this.btnInsert.TabIndex = 8;
+            this.btnInsert.Text = "&Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -59,7 +59,7 @@
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.Size = new System.Drawing.Size(294, 104);
-            this.txtDetails.TabIndex = 15;
+            this.txtDetails.TabIndex = 3;
             // 
             // lblDetails
             // 
@@ -67,15 +67,15 @@
             this.lblDetails.Location = new System.Drawing.Point(17, 58);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(39, 13);
-            this.lblDetails.TabIndex = 14;
-            this.lblDetails.Text = "Details";
+            this.lblDetails.TabIndex = 2;
+            this.lblDetails.Text = "De&tails";
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(96, 17);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 13;
+            this.txtName.TabIndex = 1;
             // 
             // lblName
             // 
@@ -83,8 +83,8 @@
             this.lblName.Location = new System.Drawing.Point(17, 17);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 12;
-            this.lblName.Text = "Name";
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "&Name";
             // 
             // dataGridView1
             // 
@@ -96,7 +96,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(547, 348);
-            this.dataGridView1.TabIndex = 17;
+            this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // btnSelect
@@ -104,8 +104,8 @@
             this.btnSelect.Location = new System.Drawing.Point(12, 382);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect.TabIndex = 18;
-            this.btnSelect.Text = "Select";
+            this.btnSelect.TabIndex = 7;
+            this.btnSelect.Text = "&Display";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
@@ -114,8 +114,8 @@
             this.btnUpdate.Location = new System.Drawing.Point(221, 382);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 19;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.TabIndex = 9;
+            this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -124,8 +124,8 @@
             this.btnDelete.Location = new System.Drawing.Point(324, 382);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 20;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "D&elete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -135,29 +135,25 @@
             this.lblProductGroup.Location = new System.Drawing.Point(20, 181);
             this.lblProductGroup.Name = "lblProductGroup";
             this.lblProductGroup.Size = new System.Drawing.Size(36, 13);
-            this.lblProductGroup.TabIndex = 21;
-            this.lblProductGroup.Text = "Group";
+            this.lblProductGroup.TabIndex = 4;
+            this.lblProductGroup.Text = "&Group";
             // 
             // cmbCategory
             // 
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Items.AddRange(new object[] {
-            "",
-            "Gold",
-            "Silver"});
             this.cmbCategory.Location = new System.Drawing.Point(96, 181);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
-            this.cmbCategory.TabIndex = 22;
+            this.cmbCategory.TabIndex = 5;
             // 
             // btnUse
             // 
-            this.btnUse.Location = new System.Drawing.Point(424, 382);
+            this.btnUse.Location = new System.Drawing.Point(12, 251);
             this.btnUse.Name = "btnUse";
             this.btnUse.Size = new System.Drawing.Size(75, 23);
-            this.btnUse.TabIndex = 23;
-            this.btnUse.Text = "Use";
+            this.btnUse.TabIndex = 6;
+            this.btnUse.Text = "U&se";
             this.btnUse.UseVisualStyleBackColor = true;
             this.btnUse.Click += new System.EventHandler(this.btnUse_Click);
             // 

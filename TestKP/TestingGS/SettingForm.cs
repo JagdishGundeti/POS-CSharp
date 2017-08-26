@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace KPSonar
 {
@@ -15,17 +16,20 @@ namespace KPSonar
         private int m_nID = 0;
 
 
-        private string m_strTableName = "daily_rates";
+        private string m_strTableName = "daily_rates_ex";
         private string m_strID = "id";
-        private string m_strGold24Karat = "gold24karat";
-        private string m_strGold22Karat = "gold22karat";
-        private string m_strSilver = "silver";
+        private string m_strCategoryID = "category_id";
+        private string m_strValue = "value";
+        //private string m_strGold24Karat = "gold24karat";
+        //private string m_strGold22Karat = "gold22karat";
+        //private string m_strSilver = "silver";
         private string m_strModifiedOn = "ModifiedOn";
-        private string m_strModifiedOnValue = "2017-08-02";
+        private string m_strModifiedOnValue = "";
 
         public SettingForm()
         {
             InitializeComponent();
+            m_strModifiedOnValue = DateTime.Now.ToString("yyyy-MM-dd");
             dbConnect = new DBConnect();
         }
 
@@ -40,15 +44,25 @@ namespace KPSonar
 
         private void DisplayData()
         {
-            // set query to fetch data "Select * from  tabelname"; 
+
+            string strTableCategory = "category";
             string query =
-                " SELECT * FROM  " + m_strTableName
+                " SELECT "
+                + m_strTableName + "." + m_strID + ","
+                + "type" + ","
+                + m_strValue + ","
+                + m_strTableName + "." + m_strModifiedOn
+                + " FROM  " + m_strTableName
+                + " JOIN " + strTableCategory
+                + "   ON (" + m_strTableName + ".category_id = " + strTableCategory + ".id) "
                 + " WHERE "
                 + " 1 = 1 "
-                + " AND " + m_strGold24Karat + " like '%" + txtGoldRate24Karat.Text + "%'"
-                + " AND " + m_strGold22Karat + " like '%" + txtGoldRate22Karat.Text + "%'"
-                + " AND " + m_strSilver + " like '%" + txtSilverRate.Text + "%'"
                 ;
+            if (chkCurrentDate.Checked == true)
+            {
+                query = query
+                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'";
+            }
 
             dbConnect.GridDisplay(dataGridView1, query);
         }
@@ -59,14 +73,14 @@ namespace KPSonar
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnInsertOrModify_Click(object sender, EventArgs e)
         {
             bool bReturn = true;
 
             if ((txtGoldRate24Karat.Text == "") ||
                     (txtGoldRate22Karat.Text == "") || (txtSilverRate.Text == ""))
             {
-                MessageBox.Show("First Name sould not be empty");
+                MessageBox.Show("input is empty");
                 bReturn = false;
             }
 
@@ -74,7 +88,7 @@ namespace KPSonar
             if (bReturn == true)
             {
                 DialogResult dialogResult =
-                    MessageBox.Show("Your are trying to Insert record", "Insert", MessageBoxButtons.YesNo);
+                    MessageBox.Show("Your are trying to Insert/Modify record", "Insert", MessageBoxButtons.YesNo);
 
                 if (dialogResult == DialogResult.No)
                 {
@@ -83,32 +97,85 @@ namespace KPSonar
             }
             if (bReturn == true)
             {
-                string strQuery =
-                                    "INSERT INTO "
-                                    + m_strTableName
-                                    + "("
-                                    + m_strGold24Karat + ","
-                                    + m_strGold22Karat + ","
-                                    + m_strSilver + ","
-                                    + m_strModifiedOn
-                                    + ") VALUES("
-                                    + txtGoldRate24Karat.Text + ", "
-                                    + txtGoldRate22Karat.Text + ", "
-                                    + txtSilverRate.Text + ", "
-                                    + "'" + m_strModifiedOnValue + "'"
-                                    + ")";
+                string strQuery = "";
 
+                int nCategoryId = 1;
+                string strDataValue = "";
+                nCategoryId = 1;
+                strDataValue = GetDataValue(nCategoryId);
+                if (String.IsNullOrEmpty(strDataValue) == true)
+                {
+                    strQuery = InsertStatement(nCategoryId, txtGoldRate24Karat.Text);
+                }
+                else
+                {
+                    strQuery = UpdateStatement(nCategoryId, txtGoldRate24Karat.Text);
+                }
+                bReturn = dbConnect.ExecuteGeneral(strQuery);
 
-                bReturn = dbConnect.Insert(strQuery);
                 if (bReturn == true)
                 {
-                    MessageBox.Show("Record Inserted");
-                    ClearData();
-                    DisplayData();
+                    nCategoryId = 2;
+                    strDataValue = GetDataValue(nCategoryId);
+                    if (String.IsNullOrEmpty(strDataValue) == true)
+                    {
+                        strQuery = InsertStatement(nCategoryId, txtGoldRate22Karat.Text);
+                    }
+                    else
+                    {
+                        strQuery = UpdateStatement(nCategoryId, txtGoldRate22Karat.Text);
+                    }
+                    bReturn = dbConnect.ExecuteGeneral(strQuery);
+
+                    if (bReturn == true)
+                    {
+                        nCategoryId = 3;
+                        strDataValue = GetDataValue(nCategoryId);
+                        if (String.IsNullOrEmpty(strDataValue) == true)
+                        {
+                            strQuery = InsertStatement(nCategoryId, txtSilverRate.Text);
+                        }
+                        else
+                        {
+                            strQuery = UpdateStatement(nCategoryId, txtSilverRate.Text);
+                        }
+                        bReturn = dbConnect.ExecuteGeneral(strQuery);
+                    }
+                    if (bReturn == true)
+                    {
+                        MessageBox.Show("Records Inserted");
+                        ClearData();
+                        DisplayData();
+                    }
                 }
             }
         }
 
+        private string InsertStatement(int nCategoryId, string strText)
+        {
+            return "INSERT INTO "
+                    + m_strTableName
+                    + "("
+                    + m_strCategoryID + ","
+                    + m_strValue + ","
+                    + m_strModifiedOn
+                    + ") VALUES("
+                    + nCategoryId + ", "
+                    + strText + ", "
+                    + "'" + m_strModifiedOnValue + "'"
+                    + ")";
+        }
+
+        private string UpdateStatement(int nCategoryId, string strText)
+        {
+            return "UPDATE "
+                    + m_strTableName
+                    + " SET "
+                    + m_strValue + "=" + "'" + strText + "'"
+                    + " WHERE "
+                    + m_strCategoryID + "=" + nCategoryId
+                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'";
+        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -140,13 +207,12 @@ namespace KPSonar
 
             if (bReturn == true)
             {
+                m_strModifiedOnValue = DateTime.Now.ToString("yyyy-MM-dd");
                 string strQuery =
                                     "UPDATE "
                                     + m_strTableName
                                     + " SET "
-                                    + m_strGold24Karat + "=" + "'" + txtGoldRate24Karat.Text + "', "
-                                    + m_strGold22Karat + "=" + "'" + txtGoldRate22Karat.Text + "', "
-                                    + m_strSilver + "=" + "'" + txtSilverRate.Text + "', "
+                                    + m_strValue + "=" + "'" + txtValue.Text + "', "
                                     + m_strModifiedOn + "=" + "'" + m_strModifiedOnValue + "'"
                                     + " WHERE "
                                     + m_strID + "=" + m_nID
@@ -173,9 +239,8 @@ namespace KPSonar
             if (String.IsNullOrEmpty(strData) == false)
             {
                 m_nID = Convert.ToInt32(strData);
-                txtGoldRate24Karat.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtGoldRate22Karat.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtSilverRate.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtValue.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                lblCategory.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
             else
             {
@@ -217,20 +282,44 @@ namespace KPSonar
         private void btnSet_Click(object sender, EventArgs e)
         {
 
-
-            string strData = txtGoldRate24Karat.Text;
-            if ((String.IsNullOrEmpty(txtGoldRate24Karat.Text) == false)
-                && (String.IsNullOrEmpty(txtGoldRate22Karat.Text) == false)
-                && (String.IsNullOrEmpty(txtSilverRate.Text) == false))
-            {
-                MDISonar frm = (MDISonar)this.MdiParent;
-
-                frm.NGoldRate24Karat = Convert.ToInt32(txtGoldRate24Karat.Text);
-                frm.NGoldRate22Karat = Convert.ToInt32(txtGoldRate22Karat.Text);
-                frm.NSilverRate = Convert.ToInt32(txtSilverRate.Text);
-
-            }
+            MDISonar frm = (MDISonar)this.MdiParent;
+            //frm.NGoldRate24Karat = Convert.ToInt32(txtGoldRate24Karat.Text);
+            //frm.NGoldRate22Karat = Convert.ToInt32(txtGoldRate22Karat.Text);
+            //frm.NSilverRate = Convert.ToInt32(txtSilverRate.Text);
+            int nCategoryId = 1;
+            string strDataValue = "";
+            strDataValue = GetDataValue(nCategoryId);
+            txtGoldRate24Karat.Text = strDataValue;
+            frm.NGoldRate24Karat = Convert.ToInt32(strDataValue);
+            nCategoryId = 2;
+            strDataValue = GetDataValue(nCategoryId);
+            txtGoldRate22Karat.Text = strDataValue;
+            frm.NGoldRate22Karat = Convert.ToInt32(strDataValue);
+            nCategoryId = 3;
+            strDataValue = GetDataValue(nCategoryId);
+            txtSilverRate.Text = strDataValue;
+            frm.NSilverRate = Convert.ToInt32(strDataValue);
 
         }
+
+        private string GetDataValue(int nCategoryId)
+        {
+            string strTableCategory = "category";
+            string query =
+                " SELECT "
+                + m_strValue
+                + " FROM  " + m_strTableName
+                + " JOIN " + strTableCategory
+                + "   ON (" + m_strTableName + ".category_id = " + strTableCategory + ".id) "
+                + " WHERE "
+                + " 1 = 1 "
+                + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue+"'"
+                + " AND " + strTableCategory + ".id " + "=" + nCategoryId
+                ;
+            string strDataValue;
+            strDataValue = dbConnect.GetDataValue(query, m_strValue);
+            return strDataValue;
+        }
+
     }
 }

@@ -68,7 +68,7 @@
             this.txtMiddleName.Location = new System.Drawing.Point(278, 39);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(100, 20);
-            this.txtMiddleName.TabIndex = 4;
+            this.txtMiddleName.TabIndex = 3;
             // 
             // lblMiddleName
             // 
@@ -76,7 +76,7 @@
             this.lblMiddleName.Location = new System.Drawing.Point(197, 39);
             this.lblMiddleName.Name = "lblMiddleName";
             this.lblMiddleName.Size = new System.Drawing.Size(69, 13);
-            this.lblMiddleName.TabIndex = 3;
+            this.lblMiddleName.TabIndex = 2;
             this.lblMiddleName.Text = "Middle Name";
             // 
             // txtLastName
@@ -84,7 +84,7 @@
             this.txtLastName.Location = new System.Drawing.Point(471, 39);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 5;
             // 
             // lblLastName
             // 
@@ -92,7 +92,7 @@
             this.lblLastName.Location = new System.Drawing.Point(408, 39);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(58, 13);
-            this.lblLastName.TabIndex = 5;
+            this.lblLastName.TabIndex = 4;
             this.lblLastName.Text = "Last Name";
             // 
             // txtAddress
@@ -101,7 +101,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(400, 42);
-            this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabIndex = 7;
             // 
             // lblAddress
             // 
@@ -109,7 +109,7 @@
             this.lblAddress.Location = new System.Drawing.Point(20, 92);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(45, 13);
-            this.lblAddress.TabIndex = 7;
+            this.lblAddress.TabIndex = 6;
             this.lblAddress.Text = "Address";
             // 
             // txtPhoneNo
@@ -117,7 +117,7 @@
             this.txtPhoneNo.Location = new System.Drawing.Point(83, 154);
             this.txtPhoneNo.Name = "txtPhoneNo";
             this.txtPhoneNo.Size = new System.Drawing.Size(100, 20);
-            this.txtPhoneNo.TabIndex = 10;
+            this.txtPhoneNo.TabIndex = 9;
             // 
             // lblPhoneNo
             // 
@@ -125,16 +125,16 @@
             this.lblPhoneNo.Location = new System.Drawing.Point(20, 154);
             this.lblPhoneNo.Name = "lblPhoneNo";
             this.lblPhoneNo.Size = new System.Drawing.Size(55, 13);
-            this.lblPhoneNo.TabIndex = 9;
-            this.lblPhoneNo.Text = "Pbone No";
+            this.lblPhoneNo.TabIndex = 8;
+            this.lblPhoneNo.Text = "Phone No";
             // 
             // btnInsert
             // 
             this.btnInsert.Location = new System.Drawing.Point(108, 500);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
-            this.btnInsert.TabIndex = 11;
-            this.btnInsert.Text = "Insert";
+            this.btnInsert.TabIndex = 12;
+            this.btnInsert.Text = "&Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -143,8 +143,8 @@
             this.btnUpdate.Location = new System.Drawing.Point(200, 500);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 14;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.TabIndex = 13;
+            this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -154,7 +154,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 14;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "D&elete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -163,8 +163,8 @@
             this.btnSelect.Location = new System.Drawing.Point(17, 500);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect.TabIndex = 13;
-            this.btnSelect.Text = "Display";
+            this.btnSelect.TabIndex = 11;
+            this.btnSelect.Text = "&Display";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
@@ -188,8 +188,8 @@
             this.btnUse.Location = new System.Drawing.Point(600, 35);
             this.btnUse.Name = "btnUse";
             this.btnUse.Size = new System.Drawing.Size(75, 23);
-            this.btnUse.TabIndex = 19;
-            this.btnUse.Text = "Use";
+            this.btnUse.TabIndex = 10;
+            this.btnUse.Text = "U&se";
             this.btnUse.UseVisualStyleBackColor = true;
             this.btnUse.Click += new System.EventHandler(this.btnUse_Click);
             // 

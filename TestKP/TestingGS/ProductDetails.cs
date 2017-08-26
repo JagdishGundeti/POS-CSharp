@@ -13,16 +13,25 @@ namespace KPSonar
     {
         private DBConnect dbConnect;
 
-        private string m_strTableName = "Product";
+        private string m_strTableName = "product";
         private int m_nID = 0;
+        private int m_nCategoryID = 0;
+        
         private string m_strID = "id";
         private string m_strName = "name";
         private string m_strDetails = "details";
         private string m_strCategory = "category";
-        
+        private string m_strCategoryID = "category_id";
+        private string m_strType = "type";
+
+
         public ProductDetails()
         {
             InitializeComponent();
+            cmbCategory.Items.Add("");
+            cmbCategory.Items.Add("Gold-24-Karat");
+            cmbCategory.Items.Add("Gold-22-Karat");
+            cmbCategory.Items.Add("Silver");
             dbConnect = new DBConnect();
         }
 
@@ -37,15 +46,26 @@ namespace KPSonar
 
         private void DisplayData()
         {
+            string strTableCategory = "category";
+
+
             string query =
-                " SELECT * FROM  " + m_strTableName
-                + " WHERE "
-                + " 1 = 1 "
-                + " AND " + m_strName + " like '%" + txtName.Text + "%'"
-                + " AND " + m_strDetails + " like '%" + txtDetails.Text + "%'"
-                + " AND " + m_strCategory + " like '%" + cmbCategory.Text + "%'"
-                
-                ;
+                    " SELECT "
+                    + m_strTableName + "." + m_strID + ","
+                    + m_strTableName + "." + m_strName + ","
+                    + m_strTableName + "." + m_strDetails + ","
+                    + strTableCategory + "." + m_strType
+                    + " FROM  " + m_strTableName
+                    + " JOIN " + strTableCategory
+                    + "   ON (" + m_strTableName + "." + m_strCategoryID
+                        + " = " + strTableCategory + "." + m_strID + ") "
+                    + " WHERE "
+                    + " 1 = 1 "
+                    + " AND " + m_strName + " like '%" + txtName.Text + "%'"
+                    + " AND " + m_strDetails + " like '%" + txtDetails.Text + "%'"
+                    //+ " AND " + m_strCategory + " like '%" + cmbCategory.Text + "%'"
+                    + " AND " + strTableCategory + "." + m_strType + " like '%" + cmbCategory.Text + "%'"
+                    ;
 
             dbConnect.GridDisplay(dataGridView1, query);
         }
@@ -84,19 +104,34 @@ namespace KPSonar
             }
             if (bReturn == true)
             {
+                string strTableCategory = "category";
+
+                string strQueryID =
+                    " SELECT "
+                    + m_strID 
+                    + " FROM  "
+                    + strTableCategory
+                    + " WHERE "
+                    + " 1 = 1 "
+                    + " AND " + strTableCategory + "." + m_strType + " like '%" + cmbCategory.Text + "%'"
+                    ;
+
+                string strDataValue;
+                strDataValue = dbConnect.GetDataValue(strQueryID, m_strID);
+                int nID = Convert.ToInt32(strDataValue);
 
                 string strQuery =
-                                    "INSERT INTO "
-                                    + m_strTableName
-                                    + "("
-                                    + m_strName + ","
-                                    + m_strDetails + ","
-                                    + m_strCategory
-                                    + ") VALUES("
-                                    + "'" + txtName.Text + "', "
-                                    + "'" + txtDetails.Text + "', "
-                                    + "'" + cmbCategory.Text + "'"
-                                    + ")";
+                    "INSERT INTO "
+                    + m_strTableName
+                    + "("
+                    + m_strName + ","
+                    + m_strDetails + ","
+                    + m_strCategoryID
+                    + ") VALUES("
+                    + "'" + txtName.Text + "', "
+                    + "'" + txtDetails.Text + "', "
+                    + nID 
+                    + ")";
 
                 bReturn = dbConnect.Insert(strQuery);
                 if (bReturn == true)
@@ -234,6 +269,10 @@ namespace KPSonar
         public int GetID()
         {
             return m_nID;
+        }
+        public int GetCategoryID()
+        {
+            return m_nCategoryID;
         }
 
         private void ProductDetails_Load(object sender, EventArgs e)

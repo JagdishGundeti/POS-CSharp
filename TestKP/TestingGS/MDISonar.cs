@@ -139,12 +139,10 @@ namespace KPSonar
 
         private void dailyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             SettingForm frmSettingForm = new SettingForm();
             frmSettingForm.MdiParent = this;
             frmSettingForm.Show();
         }
-
         public int NGoldRate24Karat
         {
             get

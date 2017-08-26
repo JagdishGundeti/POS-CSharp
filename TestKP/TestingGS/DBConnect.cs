@@ -61,6 +61,10 @@ namespace KPSonar
                     case 1045:
                         MessageBox.Show("Invalid username/password, please try again");
                         break;
+
+                    default:
+                        MessageBox.Show(ex.Message);
+                        break;
                 }
                 return false;
             }
@@ -100,25 +104,6 @@ namespace KPSonar
             }
         }
 
-        //Insert statement
-        public bool Insert(string strQuery)
-        {
-            bool bReturn = false;
-            //open connection
-            if (this.OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(strQuery, connection);
-
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-            bReturn = true;
-            return bReturn;
-        }
 
         //Update statement
         public void Update()
@@ -142,25 +127,6 @@ namespace KPSonar
                 this.CloseConnection();
             }
         }
-        public bool Update(string strQuery)
-        {
-        
-            bool bReturn = false;
-            //open connection
-            if (this.OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(strQuery, connection);
-
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-            bReturn = true;
-            return bReturn;
-        }
 
         //Delete statement
         public void Delete()
@@ -175,25 +141,6 @@ namespace KPSonar
             }
         }
 
-        public bool Delete(string strQuery)
-        {
-
-            bool bReturn = false;
-            //open connection
-            if (this.OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(strQuery, connection);
-
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-            bReturn = true;
-            return bReturn;
-        }
 
         //Select statement
         public List<string>[] Select()
@@ -303,7 +250,9 @@ namespace KPSonar
             }
             catch (IOException ex)
             {
-                MessageBox.Show("Error , unable to backup!");
+                string strException;
+                strException = "Unable to backup! because of " + ex.Message;
+                MessageBox.Show(strException);
             }
         }
 
@@ -334,19 +283,88 @@ namespace KPSonar
             }
             catch (IOException ex)
             {
-                MessageBox.Show("Error , unable to Restore!");
+                string strException;
+                strException = "Unable to Restore! because of " + ex.Message;
+                MessageBox.Show(strException);
             }
+        }
+
+        //Insert statement
+        public bool Insert(string strQuery)
+        {
+            return ExecuteGeneral(strQuery);
+        }
+        public bool Update(string strQuery)
+        {
+            return ExecuteGeneral(strQuery);
+        }
+
+        public bool Delete(string strQuery)
+        {
+            return ExecuteGeneral(strQuery);
+        }
+
+        public bool ExecuteGeneral(string strQuery)
+        {
+            bool bReturn = false;
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(strQuery, connection);
+
+                //Execute command
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                this.CloseConnection();
+                bReturn = true;
+            }
+            return bReturn;
         }
         public void GridDisplay(DataGridView DataGridView1, string query)
         {
-            //string query = " select * from  " + strTableName; // set query to fetch data "Select * from  tabelname"; 
-            using(MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection))
+            //open connection
+            if (this.OpenConnection() == true)
             {
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
-                DataGridView1.DataSource= ds.Tables[0];
+                //close connection
+                this.CloseConnection();
+
+                //string query = " select * from  " + strTableName; // set query to fetch data "Select * from  tabelname"; 
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection))
+                {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    DataGridView1.DataSource = ds.Tables[0];
+                }
             }
-            
+        }
+
+        public string GetDataValue(string query, string strColumnName)
+        {
+            string strDataValue = "";
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    strDataValue = dataReader.GetString(strColumnName);
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+            }
+            return strDataValue;
         }
     }
 }
