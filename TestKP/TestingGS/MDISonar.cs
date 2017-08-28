@@ -115,14 +115,6 @@ namespace KPSonar
             frmCustomerDetails.Show();
         }
 
-        private void testToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TestMysql frmForm = new TestMysql();
-            frmForm.MdiParent = this;
-            frmForm.Show();
-
-        }
-
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProductDetails frmProductDetails = new ProductDetails();
@@ -182,5 +174,20 @@ namespace KPSonar
             }
         }
 
+        private void testToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            TestMysql frmForm = new TestMysql();
+            frmForm.MdiParent = this;
+            frmForm.Show();
+        }
+
+        private void testToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+
+            TestMysql frmForm = new TestMysql();
+            frmForm.MdiParent = this;
+            frmForm.Show();
+        }
     }
 }

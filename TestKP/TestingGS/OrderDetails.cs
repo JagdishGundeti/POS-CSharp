@@ -21,7 +21,7 @@ namespace KPSonar
         private string m_strQuantity = "quantity";
         private string m_strAmount = "price";
         private string m_strModifiedOn = "ModifiedOn";
-        private string m_strModifiedOnValue = "2017-08-02";
+        private string m_strModifiedOnValue = "";
         
 
         private int m_nID = 0;
@@ -31,6 +31,7 @@ namespace KPSonar
         public OrderDetails()
         {
             InitializeComponent();
+            m_strModifiedOnValue = DateTime.Now.ToString("yyyy-MM-dd");
             dbConnect = new DBConnect();
         }
 
@@ -52,13 +53,18 @@ namespace KPSonar
             //    + " WHERE "
             //    + " 1 = 1 "
             //    + " AND " + m_strCustomerID + "=" + m_nCustomerID
-            string query = 
+            string strTableCategory = "category";
+            string strTableProduct = "product";
+            string strType = "type";
+            
+            string strQuery1 = 
                 " SELECT "
                 + " customer.firstname,"
                 + " customer.phone_no,"
                 + " product.name,"
                 + " product.details,"
-                + " product.category,"
+                //+ " product.category,"
+                + strTableCategory + "." + strType + ","
                 + " order_txn.quantity,"
                 + " order_txn.price,"
                 + " order_txn.ModifiedOn "
@@ -66,20 +72,22 @@ namespace KPSonar
                 + " FROM  order_txn "
                 + " JOIN customer "
                 + "   ON (customer.id = order_txn.customer_id) "
-                + " JOIN product "
+                + " JOIN " + strTableProduct
                 + "   ON (product.id = order_txn.product_id) "
+                + " JOIN " + strTableCategory
+                + "   ON (" + strTableProduct + ".category_id = " + strTableCategory + ".id) "
                 + " WHERE "
                 + " 1 = 1 "
                 + " AND " + m_strCustomerID + "=" + m_nCustomerID
                 ;
 
-                //+ " AND " + m_strFirstName + " like '%" + txtFirstName.Text + "%'"
-                //+ " AND " + m_strMiddleName + " like '%" + txtMiddleName.Text + "%'"
-                //+ " AND " + m_strLastName + " like '%" + txtLastName.Text + "%'"
-                //+ " AND " + m_strAddress + " like '%" + txtLastName.Text + "%'"
-                //+ " AND " + m_strPhone + " like '%" + txtPhoneNo.Text + "%'"
-                ;
-             
+            string query = strQuery1;
+            if(chkWithDate.Checked==true)
+            {
+                query = query
+                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+
+            }
             dbConnect.GridDisplay(dataGridView1, query);
         }
         private void btnFirstName_Click(object sender, EventArgs e)
@@ -178,6 +186,65 @@ namespace KPSonar
                     DisplayData();
                 }
             }
+        }
+
+        private void btnViewOrders_Click(object sender, EventArgs e)
+        {
+            DisplayData();
+        }
+
+        private void chkWithDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkWithDate.Checked==true)
+            {
+                dtpDate.Enabled = true;
+            }
+            else
+            {
+                dtpDate.Enabled = false;
+            }
+        }
+
+        private void txtQuantity_Leave(object sender, EventArgs e)
+        {
+            int nQuantity = Convert.ToInt32(txtQuantity.Text);
+            //txtCalAmount->Text = nQuantity *;
+            
+            string strDataValue = "";
+            strDataValue = GetDataValue(m_nProductID);
+            int nCalAmount = nQuantity * Convert.ToInt32(strDataValue);
+            txtCalAmount.Text = nCalAmount.ToString();
+            txtAmount.Text = nCalAmount.ToString();
+            //frm.NGoldRate24Karat = Convert.ToInt32(strDataValue);
+        }
+
+        private string GetDataValue(object nProductId)
+        {
+
+            string strTableCategory = "category";
+            string strTableProduct = "product";
+            string strValue = "value";
+            string strProductID = "id";
+            string m_strDailyRatesEx = "daily_rates_ex";
+
+            string strQuery =
+                " SELECT "
+                + strValue
+                + " FROM  " 
+                + m_strDailyRatesEx
+                + " JOIN " + strTableCategory
+                + "   ON (" + m_strDailyRatesEx + ".category_id = " + strTableCategory + ".id) "
+                + " JOIN " + strTableProduct
+                + "   ON (" + strTableProduct + ".category_id = " + strTableCategory + ".id) "
+                + " WHERE "
+                + " 1 = 1 "
+                + " AND " + m_strDailyRatesEx + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'"
+                + " AND " + strTableProduct + "." + strProductID + "=" + nProductId
+                ;
+
+            string strDataValue;
+            strDataValue = dbConnect.GetDataValue(strQuery, strValue);
+            return strDataValue;
         }
     }
 }

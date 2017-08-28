@@ -114,9 +114,9 @@
             this.lblSilverRate.AutoSize = true;
             this.lblSilverRate.Location = new System.Drawing.Point(14, 118);
             this.lblSilverRate.Name = "lblSilverRate";
-            this.lblSilverRate.Size = new System.Drawing.Size(95, 13);
+            this.lblSilverRate.Size = new System.Drawing.Size(97, 13);
             this.lblSilverRate.TabIndex = 4;
-            this.lblSilverRate.Text = "Silver Rate(per kg)";
+            this.lblSilverRate.Text = "Silver Rate(per gm)";
             // 
             // txtGoldRate22Karat
             // 
