@@ -15,16 +15,19 @@ namespace KPSonar
         private DBConnect dbConnect;
         private string m_strTableName = "order_txn";
 
-        private string m_strID = "id";
+        //private string m_strID = "id";
         private string m_strCustomerID = "customer_id";
         private string m_strProductID = "product_id";
         private string m_strQuantity = "quantity";
         private string m_strAmount = "price";
         private string m_strModifiedOn = "ModifiedOn";
         private string m_strModifiedOnValue = "";
+
+        private float m_fCGST = 0.015f;
+        private float m_fSGST = 0.015f;        
         
 
-        private int m_nID = 0;
+        //private int m_nID = 0;
         private int m_nCustomerID = 0;
         private int m_nProductID = 0;
 
@@ -38,21 +41,11 @@ namespace KPSonar
         //Clear Data  
         private void ClearData()
         {
-            m_nID = 0;
-            //txtFirstName.Text = "";
-            //txtMiddleName.Text = "";
-            //txtLastName.Text = "";
-            //txtAddress.Text = "";
-            //txtPhoneNo.Text = "";
+            //m_nID = 0;
         }
         
         private void DisplayData()
         {            
-            //string query = 
-            //    " SELECT * FROM  " + m_strTableName 
-            //    + " WHERE "
-            //    + " 1 = 1 "
-            //    + " AND " + m_strCustomerID + "=" + m_nCustomerID
             string strTableCategory = "category";
             string strTableProduct = "product";
             string strType = "type";
@@ -105,7 +98,6 @@ namespace KPSonar
             }
             else
             {
-
                 txtFirstName.Text = "";
                 m_nCustomerID = 0;
                 frmCustomerDetails.Dispose();
@@ -126,7 +118,6 @@ namespace KPSonar
             }
             else
             {
-
                 txtProductName.Text = "";
                 m_nProductID = 0;
                 frmProductDetails.Dispose();
@@ -212,9 +203,15 @@ namespace KPSonar
             
             string strDataValue = "";
             strDataValue = GetDataValue(m_nProductID);
-            int nCalAmount = nQuantity * Convert.ToInt32(strDataValue);
+            int nValuePerGm = Convert.ToInt32(strDataValue);
+            int nCalAmount = nQuantity * nValuePerGm;
+            float fCGSTAmount = nCalAmount * m_fCGST;
+            float fSGSTAmount = nCalAmount * m_fSGST;
             txtCalAmount.Text = nCalAmount.ToString();
-            txtAmount.Text = nCalAmount.ToString();
+            txtCGST.Text = fCGSTAmount.ToString();
+            txtSGST.Text = fSGSTAmount.ToString();
+            float fTotalAmount = nCalAmount + fCGSTAmount + fSGSTAmount;
+            txtAmount.Text = fTotalAmount.ToString();
             //frm.NGoldRate24Karat = Convert.ToInt32(strDataValue);
         }
 

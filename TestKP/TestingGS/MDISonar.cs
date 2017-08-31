@@ -72,7 +72,7 @@ namespace KPSonar
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
+            //toolStrip.Visible = toolBarToolStripMenuItem.Checked;
         }
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,12 +182,5 @@ namespace KPSonar
             frmForm.Show();
         }
 
-        private void testToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-
-            TestMysql frmForm = new TestMysql();
-            frmForm.MdiParent = this;
-            frmForm.Show();
-        }
     }
 }

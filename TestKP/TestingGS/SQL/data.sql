@@ -72,10 +72,9 @@ UNLOCK TABLES;
 --
 -- Table structure for table `daily_rates`
 --
+/*
 
 DROP TABLE IF EXISTS `daily_rates`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `daily_rates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gold24karat` int(11) NOT NULL,
@@ -84,18 +83,15 @@ CREATE TABLE `daily_rates` (
   `ModifiedOn` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `daily_rates`
 --
 
 LOCK TABLES `daily_rates` WRITE;
-/*!40000 ALTER TABLE `daily_rates` DISABLE KEYS */;
 INSERT INTO `daily_rates` VALUES (2,2356,2659,35001,'2017-08-02');
-/*!40000 ALTER TABLE `daily_rates` ENABLE KEYS */;
 UNLOCK TABLES;
-
+*/
 --
 -- Table structure for table `daily_rates_ex`
 --

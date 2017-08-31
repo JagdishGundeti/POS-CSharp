@@ -58,7 +58,7 @@
             this.txtDetails.Location = new System.Drawing.Point(96, 58);
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
-            this.txtDetails.Size = new System.Drawing.Size(294, 104);
+            this.txtDetails.Size = new System.Drawing.Size(233, 92);
             this.txtDetails.TabIndex = 3;
             // 
             // lblDetails
@@ -132,7 +132,7 @@
             // lblProductGroup
             // 
             this.lblProductGroup.AutoSize = true;
-            this.lblProductGroup.Location = new System.Drawing.Point(20, 181);
+            this.lblProductGroup.Location = new System.Drawing.Point(20, 164);
             this.lblProductGroup.Name = "lblProductGroup";
             this.lblProductGroup.Size = new System.Drawing.Size(36, 13);
             this.lblProductGroup.TabIndex = 4;
@@ -142,14 +142,14 @@
             // 
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(96, 181);
+            this.cmbCategory.Location = new System.Drawing.Point(96, 161);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
             this.cmbCategory.TabIndex = 5;
             // 
             // btnUse
             // 
-            this.btnUse.Location = new System.Drawing.Point(12, 251);
+            this.btnUse.Location = new System.Drawing.Point(12, 208);
             this.btnUse.Name = "btnUse";
             this.btnUse.Size = new System.Drawing.Size(75, 23);
             this.btnUse.TabIndex = 6;

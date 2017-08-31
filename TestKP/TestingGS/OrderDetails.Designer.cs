@@ -32,6 +32,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblSGSTValue = new System.Windows.Forms.Label();
+            this.lblCGSValue = new System.Windows.Forms.Label();
+            this.lblSGST = new System.Windows.Forms.Label();
+            this.lblCGST = new System.Windows.Forms.Label();
             this.chkWithDate = new System.Windows.Forms.CheckBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.txtCalAmount = new System.Windows.Forms.TextBox();
@@ -47,6 +51,8 @@
             this.btnFirstName = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
+            this.txtCGST = new System.Windows.Forms.TextBox();
+            this.txtSGST = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -60,16 +66,16 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(604, 431);
+            this.panel3.Size = new System.Drawing.Size(632, 531);
             this.panel3.TabIndex = 23;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 286);
+            this.panel1.Location = new System.Drawing.Point(0, 385);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(604, 145);
+            this.panel1.Size = new System.Drawing.Size(632, 146);
             this.panel1.TabIndex = 24;
             // 
             // dataGridView1
@@ -84,13 +90,19 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(604, 145);
+            this.dataGridView1.Size = new System.Drawing.Size(632, 146);
             this.dataGridView1.TabIndex = 20;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblSGSTValue);
+            this.panel2.Controls.Add(this.lblCGSValue);
+            this.panel2.Controls.Add(this.lblSGST);
+            this.panel2.Controls.Add(this.lblCGST);
             this.panel2.Controls.Add(this.chkWithDate);
             this.panel2.Controls.Add(this.dtpDate);
+            this.panel2.Controls.Add(this.txtSGST);
+            this.panel2.Controls.Add(this.txtCGST);
             this.panel2.Controls.Add(this.txtCalAmount);
             this.panel2.Controls.Add(this.txtAmount);
             this.panel2.Controls.Add(this.lblAmount);
@@ -107,15 +119,49 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(604, 286);
+            this.panel2.Size = new System.Drawing.Size(632, 385);
             this.panel2.TabIndex = 23;
+            // 
+            // lblSGSTValue
+            // 
+            this.lblSGSTValue.AutoSize = true;
+            this.lblSGSTValue.Location = new System.Drawing.Point(88, 196);
+            this.lblSGSTValue.Name = "lblSGSTValue";
+            this.lblSGSTValue.Size = new System.Drawing.Size(0, 13);
+            this.lblSGSTValue.TabIndex = 35;
+            // 
+            // lblCGSValue
+            // 
+            this.lblCGSValue.AutoSize = true;
+            this.lblCGSValue.Location = new System.Drawing.Point(88, 173);
+            this.lblCGSValue.Name = "lblCGSValue";
+            this.lblCGSValue.Size = new System.Drawing.Size(0, 13);
+            this.lblCGSValue.TabIndex = 35;
+            // 
+            // lblSGST
+            // 
+            this.lblSGST.AutoSize = true;
+            this.lblSGST.Location = new System.Drawing.Point(11, 196);
+            this.lblSGST.Name = "lblSGST";
+            this.lblSGST.Size = new System.Drawing.Size(68, 13);
+            this.lblSGST.TabIndex = 35;
+            this.lblSGST.Text = "SGST (1.5%)";
+            // 
+            // lblCGST
+            // 
+            this.lblCGST.AutoSize = true;
+            this.lblCGST.Location = new System.Drawing.Point(11, 173);
+            this.lblCGST.Name = "lblCGST";
+            this.lblCGST.Size = new System.Drawing.Size(68, 13);
+            this.lblCGST.TabIndex = 35;
+            this.lblCGST.Text = "CGST (1.5%)";
             // 
             // chkWithDate
             // 
             this.chkWithDate.AutoSize = true;
             this.chkWithDate.Checked = true;
             this.chkWithDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWithDate.Location = new System.Drawing.Point(39, 195);
+            this.chkWithDate.Location = new System.Drawing.Point(12, 345);
             this.chkWithDate.Name = "chkWithDate";
             this.chkWithDate.Size = new System.Drawing.Size(74, 17);
             this.chkWithDate.TabIndex = 34;
@@ -125,23 +171,23 @@
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(190, 187);
+            this.dtpDate.Location = new System.Drawing.Point(163, 337);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(200, 20);
             this.dtpDate.TabIndex = 33;
             // 
             // txtCalAmount
             // 
-            this.txtCalAmount.Location = new System.Drawing.Point(89, 142);
+            this.txtCalAmount.Location = new System.Drawing.Point(94, 142);
             this.txtCalAmount.Name = "txtCalAmount";
             this.txtCalAmount.Size = new System.Drawing.Size(100, 20);
             this.txtCalAmount.TabIndex = 32;
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(204, 140);
+            this.txtAmount.Location = new System.Drawing.Point(94, 220);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(105, 20);
+            this.txtAmount.Size = new System.Drawing.Size(100, 20);
             this.txtAmount.TabIndex = 31;
             // 
             // lblAmount
@@ -244,11 +290,25 @@
             this.lblFirstName.TabIndex = 21;
             this.lblFirstName.Text = "Name";
             // 
+            // txtCGST
+            // 
+            this.txtCGST.Location = new System.Drawing.Point(94, 168);
+            this.txtCGST.Name = "txtCGST";
+            this.txtCGST.Size = new System.Drawing.Size(100, 20);
+            this.txtCGST.TabIndex = 32;
+            // 
+            // txtSGST
+            // 
+            this.txtSGST.Location = new System.Drawing.Point(94, 194);
+            this.txtSGST.Name = "txtSGST";
+            this.txtSGST.Size = new System.Drawing.Size(100, 20);
+            this.txtSGST.TabIndex = 32;
+            // 
             // OrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 431);
+            this.ClientSize = new System.Drawing.Size(632, 531);
             this.Controls.Add(this.panel3);
             this.Name = "OrderDetails";
             this.Text = "OrderList";
@@ -282,5 +342,11 @@
         private System.Windows.Forms.Button btnViewOrders;
         private System.Windows.Forms.CheckBox chkWithDate;
         private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.Label lblCGST;
+        private System.Windows.Forms.Label lblSGSTValue;
+        private System.Windows.Forms.Label lblCGSValue;
+        private System.Windows.Forms.Label lblSGST;
+        private System.Windows.Forms.TextBox txtSGST;
+        private System.Windows.Forms.TextBox txtCGST;
     }
 }

@@ -32,7 +32,9 @@ namespace KPSonar
             uid = "jagdish";
             password = "jagdish";
             string connectionString;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            connectionString = "SERVER=" + server + ";" 
+                + "DATABASE=" + database + ";" + "UID=" + uid + ";" 
+                + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
         }
