@@ -309,18 +309,26 @@ namespace KPSonar
         public bool ExecuteGeneral(string strQuery)
         {
             bool bReturn = false;
-            //open connection
-            if (this.OpenConnection() == true)
+            try
             {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(strQuery, connection);
+                //open connection
+                if (this.OpenConnection() == true)
+                {
+                    //create command and assign the query and connection from the constructor
+                    MySqlCommand cmd = new MySqlCommand(strQuery, connection);
 
-                //Execute command
-                cmd.ExecuteNonQuery();
+                    //Execute command
+                    cmd.ExecuteNonQuery();
 
-                //close connection
+                    //close connection
+                    this.CloseConnection();
+                    bReturn = true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
                 this.CloseConnection();
-                bReturn = true;
             }
             return bReturn;
         }

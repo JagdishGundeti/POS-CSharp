@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PaymentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentDetails.Designer.cs">
+      <DependentUpon>PaymentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PaymentDetails.resx">
+      <DependentUpon>PaymentDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -38,6 +38,8 @@
             this.lblCGST = new System.Windows.Forms.Label();
             this.chkWithDate = new System.Windows.Forms.CheckBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.txtSGST = new System.Windows.Forms.TextBox();
+            this.txtCGST = new System.Windows.Forms.TextBox();
             this.txtCalAmount = new System.Windows.Forms.TextBox();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
@@ -51,8 +53,7 @@
             this.btnFirstName = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
-            this.txtCGST = new System.Windows.Forms.TextBox();
-            this.txtSGST = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -92,9 +93,11 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(632, 146);
             this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.lblSGSTValue);
             this.panel2.Controls.Add(this.lblCGSValue);
             this.panel2.Controls.Add(this.lblSGST);
@@ -176,6 +179,20 @@
             this.dtpDate.Size = new System.Drawing.Size(200, 20);
             this.dtpDate.TabIndex = 33;
             // 
+            // txtSGST
+            // 
+            this.txtSGST.Location = new System.Drawing.Point(94, 194);
+            this.txtSGST.Name = "txtSGST";
+            this.txtSGST.Size = new System.Drawing.Size(100, 20);
+            this.txtSGST.TabIndex = 32;
+            // 
+            // txtCGST
+            // 
+            this.txtCGST.Location = new System.Drawing.Point(94, 168);
+            this.txtCGST.Name = "txtCGST";
+            this.txtCGST.Size = new System.Drawing.Size(100, 20);
+            this.txtCGST.TabIndex = 32;
+            // 
             // txtCalAmount
             // 
             this.txtCalAmount.Location = new System.Drawing.Point(94, 142);
@@ -218,7 +235,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(315, 140);
+            this.btnAdd.Location = new System.Drawing.Point(14, 302);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 27;
@@ -290,19 +307,15 @@
             this.lblFirstName.TabIndex = 21;
             this.lblFirstName.Text = "Name";
             // 
-            // txtCGST
+            // btnDelete
             // 
-            this.txtCGST.Location = new System.Drawing.Point(94, 168);
-            this.txtCGST.Name = "txtCGST";
-            this.txtCGST.Size = new System.Drawing.Size(100, 20);
-            this.txtCGST.TabIndex = 32;
-            // 
-            // txtSGST
-            // 
-            this.txtSGST.Location = new System.Drawing.Point(94, 194);
-            this.txtSGST.Name = "txtSGST";
-            this.txtSGST.Size = new System.Drawing.Size(100, 20);
-            this.txtSGST.TabIndex = 32;
+            this.btnDelete.Location = new System.Drawing.Point(104, 302);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 36;
+            this.btnDelete.Text = "D&elete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // OrderDetails
             // 
@@ -348,5 +361,6 @@
         private System.Windows.Forms.Label lblSGST;
         private System.Windows.Forms.TextBox txtSGST;
         private System.Windows.Forms.TextBox txtCGST;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

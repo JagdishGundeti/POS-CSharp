@@ -15,11 +15,14 @@ namespace KPSonar
         private DBConnect dbConnect;
         private string m_strTableName = "order_txn";
 
-        //private string m_strID = "id";
+        private string m_strID = "id";
         private string m_strCustomerID = "customer_id";
         private string m_strProductID = "product_id";
         private string m_strQuantity = "quantity";
         private string m_strAmount = "price";
+        private string m_strSGST = "SGST";
+        private string m_strCGST = "CGST";
+        private string m_strTotalPrice = "total_price";
         private string m_strModifiedOn = "ModifiedOn";
         private string m_strModifiedOnValue = "";
 
@@ -27,7 +30,7 @@ namespace KPSonar
         private float m_fSGST = 0.015f;        
         
 
-        //private int m_nID = 0;
+        private int m_nID = 0;
         private int m_nCustomerID = 0;
         private int m_nProductID = 0;
 
@@ -52,19 +55,22 @@ namespace KPSonar
             
             string strQuery1 = 
                 " SELECT "
+                + m_strTableName + "." + m_strID + ","
                 + " customer.firstname,"
                 + " customer.phone_no,"
-                + " product.name,"
-                + " product.details,"
+                + strTableProduct + "." + "name" + ","
+                + strTableProduct + "." + "details" + ","
                 //+ " product.category,"
                 + strTableCategory + "." + strType + ","
-                + " order_txn.quantity,"
-                + " order_txn.price,"
-                + " order_txn.ModifiedOn "
-                //+ " FROM  " + m_strTableName 
-                + " FROM  order_txn "
+                + m_strTableName + "." + m_strQuantity + ","
+                + m_strTableName + "." + m_strAmount + ","
+                + m_strTableName + "." + m_strCGST + ","
+                + m_strTableName + "." + m_strSGST + ","
+                + m_strTableName + "." + m_strTotalPrice + ","
+                + m_strTableName + "." + m_strModifiedOn
+                + " FROM  " + m_strTableName 
                 + " JOIN customer "
-                + "   ON (customer.id = order_txn.customer_id) "
+                + "   ON (customer.id = "+m_strTableName + "." + m_strCustomerID + ") "
                 + " JOIN " + strTableProduct
                 + "   ON (product.id = order_txn.product_id) "
                 + " JOIN " + strTableCategory
@@ -79,7 +85,6 @@ namespace KPSonar
             {
                 query = query
                     + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
-
             }
             dbConnect.GridDisplay(dataGridView1, query);
         }
@@ -125,6 +130,52 @@ namespace KPSonar
 
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            bool bReturn = false;
+
+            if (m_nID != 0)
+            {
+                bReturn = true;
+            }
+            else
+            {
+                MessageBox.Show("Record is not selected to Delete");
+            }
+
+            if (bReturn == true)
+            {
+                DialogResult dialogResult =
+                    MessageBox.Show("Your are trying to Delete record", "Delete", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    bReturn = true;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    bReturn = false;
+                }
+            }
+            if (bReturn == true)
+            {
+                string strQuery =
+                                "DELETE FROM "
+                                + m_strTableName
+                                + " WHERE "
+                                + m_strID + "=" + m_nID
+                                ;
+
+                bReturn = dbConnect.Delete(strQuery);
+                if (bReturn == true)
+                {
+                    MessageBox.Show("Record Deleted");
+                    ClearData();
+                    DisplayData();
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             bool bReturn = true;
@@ -160,11 +211,17 @@ namespace KPSonar
                                     + m_strProductID + ","
                                     + m_strQuantity + ","
                                     + m_strAmount + ","
+                                    + m_strSGST + ","
+                                    + m_strCGST + ","
+                                    + m_strTotalPrice + ","
                                     + m_strModifiedOn
                                     + ") VALUES("
                                     + m_nCustomerID + ", "
                                     +  m_nProductID + ", "
                                     + txtQuantity.Text + ", "
+                                    + txtCalAmount.Text + ", "
+                                    + txtCGST.Text + ", "
+                                    + txtSGST.Text + ", "
                                     + txtAmount.Text + ", "
                                     + "'" + m_strModifiedOnValue + "'"
                                     + ")";
@@ -243,5 +300,11 @@ namespace KPSonar
             strDataValue = dbConnect.GetDataValue(strQuery, strValue);
             return strDataValue;
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            m_nID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
     }
 }
