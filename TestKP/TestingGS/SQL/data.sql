@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.25-MariaDB, for Win32 (AMD64)
+-- MySQL dump 10.16  Distrib 10.1.21-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: connectcsharptomysql
+-- Host: localhost    Database: localhost
 -- ------------------------------------------------------
--- Server version	10.1.25-MariaDB
+-- Server version	10.1.21-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -84,7 +84,7 @@ CREATE TABLE `daily_rates_ex` (
   PRIMARY KEY (`id`),
   KEY `fk_daily_rates_category_id` (`category_id`),
   CONSTRAINT `fk_daily_rates_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `daily_rates_ex` (
 
 LOCK TABLES `daily_rates_ex` WRITE;
 /*!40000 ALTER TABLE `daily_rates_ex` DISABLE KEYS */;
-INSERT INTO `daily_rates_ex` VALUES (16,1,31000,'2017-08-26'),(17,2,29000,'2017-08-26'),(18,3,65000,'2017-08-26'),(19,1,30001,'2017-08-25'),(20,2,28001,'2017-08-25'),(21,3,61001,'2017-08-25'),(22,1,29500,'2017-08-27'),(23,2,8000,'2017-08-27'),(24,3,55000,'2017-08-27'),(25,1,28000,'2017-08-31'),(26,2,27000,'2017-08-31'),(27,3,2500,'2017-08-31'),(28,1,1000,'2017-09-01'),(29,2,1000,'2017-09-01'),(30,3,100,'2017-09-01');
+INSERT INTO `daily_rates_ex` VALUES (37,1,2800,'2017-09-03'),(38,2,2400,'2017-09-03'),(39,3,1200,'2017-09-03');
 /*!40000 ALTER TABLE `daily_rates_ex` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,8 +113,10 @@ CREATE TABLE `invoices` (
   `invoice_date_due` date NOT NULL,
   `invoice_number` varchar(100) DEFAULT NULL,
   `payment_method` int(11) NOT NULL DEFAULT '0',
+  `paid_price_1` float(11,2) DEFAULT NULL,
+  `paid_price_2` float(11,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,6 +125,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
+INSERT INTO `invoices` VALUES (1,7,'2017-09-03','00:00:00','2017-09-03 00:00:00','0000-00-00',NULL,0,NULL,NULL);
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,13 +152,18 @@ CREATE TABLE `order_txn` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `order_txn_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
   CONSTRAINT `order_txn_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `order_txn`
 --
 
+LOCK TABLES `order_txn` WRITE;
+/*!40000 ALTER TABLE `order_txn` DISABLE KEYS */;
+INSERT INTO `order_txn` VALUES (42,7,15,1,5,14000,210.00,210.00,14420.00,'2017-09-03'),(43,7,15,1,2,5600,84.00,84.00,5768.00,'2017-09-03'),(44,7,15,1,2,5600,84.00,84.00,5768.00,'2017-09-03');
+/*!40000 ALTER TABLE `order_txn` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `product`
@@ -173,7 +181,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`id`),
   KEY `fk_category_id` (`category_id`),
   CONSTRAINT `fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,33 +190,8 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (8,'Small Ring','Small Ring','Gold',1),(9,'Mangalsutram','Mangalsutram','Gold',1),(10,'Vigraha','Vigraha','Gold',3),(11,'Pedda Golsu','Pedda Golsu','Gold',1);
+INSERT INTO `product` VALUES (15,'Small Ring','Small Ring','Gold',1),(16,'Wide Ring','Wide Ring','Gold',1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tableinfo`
---
-
-DROP TABLE IF EXISTS `tableinfo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tableinfo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tableinfo`
---
-
-LOCK TABLES `tableinfo` WRITE;
-/*!40000 ALTER TABLE `tableinfo` DISABLE KEYS */;
-INSERT INTO `tableinfo` VALUES (8,'John Smith',33);
-/*!40000 ALTER TABLE `tableinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -220,5 +203,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-01 17:49:24
+-- Dump completed on 2017-09-03 19:21:40
 

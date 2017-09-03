@@ -53,18 +53,30 @@ namespace KPSonar
 
         private void DisplayInvoiceData()
         {
+            if(m_nInvoiceID == 0)
+            {
+                GenerateID();
+            }
+            string strCol = "invoice_id";
 
-            string query = 
+            string query =
                 "SELECT "
-                + "id" + ","
+                + m_strTableInvoice + "." + m_strInvoiceID + ","
                 + "invoice_date_created" + ","
                 + "invoice_date_modified" + ","
-                + "payment_method"
+                + "paid_price_1" + ","
+                + "paid_price_2" + ","
+                + "payment_method" + ","
+                + "(SELECT sum(total_price) "
+                + "FROM order_txn "
+                + "WHERE "
+                + m_strTableName + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount"
                 + " FROM " + m_strTableInvoice
                 + " WHERE "
                 + " 1 = 1 AND "
-                + m_strInvoiceID + " = " + m_nInvoiceID
+                + m_strTableInvoice + "." + m_strInvoiceID + " = " + m_nInvoiceID
                 ;
+
             dbConnect.GridDisplay(dataGridView2, query);
         }
 
@@ -204,48 +216,45 @@ namespace KPSonar
         }
         private bool GenerateID()
         {
-            //if (m_nInvoiceID == 0)
+            string strCol = "invoice_id";
+
+            string strQuery = "SELECT DISTINCT " + strCol + " FROM " + m_strTableName
+            + " WHERE "
+            + " 1 = 1 "
+            + " AND " + m_strCustomerID + "=" + m_nCustomerID
+            ;
+
+            if (chkWithDate.Checked == true)
             {
-                string strCol = "invoice_id";
+                strQuery = strQuery
+                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+            }
 
-                string strQuery = "SELECT DISTINCT " + strCol + " FROM " + m_strTableName
-                + " WHERE "
-                + " 1 = 1 "
-                + " AND " + m_strCustomerID + "=" + m_nCustomerID
-                ;
+            string strDataValue;
+            strDataValue = dbConnect.GetDataValue(strQuery, strCol);
+            if (String.IsNullOrEmpty(strDataValue) == false)
+            {
+                m_nInvoiceID = Convert.ToInt32(strDataValue);
+            }
+            else
+            {
 
-                if (chkWithDate.Checked == true)
-                {
-                    strQuery = strQuery
-                        + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
-                }
+                strCol = "col_id";
 
-                string strDataValue;
+                strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice;
                 strDataValue = dbConnect.GetDataValue(strQuery, strCol);
-                if (String.IsNullOrEmpty(strDataValue) == false)
+                int nCount = Convert.ToInt32(strDataValue);
+
+                if (nCount > 0)
                 {
-                    m_nInvoiceID = Convert.ToInt32(strDataValue);
+                    strQuery = "SELECT MAX(" + m_strID + ") " + strCol + " FROM " + m_strTableInvoice;
+                    strDataValue = dbConnect.GetDataValue(strQuery, strCol);
+                    int nInvoiceID = Convert.ToInt32(strDataValue);
+                    m_nInvoiceID = nInvoiceID + 1;
                 }
                 else
                 {
-
-                    strCol = "col_id";
-
-                    strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice;
-                    strDataValue = dbConnect.GetDataValue(strQuery, strCol);
-                    int nCount = Convert.ToInt32(strDataValue);
-
-                    if (nCount > 0)
-                    {
-                        strQuery = "SELECT MAX(" + m_strID + ") " + strCol + " FROM " + m_strTableInvoice;
-                        strDataValue = dbConnect.GetDataValue(strQuery, strCol);
-                        int nInvoiceID = Convert.ToInt32(strDataValue);
-                        m_nInvoiceID = nInvoiceID + 1;
-                    }
-                    else
-                    {
-                        m_nInvoiceID = 1;
-                    }
+                    m_nInvoiceID = 1;
                 }
             }
             return true;
@@ -443,6 +452,5 @@ namespace KPSonar
         {
             m_nID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
-
     }
 }
