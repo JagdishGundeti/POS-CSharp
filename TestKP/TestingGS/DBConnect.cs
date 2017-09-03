@@ -263,6 +263,10 @@ namespace KPSonar
         {
             try
             {               
+                if (String.IsNullOrEmpty(path) == true)
+                {
+                    return;
+                }
                 StreamReader file = new StreamReader(path);
                 string input = file.ReadToEnd();
                 file.Close();

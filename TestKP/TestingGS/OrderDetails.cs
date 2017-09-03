@@ -14,6 +14,8 @@ namespace KPSonar
     {
         private DBConnect dbConnect;
         private string m_strTableName = "order_txn";
+        private string m_strTableInvoice = "invoices";
+        private string m_strInvoiceID = "id";
 
         private string m_strID = "id";
         private string m_strCustomerID = "customer_id";
@@ -27,10 +29,12 @@ namespace KPSonar
         private string m_strModifiedOnValue = "";
 
         private float m_fCGST = 0.015f;
-        private float m_fSGST = 0.015f;        
-        
+        private float m_fSGST = 0.015f;
+
 
         private int m_nID = 0;
+        private int m_nInvoiceID = 0;
+
         private int m_nCustomerID = 0;
         private int m_nProductID = 0;
 
@@ -46,8 +50,25 @@ namespace KPSonar
         {
             //m_nID = 0;
         }
-        
-        private void DisplayData()
+
+        private void DisplayInvoiceData()
+        {
+
+            string query = 
+                "SELECT "
+                + "id" + ","
+                + "invoice_date_created" + ","
+                + "invoice_date_modified" + ","
+                + "payment_method"
+                + " FROM " + m_strTableInvoice
+                + " WHERE "
+                + " 1 = 1 AND "
+                + m_strInvoiceID + " = " + m_nInvoiceID
+                ;
+            dbConnect.GridDisplay(dataGridView2, query);
+        }
+
+        private void DisplaOrderyData()
         {            
             string strTableCategory = "category";
             string strTableProduct = "product";
@@ -88,6 +109,11 @@ namespace KPSonar
             }
             dbConnect.GridDisplay(dataGridView1, query);
         }
+        private void DisplayData()
+        {
+            DisplaOrderyData();
+            DisplayInvoiceData();
+        }
         private void btnFirstName_Click(object sender, EventArgs e)
         {
             CustomerDetails frmCustomerDetails = new CustomerDetails();
@@ -100,6 +126,7 @@ namespace KPSonar
                 m_nCustomerID = frmCustomerDetails.GetID();
                 frmCustomerDetails.Dispose();
                 DisplayData();
+                m_nInvoiceID = 0;
             }
             else
             {
@@ -175,6 +202,54 @@ namespace KPSonar
                 }
             }
         }
+        private bool GenerateID()
+        {
+            //if (m_nInvoiceID == 0)
+            {
+                string strCol = "invoice_id";
+
+                string strQuery = "SELECT DISTINCT " + strCol + " FROM " + m_strTableName
+                + " WHERE "
+                + " 1 = 1 "
+                + " AND " + m_strCustomerID + "=" + m_nCustomerID
+                ;
+
+                if (chkWithDate.Checked == true)
+                {
+                    strQuery = strQuery
+                        + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+                }
+
+                string strDataValue;
+                strDataValue = dbConnect.GetDataValue(strQuery, strCol);
+                if (String.IsNullOrEmpty(strDataValue) == false)
+                {
+                    m_nInvoiceID = Convert.ToInt32(strDataValue);
+                }
+                else
+                {
+
+                    strCol = "col_id";
+
+                    strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice;
+                    strDataValue = dbConnect.GetDataValue(strQuery, strCol);
+                    int nCount = Convert.ToInt32(strDataValue);
+
+                    if (nCount > 0)
+                    {
+                        strQuery = "SELECT MAX(" + m_strID + ") " + strCol + " FROM " + m_strTableInvoice;
+                        strDataValue = dbConnect.GetDataValue(strQuery, strCol);
+                        int nInvoiceID = Convert.ToInt32(strDataValue);
+                        m_nInvoiceID = nInvoiceID + 1;
+                    }
+                    else
+                    {
+                        m_nInvoiceID = 1;
+                    }
+                }
+            }
+            return true;
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -203,6 +278,10 @@ namespace KPSonar
             }
             if (bReturn == true)
             {
+                GenerateID();
+                InsertOrUpdateInvoice();
+                string strInvoice_ID = "invoice_id";
+
                 string strQuery =
                                     "INSERT INTO "
                                     + m_strTableName
@@ -214,15 +293,17 @@ namespace KPSonar
                                     + m_strSGST + ","
                                     + m_strCGST + ","
                                     + m_strTotalPrice + ","
+                                    + strInvoice_ID + ","
                                     + m_strModifiedOn
                                     + ") VALUES("
                                     + m_nCustomerID + ", "
-                                    +  m_nProductID + ", "
+                                    + m_nProductID + ", "
                                     + txtQuantity.Text + ", "
                                     + txtCalAmount.Text + ", "
                                     + txtCGST.Text + ", "
                                     + txtSGST.Text + ", "
                                     + txtAmount.Text + ", "
+                                    + m_nInvoiceID + ", "
                                     + "'" + m_strModifiedOnValue + "'"
                                     + ")";
 
@@ -236,6 +317,55 @@ namespace KPSonar
             }
         }
 
+        private bool InsertOrUpdateInvoice()
+        {
+            bool bReturn = true;
+            bool bInsert = true;
+        
+            string strCol = "col_id";
+            string strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice 
+                + " WHERE "
+                + " 1 = 1 AND "
+                + m_strInvoiceID + " = " + m_nInvoiceID
+                ;
+
+            string strDataValue;
+            strDataValue = dbConnect.GetDataValue(strQuery, strCol);
+            int nCount = Convert.ToInt32(strDataValue);
+            if(nCount > 0)
+            {
+                bInsert = false;
+            }
+        
+            if (bInsert == true)
+            {
+                strQuery =
+                                    "INSERT INTO "
+                                    + m_strTableInvoice
+                                    + "("
+                                    + m_strCustomerID + ","
+                                    + "invoice_date_created" + ","
+                                    + "invoice_date_modified" + ","
+                                    + m_strInvoiceID //+ ","
+                                    + ") VALUES("
+                                    + m_nCustomerID + ", "
+                                    + "'" + m_strModifiedOnValue + "'" + ", "
+                                    + "'" + m_strModifiedOnValue + "'" + ", "
+                                    + m_nInvoiceID //+ ", "
+                                    + ")"
+                                    ;
+
+                bReturn = dbConnect.Insert(strQuery);
+                if (bReturn == true)
+                {
+                }
+            }
+            else
+            {
+
+            }
+            return bReturn;
+        }
         private void btnViewOrders_Click(object sender, EventArgs e)
         {
             DisplayData();
@@ -255,12 +385,20 @@ namespace KPSonar
 
         private void txtQuantity_Leave(object sender, EventArgs e)
         {
-            int nQuantity = Convert.ToInt32(txtQuantity.Text);
+            int nQuantity = 0;
+            if (String.IsNullOrEmpty(txtQuantity.Text) == false)
+            {
+                nQuantity = Convert.ToInt32(txtQuantity.Text);
+            }
             //txtCalAmount->Text = nQuantity *;
             
             string strDataValue = "";
             strDataValue = GetDataValue(m_nProductID);
-            int nValuePerGm = Convert.ToInt32(strDataValue);
+            int nValuePerGm = 0;
+            if (String.IsNullOrEmpty(strDataValue) == false)
+            {
+                nValuePerGm = Convert.ToInt32(strDataValue);
+            }
             int nCalAmount = nQuantity * nValuePerGm;
             float fCGSTAmount = nCalAmount * m_fCGST;
             float fSGSTAmount = nCalAmount * m_fSGST;
