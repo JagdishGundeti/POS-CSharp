@@ -48,14 +48,16 @@
             this.txtCalAmount = new System.Windows.Forms.TextBox();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
-            this.txtPayment1 = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblPayment1 = new System.Windows.Forms.Label();
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnFirstName = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.btnProductName = new System.Windows.Forms.Button();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.lblProductName = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -80,9 +82,9 @@
             // 
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 385);
+            this.panel1.Location = new System.Drawing.Point(0, 357);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(632, 146);
+            this.panel1.Size = new System.Drawing.Size(632, 174);
             this.panel1.TabIndex = 24;
             // 
             // dataGridView1
@@ -97,8 +99,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(632, 146);
-            this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.Size = new System.Drawing.Size(632, 174);
+            this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // panel2
@@ -107,7 +109,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(632, 385);
+            this.panel2.Size = new System.Drawing.Size(632, 357);
             this.panel2.TabIndex = 23;
             // 
             // panel4
@@ -117,7 +119,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(632, 379);
+            this.panel4.Size = new System.Drawing.Size(632, 355);
             this.panel4.TabIndex = 0;
             // 
             // panel6
@@ -126,7 +128,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(413, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(219, 379);
+            this.panel6.Size = new System.Drawing.Size(219, 355);
             this.panel6.TabIndex = 1;
             // 
             // dataGridView2
@@ -141,11 +143,14 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(219, 379);
-            this.dataGridView2.TabIndex = 61;
+            this.dataGridView2.Size = new System.Drawing.Size(219, 355);
+            this.dataGridView2.TabIndex = 0;
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnProductName);
+            this.panel5.Controls.Add(this.txtProductName);
+            this.panel5.Controls.Add(this.lblProductName);
             this.panel5.Controls.Add(this.btnDelete);
             this.panel5.Controls.Add(this.lblSGSTValue);
             this.panel5.Controls.Add(this.lblCGSValue);
@@ -155,13 +160,12 @@
             this.panel5.Controls.Add(this.dtpDate);
             this.panel5.Controls.Add(this.txtSGST);
             this.panel5.Controls.Add(this.txtCGST);
+            this.panel5.Controls.Add(this.txtQuantity);
             this.panel5.Controls.Add(this.txtCalAmount);
             this.panel5.Controls.Add(this.txtAmount);
             this.panel5.Controls.Add(this.lblAmount);
-            this.panel5.Controls.Add(this.txtPayment1);
             this.panel5.Controls.Add(this.lblQuantity);
             this.panel5.Controls.Add(this.btnAdd);
-            this.panel5.Controls.Add(this.lblPayment1);
             this.panel5.Controls.Add(this.btnViewOrders);
             this.panel5.Controls.Add(this.btnFirstName);
             this.panel5.Controls.Add(this.txtFirstName);
@@ -169,15 +173,15 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(413, 379);
+            this.panel5.Size = new System.Drawing.Size(413, 355);
             this.panel5.TabIndex = 0;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(108, 299);
+            this.btnDelete.Location = new System.Drawing.Point(98, 260);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 59;
+            this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "D&elete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -196,7 +200,7 @@
             this.lblCGSValue.Location = new System.Drawing.Point(92, 170);
             this.lblCGSValue.Name = "lblCGSValue";
             this.lblCGSValue.Size = new System.Drawing.Size(0, 13);
-            this.lblCGSValue.TabIndex = 57;
+            this.lblCGSValue.TabIndex = 18;
             // 
             // lblSGST
             // 
@@ -204,7 +208,7 @@
             this.lblSGST.Location = new System.Drawing.Point(15, 193);
             this.lblSGST.Name = "lblSGST";
             this.lblSGST.Size = new System.Drawing.Size(68, 13);
-            this.lblSGST.TabIndex = 56;
+            this.lblSGST.TabIndex = 12;
             this.lblSGST.Text = "SGST (1.5%)";
             // 
             // lblCGST
@@ -213,7 +217,7 @@
             this.lblCGST.Location = new System.Drawing.Point(15, 170);
             this.lblCGST.Name = "lblCGST";
             this.lblCGST.Size = new System.Drawing.Size(68, 13);
-            this.lblCGST.TabIndex = 55;
+            this.lblCGST.TabIndex = 10;
             this.lblCGST.Text = "CGST (1.5%)";
             // 
             // chkWithDate
@@ -221,99 +225,82 @@
             this.chkWithDate.AutoSize = true;
             this.chkWithDate.Checked = true;
             this.chkWithDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWithDate.Location = new System.Drawing.Point(16, 342);
+            this.chkWithDate.Location = new System.Drawing.Point(16, 303);
             this.chkWithDate.Name = "chkWithDate";
             this.chkWithDate.Size = new System.Drawing.Size(74, 17);
-            this.chkWithDate.TabIndex = 54;
+            this.chkWithDate.TabIndex = 17;
             this.chkWithDate.Text = "With Date";
             this.chkWithDate.UseVisualStyleBackColor = true;
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(167, 334);
+            this.dtpDate.Location = new System.Drawing.Point(98, 303);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpDate.TabIndex = 53;
+            this.dtpDate.TabIndex = 18;
             // 
             // txtSGST
             // 
             this.txtSGST.Location = new System.Drawing.Point(98, 191);
             this.txtSGST.Name = "txtSGST";
             this.txtSGST.Size = new System.Drawing.Size(100, 20);
-            this.txtSGST.TabIndex = 51;
+            this.txtSGST.TabIndex = 13;
             // 
             // txtCGST
             // 
             this.txtCGST.Location = new System.Drawing.Point(98, 165);
             this.txtCGST.Name = "txtCGST";
             this.txtCGST.Size = new System.Drawing.Size(100, 20);
-            this.txtCGST.TabIndex = 50;
+            this.txtCGST.TabIndex = 11;
             // 
             // txtCalAmount
             // 
             this.txtCalAmount.Location = new System.Drawing.Point(98, 139);
             this.txtCalAmount.Name = "txtCalAmount";
             this.txtCalAmount.Size = new System.Drawing.Size(100, 20);
-            this.txtCalAmount.TabIndex = 52;
+            this.txtCalAmount.TabIndex = 9;
             // 
             // txtAmount
             // 
             this.txtAmount.Location = new System.Drawing.Point(98, 217);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(100, 20);
-            this.txtAmount.TabIndex = 49;
+            this.txtAmount.TabIndex = 14;
             // 
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(13, 139);
+            this.lblAmount.Location = new System.Drawing.Point(15, 139);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(43, 13);
-            this.lblAmount.TabIndex = 48;
+            this.lblAmount.TabIndex = 8;
             this.lblAmount.Text = "Amount";
-            // 
-            // txtPayment1
-            // 
-            this.txtPayment1.Location = new System.Drawing.Point(95, 66);
-            this.txtPayment1.Name = "txtPayment1";
-            this.txtPayment1.Size = new System.Drawing.Size(67, 20);
-            this.txtPayment1.TabIndex = 47;
-            this.txtPayment1.Leave += new System.EventHandler(this.txtQuantity_Leave);
             // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(12, 109);
+            this.lblQuantity.Location = new System.Drawing.Point(15, 109);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(71, 13);
-            this.lblQuantity.TabIndex = 46;
+            this.lblQuantity.TabIndex = 6;
             this.lblQuantity.Text = "Quantity(gms)";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(18, 299);
+            this.btnAdd.Location = new System.Drawing.Point(15, 260);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 45;
+            this.btnAdd.TabIndex = 15;
             this.btnAdd.Text = "AddItem";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lblPayment1
-            // 
-            this.lblPayment1.AutoSize = true;
-            this.lblPayment1.Location = new System.Drawing.Point(12, 69);
-            this.lblPayment1.Name = "lblPayment1";
-            this.lblPayment1.Size = new System.Drawing.Size(54, 13);
-            this.lblPayment1.TabIndex = 42;
-            this.lblPayment1.Text = "Payment1";
             // 
             // btnViewOrders
             // 
             this.btnViewOrders.Location = new System.Drawing.Point(307, 20);
             this.btnViewOrders.Name = "btnViewOrders";
             this.btnViewOrders.Size = new System.Drawing.Size(75, 23);
-            this.btnViewOrders.TabIndex = 41;
+            this.btnViewOrders.TabIndex = 3;
             this.btnViewOrders.Text = "View Orders";
             this.btnViewOrders.UseVisualStyleBackColor = true;
             this.btnViewOrders.Click += new System.EventHandler(this.btnViewOrders_Click);
@@ -323,27 +310,61 @@
             this.btnFirstName.Location = new System.Drawing.Point(226, 20);
             this.btnFirstName.Name = "btnFirstName";
             this.btnFirstName.Size = new System.Drawing.Size(75, 23);
-            this.btnFirstName.TabIndex = 40;
+            this.btnFirstName.TabIndex = 2;
             this.btnFirstName.Text = "Select";
             this.btnFirstName.UseVisualStyleBackColor = true;
             this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click);
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(93, 22);
+            this.txtFirstName.Location = new System.Drawing.Point(98, 22);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.ReadOnly = true;
             this.txtFirstName.Size = new System.Drawing.Size(127, 20);
-            this.txtFirstName.TabIndex = 39;
+            this.txtFirstName.TabIndex = 1;
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(11, 22);
+            this.lblFirstName.Location = new System.Drawing.Point(15, 22);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(35, 13);
-            this.lblFirstName.TabIndex = 38;
+            this.lblFirstName.TabIndex = 0;
             this.lblFirstName.Text = "Name";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(98, 109);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantity.TabIndex = 7;
+            // 
+            // btnProductName
+            // 
+            this.btnProductName.Location = new System.Drawing.Point(226, 64);
+            this.btnProductName.Name = "btnProductName";
+            this.btnProductName.Size = new System.Drawing.Size(75, 23);
+            this.btnProductName.TabIndex = 61;
+            this.btnProductName.Text = "Select";
+            this.btnProductName.UseVisualStyleBackColor = true;
+            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.Location = new System.Drawing.Point(96, 64);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
+            this.txtProductName.Size = new System.Drawing.Size(127, 20);
+            this.txtProductName.TabIndex = 60;
+            // 
+            // lblProductName
+            // 
+            this.lblProductName.AutoSize = true;
+            this.lblProductName.Location = new System.Drawing.Point(15, 66);
+            this.lblProductName.Name = "lblProductName";
+            this.lblProductName.Size = new System.Drawing.Size(75, 13);
+            this.lblProductName.TabIndex = 59;
+            this.lblProductName.Text = "Product Name";
             // 
             // OrderDetails
             // 
@@ -388,13 +409,15 @@
         private System.Windows.Forms.TextBox txtCalAmount;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label lblAmount;
-        private System.Windows.Forms.TextBox txtPayment1;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lblPayment1;
         private System.Windows.Forms.Button btnViewOrders;
         private System.Windows.Forms.Button btnFirstName;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.Button btnProductName;
+        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.Label lblProductName;
     }
 }

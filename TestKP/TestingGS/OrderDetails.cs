@@ -168,7 +168,6 @@ namespace KPSonar
             }
 
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             bool bReturn = false;
@@ -307,7 +306,7 @@ namespace KPSonar
                                     + ") VALUES("
                                     + m_nCustomerID + ", "
                                     + m_nProductID + ", "
-                                    + txtPayment1.Text + ", "
+                                    + txtQuantity.Text + ", "
                                     + txtCalAmount.Text + ", "
                                     + txtCGST.Text + ", "
                                     + txtSGST.Text + ", "
@@ -395,9 +394,9 @@ namespace KPSonar
         private void txtQuantity_Leave(object sender, EventArgs e)
         {
             int nQuantity = 0;
-            if (String.IsNullOrEmpty(txtPayment1.Text) == false)
+            if (String.IsNullOrEmpty(txtQuantity.Text) == false)
             {
-                nQuantity = Convert.ToInt32(txtPayment1.Text);
+                nQuantity = Convert.ToInt32(txtQuantity.Text);
             }
             //txtCalAmount->Text = nQuantity *;
             
