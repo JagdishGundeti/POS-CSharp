@@ -129,6 +129,13 @@ namespace KPSonar
             frmOrderDetails.Show();
         }
 
+        private void paymentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PaymentDetails frmPaymentDetails = new PaymentDetails();
+            frmPaymentDetails.MdiParent = this;
+            frmPaymentDetails.Show();
+        }
+
         private void dailyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingForm frmSettingForm = new SettingForm();

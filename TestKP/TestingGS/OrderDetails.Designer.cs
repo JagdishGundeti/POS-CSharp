@@ -48,12 +48,10 @@
             this.txtCalAmount = new System.Windows.Forms.TextBox();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtPayment1 = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnProductName = new System.Windows.Forms.Button();
-            this.txtProductName = new System.Windows.Forms.TextBox();
-            this.lblProductName = new System.Windows.Forms.Label();
+            this.lblPayment1 = new System.Windows.Forms.Label();
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnFirstName = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
@@ -160,12 +158,10 @@
             this.panel5.Controls.Add(this.txtCalAmount);
             this.panel5.Controls.Add(this.txtAmount);
             this.panel5.Controls.Add(this.lblAmount);
-            this.panel5.Controls.Add(this.txtQuantity);
+            this.panel5.Controls.Add(this.txtPayment1);
             this.panel5.Controls.Add(this.lblQuantity);
             this.panel5.Controls.Add(this.btnAdd);
-            this.panel5.Controls.Add(this.btnProductName);
-            this.panel5.Controls.Add(this.txtProductName);
-            this.panel5.Controls.Add(this.lblProductName);
+            this.panel5.Controls.Add(this.lblPayment1);
             this.panel5.Controls.Add(this.btnViewOrders);
             this.panel5.Controls.Add(this.btnFirstName);
             this.panel5.Controls.Add(this.txtFirstName);
@@ -276,13 +272,13 @@
             this.lblAmount.TabIndex = 48;
             this.lblAmount.Text = "Amount";
             // 
-            // txtQuantity
+            // txtPayment1
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(93, 107);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(67, 20);
-            this.txtQuantity.TabIndex = 47;
-            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
+            this.txtPayment1.Location = new System.Drawing.Point(95, 66);
+            this.txtPayment1.Name = "txtPayment1";
+            this.txtPayment1.Size = new System.Drawing.Size(67, 20);
+            this.txtPayment1.TabIndex = 47;
+            this.txtPayment1.Leave += new System.EventHandler(this.txtQuantity_Leave);
             // 
             // lblQuantity
             // 
@@ -303,32 +299,14 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnProductName
+            // lblPayment1
             // 
-            this.btnProductName.Location = new System.Drawing.Point(226, 67);
-            this.btnProductName.Name = "btnProductName";
-            this.btnProductName.Size = new System.Drawing.Size(75, 23);
-            this.btnProductName.TabIndex = 44;
-            this.btnProductName.Text = "Select";
-            this.btnProductName.UseVisualStyleBackColor = true;
-            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
-            // 
-            // txtProductName
-            // 
-            this.txtProductName.Location = new System.Drawing.Point(93, 67);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(127, 20);
-            this.txtProductName.TabIndex = 43;
-            // 
-            // lblProductName
-            // 
-            this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(12, 69);
-            this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(75, 13);
-            this.lblProductName.TabIndex = 42;
-            this.lblProductName.Text = "Product Name";
+            this.lblPayment1.AutoSize = true;
+            this.lblPayment1.Location = new System.Drawing.Point(12, 69);
+            this.lblPayment1.Name = "lblPayment1";
+            this.lblPayment1.Size = new System.Drawing.Size(54, 13);
+            this.lblPayment1.TabIndex = 42;
+            this.lblPayment1.Text = "Payment1";
             // 
             // btnViewOrders
             // 
@@ -410,12 +388,10 @@
         private System.Windows.Forms.TextBox txtCalAmount;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label lblAmount;
-        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtPayment1;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnProductName;
-        private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.Label lblProductName;
+        private System.Windows.Forms.Label lblPayment1;
         private System.Windows.Forms.Button btnViewOrders;
         private System.Windows.Forms.Button btnFirstName;
         private System.Windows.Forms.TextBox txtFirstName;

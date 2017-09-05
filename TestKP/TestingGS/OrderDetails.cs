@@ -13,7 +13,7 @@ namespace KPSonar
     public partial class OrderDetails : Form
     {
         private DBConnect dbConnect;
-        private string m_strTableName = "order_txn";
+        private string m_strOrderTxn = "order_txn";
         private string m_strTableInvoice = "invoices";
         private string m_strInvoiceID = "id";
 
@@ -70,7 +70,7 @@ namespace KPSonar
                 + "(SELECT sum(total_price) "
                 + "FROM order_txn "
                 + "WHERE "
-                + m_strTableName + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount"
+                + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount"
                 + " FROM " + m_strTableInvoice
                 + " WHERE "
                 + " 1 = 1 AND "
@@ -88,22 +88,22 @@ namespace KPSonar
             
             string strQuery1 = 
                 " SELECT "
-                + m_strTableName + "." + m_strID + ","
+                + m_strOrderTxn + "." + m_strID + ","
                 + " customer.firstname,"
                 + " customer.phone_no,"
                 + strTableProduct + "." + "name" + ","
                 + strTableProduct + "." + "details" + ","
                 //+ " product.category,"
                 + strTableCategory + "." + strType + ","
-                + m_strTableName + "." + m_strQuantity + ","
-                + m_strTableName + "." + m_strAmount + ","
-                + m_strTableName + "." + m_strCGST + ","
-                + m_strTableName + "." + m_strSGST + ","
-                + m_strTableName + "." + m_strTotalPrice + ","
-                + m_strTableName + "." + m_strModifiedOn
-                + " FROM  " + m_strTableName 
+                + m_strOrderTxn + "." + m_strQuantity + ","
+                + m_strOrderTxn + "." + m_strAmount + ","
+                + m_strOrderTxn + "." + m_strCGST + ","
+                + m_strOrderTxn + "." + m_strSGST + ","
+                + m_strOrderTxn + "." + m_strTotalPrice + ","
+                + m_strOrderTxn + "." + m_strModifiedOn
+                + " FROM  " + m_strOrderTxn 
                 + " JOIN customer "
-                + "   ON (customer.id = "+m_strTableName + "." + m_strCustomerID + ") "
+                + "   ON (customer.id = "+m_strOrderTxn + "." + m_strCustomerID + ") "
                 + " JOIN " + strTableProduct
                 + "   ON (product.id = order_txn.product_id) "
                 + " JOIN " + strTableCategory
@@ -117,7 +117,7 @@ namespace KPSonar
             if(chkWithDate.Checked==true)
             {
                 query = query
-                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+                    + " AND " + m_strOrderTxn + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
             }
             dbConnect.GridDisplay(dataGridView1, query);
         }
@@ -200,7 +200,7 @@ namespace KPSonar
             {
                 string strQuery =
                                 "DELETE FROM "
-                                + m_strTableName
+                                + m_strOrderTxn
                                 + " WHERE "
                                 + m_strID + "=" + m_nID
                                 ;
@@ -218,7 +218,7 @@ namespace KPSonar
         {
             string strCol = "invoice_id";
 
-            string strQuery = "SELECT DISTINCT " + strCol + " FROM " + m_strTableName
+            string strQuery = "SELECT DISTINCT " + strCol + " FROM " + m_strOrderTxn
             + " WHERE "
             + " 1 = 1 "
             + " AND " + m_strCustomerID + "=" + m_nCustomerID
@@ -227,7 +227,7 @@ namespace KPSonar
             if (chkWithDate.Checked == true)
             {
                 strQuery = strQuery
-                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+                    + " AND " + m_strOrderTxn + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
             }
 
             string strDataValue;
@@ -293,7 +293,7 @@ namespace KPSonar
 
                 string strQuery =
                                     "INSERT INTO "
-                                    + m_strTableName
+                                    + m_strOrderTxn
                                     + "("
                                     + m_strCustomerID + ","
                                     + m_strProductID + ","
@@ -307,7 +307,7 @@ namespace KPSonar
                                     + ") VALUES("
                                     + m_nCustomerID + ", "
                                     + m_nProductID + ", "
-                                    + txtQuantity.Text + ", "
+                                    + txtPayment1.Text + ", "
                                     + txtCalAmount.Text + ", "
                                     + txtCGST.Text + ", "
                                     + txtSGST.Text + ", "
@@ -395,9 +395,9 @@ namespace KPSonar
         private void txtQuantity_Leave(object sender, EventArgs e)
         {
             int nQuantity = 0;
-            if (String.IsNullOrEmpty(txtQuantity.Text) == false)
+            if (String.IsNullOrEmpty(txtPayment1.Text) == false)
             {
-                nQuantity = Convert.ToInt32(txtQuantity.Text);
+                nQuantity = Convert.ToInt32(txtPayment1.Text);
             }
             //txtCalAmount->Text = nQuantity *;
             
