@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.21-MariaDB, for Win32 (AMD64)
+-- MySQL dump 10.16  Distrib 10.1.25-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: localhost
+-- Host: localhost    Database: connectcsharptomysql
 -- ------------------------------------------------------
--- Server version	10.1.21-MariaDB
+-- Server version	10.1.25-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -84,7 +84,7 @@ CREATE TABLE `daily_rates_ex` (
   PRIMARY KEY (`id`),
   KEY `fk_daily_rates_category_id` (`category_id`),
   CONSTRAINT `fk_daily_rates_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `daily_rates_ex` (
 
 LOCK TABLES `daily_rates_ex` WRITE;
 /*!40000 ALTER TABLE `daily_rates_ex` DISABLE KEYS */;
-INSERT INTO `daily_rates_ex` VALUES (37,1,2800,'2017-09-03'),(38,2,2400,'2017-09-03'),(39,3,1200,'2017-09-03');
+INSERT INTO `daily_rates_ex` VALUES (37,1,2800,'2017-09-03'),(38,2,2400,'2017-09-03'),(39,3,1200,'2017-09-03'),(40,1,2900,'2017-09-04'),(41,2,2700,'2017-09-04'),(42,3,1500,'2017-09-04'),(43,1,2900,'2017-09-05'),(44,2,2700,'2017-09-05'),(45,3,1050,'2017-09-05'),(46,1,3100,'2017-09-11'),(47,2,3000,'2017-09-11'),(48,3,1000,'2017-09-11');
 /*!40000 ALTER TABLE `daily_rates_ex` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,8 +113,8 @@ CREATE TABLE `invoices` (
   `invoice_date_due` date NOT NULL,
   `invoice_number` varchar(100) DEFAULT NULL,
   `payment_method` int(11) NOT NULL DEFAULT '0',
-  `paid_price_1` float(11,2) DEFAULT NULL,
-  `paid_price_2` float(11,2) DEFAULT NULL,
+  `paid_price_1` float(11,2) NOT NULL DEFAULT '0',
+  `paid_price_2` float(11,2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -125,7 +125,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-INSERT INTO `invoices` VALUES (1,7,'2017-09-03','00:00:00','2017-09-03 00:00:00','0000-00-00',NULL,0,NULL,NULL);
+INSERT INTO `invoices` VALUES (1,7,'2017-09-03','00:00:00','2017-09-03 00:00:00','0000-00-00',NULL,0,0.00,0.00),(2,7,'2017-09-04','00:00:00','2017-09-04 00:00:00','0000-00-00',NULL,0,10.00,0.00),(3,7,'2017-09-11','00:00:00','2017-09-11 00:00:00','0000-00-00',NULL,0,2000.00,0.00);
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `order_txn` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `order_txn_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
   CONSTRAINT `order_txn_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `order_txn` (
 
 LOCK TABLES `order_txn` WRITE;
 /*!40000 ALTER TABLE `order_txn` DISABLE KEYS */;
-INSERT INTO `order_txn` VALUES (42,7,15,1,5,14000,210.00,210.00,14420.00,'2017-09-03'),(43,7,15,1,2,5600,84.00,84.00,5768.00,'2017-09-03'),(44,7,15,1,2,5600,84.00,84.00,5768.00,'2017-09-03');
+INSERT INTO `order_txn` VALUES (42,7,15,1,5,14000,210.00,210.00,14420.00,'2017-09-03'),(43,7,15,1,2,5600,84.00,84.00,5768.00,'2017-09-03'),(44,7,15,1,2,5600,84.00,84.00,5768.00,'2017-09-03'),(46,7,15,2,1,2900,43.50,43.50,2987.00,'2017-09-04'),(47,7,16,2,2,5800,87.00,87.00,5974.00,'2017-09-04'),(48,7,16,3,1,3100,46.50,46.50,3193.00,'2017-09-11');
 /*!40000 ALTER TABLE `order_txn` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,6 +193,31 @@ LOCK TABLES `product` WRITE;
 INSERT INTO `product` VALUES (15,'Small Ring','Small Ring','Gold',1),(16,'Wide Ring','Wide Ring','Gold',1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tableinfo`
+--
+
+DROP TABLE IF EXISTS `tableinfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tableinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tableinfo`
+--
+
+LOCK TABLES `tableinfo` WRITE;
+/*!40000 ALTER TABLE `tableinfo` DISABLE KEYS */;
+INSERT INTO `tableinfo` VALUES (8,'John Smith',33);
+/*!40000 ALTER TABLE `tableinfo` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -203,5 +228,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-03 19:21:40
+-- Dump completed on 2017-09-11 16:19:44
 

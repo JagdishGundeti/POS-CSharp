@@ -48,7 +48,11 @@ namespace KPSonar
                 + "(SELECT sum(total_price) "
                 + "FROM " + m_strOrderTxn
                 + " WHERE "
-                + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount"
+                + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount" + ","
+                + "(SELECT sum(total_price) "
+                + "FROM " + m_strOrderTxn
+                + " WHERE "
+                + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") "+"- (paid_price_1 + paid_price_2) Balance"
                 + " FROM " + m_strTableInvoice
                + " JOIN " + m_strCustomer
                 + "   ON (" + m_strCustomer + ".id = " + m_strTableInvoice + "." + m_strCustomerID + ") "
