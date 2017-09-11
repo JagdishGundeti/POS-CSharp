@@ -36,6 +36,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnProductName = new System.Windows.Forms.Button();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.lblProductName = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblSGSTValue = new System.Windows.Forms.Label();
             this.lblCGSValue = new System.Windows.Forms.Label();
@@ -45,6 +48,7 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.txtSGST = new System.Windows.Forms.TextBox();
             this.txtCGST = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtCalAmount = new System.Windows.Forms.TextBox();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
@@ -54,10 +58,6 @@
             this.btnFirstName = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.btnProductName = new System.Windows.Forms.Button();
-            this.txtProductName = new System.Windows.Forms.TextBox();
-            this.lblProductName = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -176,6 +176,33 @@
             this.panel5.Size = new System.Drawing.Size(413, 355);
             this.panel5.TabIndex = 0;
             // 
+            // btnProductName
+            // 
+            this.btnProductName.Location = new System.Drawing.Point(226, 64);
+            this.btnProductName.Name = "btnProductName";
+            this.btnProductName.Size = new System.Drawing.Size(75, 23);
+            this.btnProductName.TabIndex = 61;
+            this.btnProductName.Text = "Select";
+            this.btnProductName.UseVisualStyleBackColor = true;
+            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.Location = new System.Drawing.Point(96, 64);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
+            this.txtProductName.Size = new System.Drawing.Size(127, 20);
+            this.txtProductName.TabIndex = 60;
+            // 
+            // lblProductName
+            // 
+            this.lblProductName.AutoSize = true;
+            this.lblProductName.Location = new System.Drawing.Point(15, 66);
+            this.lblProductName.Name = "lblProductName";
+            this.lblProductName.Size = new System.Drawing.Size(75, 13);
+            this.lblProductName.TabIndex = 59;
+            this.lblProductName.Text = "Product Name";
+            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(98, 260);
@@ -252,6 +279,14 @@
             this.txtCGST.Name = "txtCGST";
             this.txtCGST.Size = new System.Drawing.Size(100, 20);
             this.txtCGST.TabIndex = 11;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(98, 109);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantity.TabIndex = 7;
+            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
             // 
             // txtCalAmount
             // 
@@ -331,40 +366,6 @@
             this.lblFirstName.Size = new System.Drawing.Size(35, 13);
             this.lblFirstName.TabIndex = 0;
             this.lblFirstName.Text = "Name";
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(98, 109);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
-            this.txtQuantity.TabIndex = 7;
-            // 
-            // btnProductName
-            // 
-            this.btnProductName.Location = new System.Drawing.Point(226, 64);
-            this.btnProductName.Name = "btnProductName";
-            this.btnProductName.Size = new System.Drawing.Size(75, 23);
-            this.btnProductName.TabIndex = 61;
-            this.btnProductName.Text = "Select";
-            this.btnProductName.UseVisualStyleBackColor = true;
-            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
-            // 
-            // txtProductName
-            // 
-            this.txtProductName.Location = new System.Drawing.Point(96, 64);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(127, 20);
-            this.txtProductName.TabIndex = 60;
-            // 
-            // lblProductName
-            // 
-            this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(15, 66);
-            this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(75, 13);
-            this.lblProductName.TabIndex = 59;
-            this.lblProductName.Text = "Product Name";
             // 
             // OrderDetails
             // 

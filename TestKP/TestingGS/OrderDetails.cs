@@ -223,7 +223,8 @@ namespace KPSonar
             + " AND " + m_strCustomerID + "=" + m_nCustomerID
             ;
 
-            if (chkWithDate.Checked == true)
+            //creating problem because invoice id can be duplicate of this
+            //if (chkWithDate.Checked == true)
             {
                 strQuery = strQuery
                     + " AND " + m_strOrderTxn + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
@@ -451,5 +452,6 @@ namespace KPSonar
         {
             m_nID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
+
     }
 }
