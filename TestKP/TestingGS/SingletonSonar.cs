@@ -128,12 +128,8 @@ namespace KPSonar
         {
             string strQuery;
             strQuery =
-            "UPDATE product  "
-            + "SET    NAME = '{0}',  "
-            + "       details = '{1}',  "
-            + "       category = '{2}'  "
-            + "WHERE  id = {3}  "
-            ;
+            "DELETE FROM product  "
+            + "WHERE  id = {0}  "
             ;
             string strNewQuery = String.Format(strQuery, nID);
             return strNewQuery;
