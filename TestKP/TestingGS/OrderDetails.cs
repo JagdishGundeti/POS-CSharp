@@ -57,68 +57,72 @@ namespace KPSonar
             {
                 GenerateID();
             }
-            string strCol = "invoice_id";
+            //string strCol = "invoice_id";
 
-            string query =
-                "SELECT "
-                + m_strTableInvoice + "." + m_strInvoiceID + ","
-                + "invoice_date_created" + ","
-                + "invoice_date_modified" + ","
-                + "paid_price_1" + ","
-                + "paid_price_2" + ","
-                + "payment_method" + ","
-                + "(SELECT sum(total_price) "
-                + "FROM order_txn "
-                + "WHERE "
-                + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount"
-                + " FROM " + m_strTableInvoice
-                + " WHERE "
-                + " 1 = 1 AND "
-                + m_strTableInvoice + "." + m_strInvoiceID + " = " + m_nInvoiceID
-                ;
-
+            //string query =
+            //    "SELECT "
+            //    + m_strTableInvoice + "." + m_strInvoiceID + ","
+            //    + "invoice_date_created" + ","
+            //    + "invoice_date_modified" + ","
+            //    + "paid_price_1" + ","
+            //    + "paid_price_2" + ","
+            //    + "payment_method" + ","
+            //    + "(SELECT sum(total_price) "
+            //    + "FROM order_txn "
+            //    + "WHERE "
+            //    + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount"
+            //    + " FROM " + m_strTableInvoice
+            //    + " WHERE "
+            //    + " 1 = 1 AND "
+            //    + m_strTableInvoice + "." + m_strInvoiceID + " = " + m_nInvoiceID
+            //    ;
+            
+            string query = SingletonSonar.Instance.OrderInvoiceSelectQuery(m_nInvoiceID);
             dbConnect.GridDisplay(dataGridView2, query);
         }
 
         private void DisplaOrderyData()
         {            
-            string strTableCategory = "category";
-            string strTableProduct = "product";
-            string strType = "type";
+            //string strTableCategory = "category";
+            //string strTableProduct = "product";
+            //string strType = "type";
             
-            string strQuery1 = 
-                " SELECT "
-                + m_strOrderTxn + "." + m_strID + ","
-                + " customer.firstname,"
-                + " customer.phone_no,"
-                + strTableProduct + "." + "name" + ","
-                + strTableProduct + "." + "details" + ","
-                //+ " product.category,"
-                + strTableCategory + "." + strType + ","
-                + m_strOrderTxn + "." + m_strQuantity + ","
-                + m_strOrderTxn + "." + m_strAmount + ","
-                + m_strOrderTxn + "." + m_strCGST + ","
-                + m_strOrderTxn + "." + m_strSGST + ","
-                + m_strOrderTxn + "." + m_strTotalPrice + ","
-                + m_strOrderTxn + "." + m_strModifiedOn
-                + " FROM  " + m_strOrderTxn 
-                + " JOIN customer "
-                + "   ON (customer.id = "+m_strOrderTxn + "." + m_strCustomerID + ") "
-                + " JOIN " + strTableProduct
-                + "   ON (product.id = order_txn.product_id) "
-                + " JOIN " + strTableCategory
-                + "   ON (" + strTableProduct + ".category_id = " + strTableCategory + ".id) "
-                + " WHERE "
-                + " 1 = 1 "
-                + " AND " + m_strCustomerID + "=" + m_nCustomerID
-                ;
+            //string strQuery1 = 
+            //    " SELECT "
+            //    + m_strOrderTxn + "." + m_strID + ","
+            //    + " customer.firstname,"
+            //    + " customer.phone_no,"
+            //    + strTableProduct + "." + "name" + ","
+            //    + strTableProduct + "." + "details" + ","
+            //    //+ " product.category,"
+            //    + strTableCategory + "." + strType + ","
+            //    + m_strOrderTxn + "." + m_strQuantity + ","
+            //    + m_strOrderTxn + "." + m_strAmount + ","
+            //    + m_strOrderTxn + "." + m_strCGST + ","
+            //    + m_strOrderTxn + "." + m_strSGST + ","
+            //    + m_strOrderTxn + "." + m_strTotalPrice + ","
+            //    + m_strOrderTxn + "." + m_strModifiedOn
+            //    + " FROM  " + m_strOrderTxn 
+            //    + " JOIN customer "
+            //    + "   ON (customer.id = "+m_strOrderTxn + "." + m_strCustomerID + ") "
+            //    + " JOIN " + strTableProduct
+            //    + "   ON (product.id = order_txn.product_id) "
+            //    + " JOIN " + strTableCategory
+            //    + "   ON (" + strTableProduct + ".category_id = " + strTableCategory + ".id) "
+            //    + " WHERE "
+            //    + " 1 = 1 "
+            //    + " AND " + m_strCustomerID + "=" + m_nCustomerID
+            //    ;
 
-            string query = strQuery1;
-            if(chkWithDate.Checked==true)
-            {
-                query = query
-                    + " AND " + m_strOrderTxn + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
-            }
+            //string query = strQuery1;
+            //if(chkWithDate.Checked==true)
+            //{
+            //    query = query
+            //        + " AND " + m_strOrderTxn + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+            //}
+            
+            string query = SingletonSonar.Instance.OrderSelectQuery(
+                chkWithDate.Checked, dtpDate.Value.ToString("yyyy-MM-dd"), m_nCustomerID);
             dbConnect.GridDisplay(dataGridView1, query);
         }
         private void DisplayData()

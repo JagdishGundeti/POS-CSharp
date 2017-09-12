@@ -91,22 +91,25 @@ namespace KPSonar
             }
             if(bReturn == true)
             {
-                string strQuery =
-                                    "INSERT INTO "
-                                    + m_strTableName
-                                    + "("
-                                    + m_strFirstName + ","
-                                    + m_strMiddleName + ","
-                                    + m_strLastName + ","
-                                    + m_strAddress + ","
-                                    + m_strPhone
-                                    + ") VALUES("
-                                    + "'" + txtFirstName.Text + "', "
-                                    + "'" + txtMiddleName.Text + "', "
-                                    + "'" + txtLastName.Text + "', "
-                                    + "'" + txtAddress.Text + "', "
-                                    + "'" + txtPhoneNo.Text + "'"
-                                    + ")";
+                //string strQuery =
+                //                    "INSERT INTO "
+                //                    + m_strTableName
+                //                    + "("
+                //                    + m_strFirstName + ","
+                //                    + m_strMiddleName + ","
+                //                    + m_strLastName + ","
+                //                    + m_strAddress + ","
+                //                    + m_strPhone
+                //                    + ") VALUES("
+                //                    + "'" + txtFirstName.Text + "', "
+                //                    + "'" + txtMiddleName.Text + "', "
+                //                    + "'" + txtLastName.Text + "', "
+                //                    + "'" + txtAddress.Text + "', "
+                //                    + "'" + txtPhoneNo.Text + "'"
+                //                    + ")";
+
+                string strQuery = SingletonSonar.Instance.CustomerInsertQuery(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                    txtAddress.Text, txtPhoneNo.Text);
 
                 bReturn = dbConnect.Insert(strQuery);
                 if (bReturn == true)
@@ -148,18 +151,21 @@ namespace KPSonar
             }
             if(bReturn == true)
             {
-                string strQuery =
-                                    "UPDATE "
-                                    + m_strTableName
-                                    + " SET "
-                                    + m_strFirstName + "=" + "'" + txtFirstName.Text + "', "
-                                    + m_strMiddleName + "=" + "'" + txtMiddleName.Text + "', "
-                                    + m_strLastName + "=" + "'" + txtLastName.Text + "', "
-                                    + m_strAddress + "=" + "'" + txtAddress.Text + "', "
-                                    + m_strPhone + "=" + "'" + txtPhoneNo.Text + "'"
-                                    + " WHERE "
-                                    + m_strID + "=" + m_nID
-                                    ;
+                //string strQuery =
+                //                    "UPDATE "
+                //                    + m_strTableName
+                //                    + " SET "
+                //                    + m_strFirstName + "=" + "'" + txtFirstName.Text + "', "
+                //                    + m_strMiddleName + "=" + "'" + txtMiddleName.Text + "', "
+                //                    + m_strLastName + "=" + "'" + txtLastName.Text + "', "
+                //                    + m_strAddress + "=" + "'" + txtAddress.Text + "', "
+                //                    + m_strPhone + "=" + "'" + txtPhoneNo.Text + "'"
+                //                    + " WHERE "
+                //                    + m_strID + "=" + m_nID
+                //                    ;
+
+                string strQuery = SingletonSonar.Instance.CustomerUpdateQuery(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                    txtAddress.Text, txtPhoneNo.Text, m_nID);
 
                 bReturn = dbConnect.Update(strQuery);
                 if (bReturn == true)
@@ -200,13 +206,14 @@ namespace KPSonar
             }
             if(bReturn == true)
             {
-                string strQuery =
-                                "DELETE FROM "
-                                + m_strTableName
-                                + " WHERE "
-                                + m_strID + "=" + m_nID
-                                ;
+                //string strQuery =
+                //                "DELETE FROM "
+                //                + m_strTableName
+                //                + " WHERE "
+                //                + m_strID + "=" + m_nID
+                //                ;
 
+                string strQuery = SingletonSonar.Instance.CustomerDeleteQuery(m_nID);
                 bReturn = dbConnect.Delete(strQuery);
                 if (bReturn == true)
                 {

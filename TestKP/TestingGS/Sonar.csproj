@@ -94,6 +94,7 @@
       <DependentUpon>CustomerDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
+    <Compile Include="SingletonSonar.cs" />
     <Compile Include="TestMysql.cs">
       <SubType>Form</SubType>
     </Compile>
