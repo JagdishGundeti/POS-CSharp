@@ -35,36 +35,39 @@ namespace KPSonar
         private void DisplayInvoiceData()
         {
 
-            string strCol = "invoice_id";
+            //string strCol = "invoice_id";
 
-            string query =
-                "SELECT "
-                + m_strTableInvoice + "." + m_strInvoiceID + ","
-                + "invoice_date_created" + ","
-                + "invoice_date_modified" + ","
-                + "paid_price_1" + ","
-                + "paid_price_2" + ","
-                + "payment_method" + ","
-                + "(SELECT sum(total_price) "
-                + "FROM " + m_strOrderTxn
-                + " WHERE "
-                + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount" + ","
-                + "(SELECT sum(total_price) "
-                + "FROM " + m_strOrderTxn
-                + " WHERE "
-                + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") "+"- (paid_price_1 + paid_price_2) Balance"
-                + " FROM " + m_strTableInvoice
-               + " JOIN " + m_strCustomer
-                + "   ON (" + m_strCustomer + ".id = " + m_strTableInvoice + "." + m_strCustomerID + ") "
-                + " WHERE "
-                + " 1 = 1 AND "
-                + m_strCustomer + "." + "id  = " + m_nCustomerID
-                ;
-            if (chkWithDate.Checked == true)
-            {
-                query = query
-                    + " AND " + m_strTableInvoice + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
-            }
+            //string query =
+            //    "SELECT "
+            //    + m_strTableInvoice + "." + m_strInvoiceID + ","
+            //    + "invoice_date_created" + ","
+            //    + "invoice_date_modified" + ","
+            //    + "paid_price_1" + ","
+            //    + "paid_price_2" + ","
+            //    + "payment_method" + ","
+            //    + "(SELECT sum(total_price) "
+            //    + "FROM " + m_strOrderTxn
+            //    + " WHERE "
+            //    + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") total_amount" + ","
+            //    + "(SELECT sum(total_price) "
+            //    + "FROM " + m_strOrderTxn
+            //    + " WHERE "
+            //    + m_strOrderTxn + "." + strCol + " = " + m_strTableInvoice + "." + "id" + ") "+"- (paid_price_1 + paid_price_2) Balance"
+            //    + " FROM " + m_strTableInvoice
+            //   + " JOIN " + m_strCustomer
+            //    + "   ON (" + m_strCustomer + ".id = " + m_strTableInvoice + "." + m_strCustomerID + ") "
+            //    + " WHERE "
+            //    + " 1 = 1 AND "
+            //    + m_strCustomer + "." + "id  = " + m_nCustomerID
+            //    ;
+            //if (chkWithDate.Checked == true)
+            //{
+            //    query = query
+            //        + " AND " + m_strTableInvoice + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+            //}
+            
+            string query = SingletonSonar.Instance.InvoiceSelectQuery(chkWithDate.Checked,
+                dtpDate.Value.ToString("yyyy-MM-dd"),m_nCustomerID);
             dbConnect.GridDisplay(dataGridView1, query);
         }
         private void DisplayData()
@@ -151,16 +154,19 @@ namespace KPSonar
             if (bReturn == true)
             {
 
+                //string strQuery =
+                //                "UPDATE "
+                //                + m_strTableInvoice
+                //                + " SET "
+                //                + m_strPayment1 + "=" + "'" + txtPayment1.Text + "', "
+                //                + m_strPayment2 + "=" + "'" + txtPayment2.Text + "'"
+                //                + " WHERE "
+                //                + m_strInvoiceID + "=" + m_nID
+                //                ;
+                string strQuery = SingletonSonar.Instance.InvoiceUpdateQuery(
+                    txtPayment1.Text,txtPayment2.Text,
+                    m_nID);
 
-                string strQuery =
-                                "UPDATE "
-                                + m_strTableInvoice
-                                + " SET "
-                                + m_strPayment1 + "=" + "'" + txtPayment1.Text + "', "
-                                + m_strPayment2 + "=" + "'" + txtPayment2.Text + "'"
-                                + " WHERE "
-                                + m_strInvoiceID + "=" + m_nID
-                                ;
                 bReturn = dbConnect.Update(strQuery);
                 if (bReturn == true)
                 {

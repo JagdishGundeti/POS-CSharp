@@ -42,19 +42,22 @@ namespace KPSonar
         
         private void DisplayData()
         {
-            // set query to fetch data "Select * from  tabelname"; 
-            string query = 
-                " SELECT * FROM  " + m_strTableName 
-                + " WHERE "
-                + " 1 = 1 "
-                + " AND " + m_strFirstName + " like '%" + txtFirstName.Text + "%'"
-                + " AND " + m_strMiddleName + " like '%" + txtMiddleName.Text + "%'"
-                + " AND " + m_strLastName + " like '%" + txtLastName.Text + "%'"
-                + " AND " + m_strAddress + " like '%" + txtLastName.Text + "%'"
-                + " AND " + m_strPhone + " like '%" + txtPhoneNo.Text + "%'"
-                ;
+            //// set query to fetch data "Select * from  tabelname"; 
+            //string strQuery = 
+            //    " SELECT * FROM  " + m_strTableName 
+            //    + " WHERE "
+            //    + " 1 = 1 "
+            //    + " AND " + m_strFirstName + " like '%" + txtFirstName.Text + "%'"
+            //    + " AND " + m_strMiddleName + " like '%" + txtMiddleName.Text + "%'"
+            //    + " AND " + m_strLastName + " like '%" + txtLastName.Text + "%'"
+            //    + " AND " + m_strAddress + " like '%" + txtLastName.Text + "%'"
+            //    + " AND " + m_strPhone + " like '%" + txtPhoneNo.Text + "%'"
+            //    ;
 
-            dbConnect.GridDisplay(dataGridView1, query);
+            string strQuery = SingletonSonar.Instance.CustomerSelectQuery(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                txtAddress.Text, txtPhoneNo.Text);
+
+            dbConnect.GridDisplay(dataGridView1, strQuery);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)

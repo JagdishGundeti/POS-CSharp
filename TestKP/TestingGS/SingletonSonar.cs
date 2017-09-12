@@ -65,6 +65,97 @@ namespace KPSonar
 
             return strNewQuery;
         }
+        public string ProductSelectQuery(string strName, string strDetails, 
+                    string strCategory)
+        {
+            string strQuery;
+            strQuery =
+
+            "SELECT product.id,  "
+            + "       product.NAME,  "
+            + "       product.details,  "
+            + "       category.type  "
+            + "FROM   product  "
+            + "       JOIN category  "
+            + "         ON ( product.category_id = category.id )  "
+            + "WHERE  1 = 1  "
+            + "       AND NAME LIKE '%{0}%'  "
+            + "       AND details LIKE '%{1}%'  "
+            + "       AND category.type LIKE '%{2}%'  "
+            ;
+            string strNewQuery = String.Format(strQuery, strName, strDetails,
+                                    strCategory);
+            
+            return strNewQuery;
+        }
+
+        public string ProductInsertQuery(string strName, string strDetails,
+                    int nID)
+        {
+
+            string strQuery;
+            strQuery =
+                "INSERT INTO product  "
+                + "            (NAME,  "
+                + "             details,  "
+                + "             category_id)  "
+                + "VALUES     ('{0}',  "
+                + "            '{1}',  "
+                + "            {2})  "
+                ;
+            string strNewQuery = String.Format(strQuery, strName, strDetails,
+                                    nID);
+            return strNewQuery;
+        }
+
+        public string ProductUpdatetQuery(string strName, string strDetails, string strCategory,
+                    int nID)
+        {
+            string strQuery;
+            strQuery =
+            "UPDATE product  "
+            + "SET    NAME = '{0}',  "
+            + "       details = '{1}',  "
+            + "       category = '{2}'  "
+            + "WHERE  id = {3}  "
+            ;
+            ;
+            string strNewQuery = String.Format(strQuery, strName, strDetails, strCategory,
+                                    nID);
+            return strNewQuery;
+        }
+        public string ProductDeleteQuery(int nID)
+        {
+            string strQuery;
+            strQuery =
+            "UPDATE product  "
+            + "SET    NAME = '{0}',  "
+            + "       details = '{1}',  "
+            + "       category = '{2}'  "
+            + "WHERE  id = {3}  "
+            ;
+            ;
+            string strNewQuery = String.Format(strQuery, nID);
+            return strNewQuery;
+        }
+        public string CustomerSelectQuery(string strFName, string strMName, string strLName,
+                                    string strAddress, string strPhone)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT *  "
+                + "FROM   customer  "
+                + "WHERE  1 = 1  "
+                + "       AND firstname LIKE '%{0}%'  "
+                + "       AND middlename LIKE '%{1}%'  "
+                + "       AND lastname LIKE '%{2}%'  "
+                + "       AND address LIKE '%{3}%'  "
+                + "       AND phone_no LIKE '%{4}%' "
+                ;
+            string strNewQuery = String.Format(strQuery, strFName, strMName, strLName,
+                                    strAddress, strPhone);
+            return strNewQuery;
+        }
         public string CustomerInsertQuery(string strFName, string strMName, string strLName,
                                     string strAddress, string strPhone)
         {

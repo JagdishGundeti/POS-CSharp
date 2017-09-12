@@ -46,28 +46,28 @@ namespace KPSonar
 
         private void DisplayData()
         {
-            string strTableCategory = "category";
+            //string strTableCategory = "category";
+            //string strQuery =
+            //        " SELECT "
+            //        + m_strTableName + "." + m_strID + ","
+            //        + m_strTableName + "." + m_strName + ","
+            //        + m_strTableName + "." + m_strDetails + ","
+            //        + strTableCategory + "." + m_strType
+            //        + " FROM  " + m_strTableName
+            //        + " JOIN " + strTableCategory
+            //        + "   ON (" + m_strTableName + "." + m_strCategoryID
+            //            + " = " + strTableCategory + "." + m_strID + ") "
+            //        + " WHERE "
+            //        + " 1 = 1 "
+            //        + " AND " + m_strName + " like '%" + txtName.Text + "%'"
+            //        + " AND " + m_strDetails + " like '%" + txtDetails.Text + "%'"
+            //        //+ " AND " + m_strCategory + " like '%" + cmbCategory.Text + "%'"
+            //        + " AND " + strTableCategory + "." + m_strType + " like '%" + cmbCategory.Text + "%'"
+            //        ;
+            string strQuery = SingletonSonar.Instance.ProductSelectQuery(
+                txtName.Text, txtDetails.Text, cmbCategory.Text);
 
-
-            string query =
-                    " SELECT "
-                    + m_strTableName + "." + m_strID + ","
-                    + m_strTableName + "." + m_strName + ","
-                    + m_strTableName + "." + m_strDetails + ","
-                    + strTableCategory + "." + m_strType
-                    + " FROM  " + m_strTableName
-                    + " JOIN " + strTableCategory
-                    + "   ON (" + m_strTableName + "." + m_strCategoryID
-                        + " = " + strTableCategory + "." + m_strID + ") "
-                    + " WHERE "
-                    + " 1 = 1 "
-                    + " AND " + m_strName + " like '%" + txtName.Text + "%'"
-                    + " AND " + m_strDetails + " like '%" + txtDetails.Text + "%'"
-                    //+ " AND " + m_strCategory + " like '%" + cmbCategory.Text + "%'"
-                    + " AND " + strTableCategory + "." + m_strType + " like '%" + cmbCategory.Text + "%'"
-                    ;
-
-            dbConnect.GridDisplay(dataGridView1, query);
+            dbConnect.GridDisplay(dataGridView1, strQuery);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -120,19 +120,21 @@ namespace KPSonar
                 strDataValue = dbConnect.GetDataValue(strQueryID, m_strID);
                 int nID = Convert.ToInt32(strDataValue);
 
-                string strQuery =
-                    "INSERT INTO "
-                    + m_strTableName
-                    + "("
-                    + m_strName + ","
-                    + m_strDetails + ","
-                    + m_strCategoryID
-                    + ") VALUES("
-                    + "'" + txtName.Text + "', "
-                    + "'" + txtDetails.Text + "', "
-                    + nID 
-                    + ")";
-
+                //string strQuery =
+                //    "INSERT INTO "
+                //    + m_strTableName
+                //    + "("
+                //    + m_strName + ","
+                //    + m_strDetails + ","
+                //    + m_strCategoryID
+                //    + ") VALUES("
+                //    + "'" + txtName.Text + "', "
+                //    + "'" + txtDetails.Text + "', "
+                //    + nID 
+                //    + ")";
+                string strQuery = SingletonSonar.Instance.ProductInsertQuery(txtName.Text, 
+                    txtDetails.Text, nID);
+                
                 bReturn = dbConnect.Insert(strQuery);
                 if (bReturn == true)
                 {
@@ -172,17 +174,18 @@ namespace KPSonar
             }
             if (bReturn == true)
             {
-                string strQuery =
-                                    "UPDATE "
-                                    + m_strTableName
-                                    + " SET "
-                                    + m_strName + "=" + "'" + txtName.Text + "', "
-                                    + m_strDetails + "=" + "'" + txtDetails.Text + "', "
-                                    + m_strCategory + "=" + "'" + cmbCategory.Text + "'"
-                                    + " WHERE "
-                                    + m_strID + "=" + m_nID
-                                    ;
-
+                //string strQuery =
+                //                    "UPDATE "
+                //                    + m_strTableName
+                //                    + " SET "
+                //                    + m_strName + "=" + "'" + txtName.Text + "', "
+                //                    + m_strDetails + "=" + "'" + txtDetails.Text + "', "
+                //                    + m_strCategory + "=" + "'" + cmbCategory.Text + "'"
+                //                    + " WHERE "
+                //                    + m_strID + "=" + m_nID
+                //                    ;
+                string strQuery = SingletonSonar.Instance.ProductUpdatetQuery(
+                    txtName.Text, txtDetails.Text, cmbCategory.Text, m_nID);
                 bReturn = dbConnect.Update(strQuery);
                 if (bReturn == true)
                 {
@@ -222,13 +225,14 @@ namespace KPSonar
             }
             if (bReturn == true)
             {
-                string strQuery =
-                                "DELETE FROM "
-                                + m_strTableName
-                                + " WHERE "
-                                + m_strID + "=" + m_nID
-                                ;
+                //string strQuery =
+                //                "DELETE FROM "
+                //                + m_strTableName
+                //                + " WHERE "
+                //                + m_strID + "=" + m_nID
+                //                ;
 
+                string strQuery = SingletonSonar.Instance.ProductDeleteQuery(m_nID);
                 bReturn = dbConnect.Delete(strQuery);
                 if (bReturn == true)
                 {
