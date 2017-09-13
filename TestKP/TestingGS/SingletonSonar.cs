@@ -27,6 +27,98 @@ namespace KPSonar
             }
         }
 
+        public string SettingSelectQuery(bool bValue, string strDate)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT daily_rates_ex.id,  "
+                + "       type,  "
+                + "       value,  "
+                + "       daily_rates_ex.modifiedon  "
+                + "FROM   daily_rates_ex  "
+                + "       JOIN category  "
+                + "         ON ( daily_rates_ex.category_id = category.id )  "
+                + "WHERE  1 = 1  "
+                ;
+
+            string strNewQuery = strQuery;
+
+            if (bValue == true)
+            {
+                string strDateQuery = "       AND daily_rates_ex.modifiedon = '{0}' ";
+                string strNewDateQuery = String.Format(strDateQuery, strDate);
+
+                strNewQuery = strNewQuery + strNewDateQuery;
+            }
+
+            return strNewQuery;
+        }
+        
+        public string SettingGetValueQuery(int nCategoryId)
+        {
+
+            string strQuery;
+            strQuery =
+		        "SELECT value  "
+		        +"FROM   daily_rates_ex  "
+		        +"       JOIN category  "
+		        +"         ON ( daily_rates_ex.category_id = category.id )  "
+		        +"WHERE  1 = 1  "
+		        +"       AND daily_rates_ex.modifiedon = '{0}'  "
+		        +"       AND category.id = {1}  "
+		        ;
+            string strNewQuery = String.Format(strQuery, DateTime.Now.ToString("yyyy-MM-dd"), nCategoryId);
+            return strNewQuery;
+        }
+        public string SettingInsertQuery(int nCategoryId, string strValue)
+        {
+
+            string strQuery;
+            strQuery =
+		    "INSERT INTO daily_rates_ex  "
+		    +"            (category_id,  "
+		    +"             value,  "
+		    +"             modifiedon)  "
+		    +"VALUES     ({0},  "
+		    +"            {1},  "
+		    +"            '{2}')  "
+		    ;
+
+            string strNewQuery = String.Format(strQuery, nCategoryId, strValue, DateTime.Now.ToString("yyyy-MM-dd"));
+            return strNewQuery;
+        }
+
+
+
+        public string SettingUpdateQuery(int nID, string strValue)
+        {
+
+            string strQuery;
+            strQuery =
+                "UPDATE daily_rates_ex  "
+                +"SET    value = '{0}',  "
+                +"       modifiedon = '{1}'  "
+                +"WHERE  id = {2}  "
+                ;
+
+            string strNewQuery = String.Format(strQuery, strValue, DateTime.Now.ToString("yyyy-MM-dd"),nID);
+            return strNewQuery;
+        }
+        
+        public string SettingUpdateQueryWithDate(int nCategoryId, string strValue)
+        {
+
+            string strQuery;
+            strQuery =
+		        "UPDATE daily_rates_ex  "
+		        +"SET    value = '{0}'  "
+		        +"WHERE  category_id = {1}  "
+		        +"       AND daily_rates_ex.modifiedon = '{2}'  "
+		        ;
+
+            string strNewQuery = String.Format(strQuery, strValue, nCategoryId, DateTime.Now.ToString("yyyy-MM-dd"));
+            return strNewQuery;
+        }
         public string OrderSelectQuery(bool bValue, string strDate, int nCustomerID)
         {
             string strQuery;

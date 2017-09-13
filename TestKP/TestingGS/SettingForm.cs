@@ -45,26 +45,28 @@ namespace KPSonar
         private void DisplayData()
         {
 
-            string strTableCategory = "category";
-            string query =
-                " SELECT "
-                + m_strTableName + "." + m_strID + ","
-                + "type" + ","
-                + m_strValue + ","
-                + m_strTableName + "." + m_strModifiedOn
-                + " FROM  " + m_strTableName
-                + " JOIN " + strTableCategory
-                + "   ON (" + m_strTableName + ".category_id = " + strTableCategory + ".id) "
-                + " WHERE "
-                + " 1 = 1 "
-                ;
-            if (chkCurrentDate.Checked == true)
-            {
-                query = query
-                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'";
-            }
+            //string strTableCategory = "category";
+            //string strQuery =
+            //    " SELECT "
+            //    + m_strTableName + "." + m_strID + ","
+            //    + "type" + ","
+            //    + m_strValue + ","
+            //    + m_strTableName + "." + m_strModifiedOn
+            //    + " FROM  " + m_strTableName
+            //    + " JOIN " + strTableCategory
+            //    + "   ON (" + m_strTableName + ".category_id = " + strTableCategory + ".id) "
+            //    + " WHERE "
+            //    + " 1 = 1 "
+            //    ;
+            //if (chkCurrentDate.Checked == true)
+            //{
+            //    strQuery = strQuery
+            //        + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'";
+            //}
+            string strQuery = SingletonSonar.Instance.SettingSelectQuery(
+                chkCurrentDate.Checked, DateTime.Now.ToString("yyyy-MM-dd"));
 
-            dbConnect.GridDisplay(dataGridView1, query);
+            dbConnect.GridDisplay(dataGridView1, strQuery);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -105,11 +107,13 @@ namespace KPSonar
                 strDataValue = GetDataValue(nCategoryId);
                 if (String.IsNullOrEmpty(strDataValue) == true)
                 {
-                    strQuery = InsertStatement(nCategoryId, txtGoldRate24Karat.Text);
+                    //strQuery = InsertStatement(nCategoryId, txtGoldRate24Karat.Text);
+                    strQuery = SingletonSonar.Instance.SettingInsertQuery(nCategoryId, txtGoldRate24Karat.Text);
                 }
                 else
                 {
-                    strQuery = UpdateStatement(nCategoryId, txtGoldRate24Karat.Text);
+                    //strQuery = UpdateStatement(nCategoryId, txtGoldRate24Karat.Text);
+                    strQuery = SingletonSonar.Instance.SettingUpdateQueryWithDate(nCategoryId, txtGoldRate24Karat.Text);
                 }
                 bReturn = dbConnect.ExecuteGeneral(strQuery);
 
@@ -119,63 +123,68 @@ namespace KPSonar
                     strDataValue = GetDataValue(nCategoryId);
                     if (String.IsNullOrEmpty(strDataValue) == true)
                     {
-                        strQuery = InsertStatement(nCategoryId, txtGoldRate22Karat.Text);
+                        //strQuery = InsertStatement(nCategoryId, txtGoldRate22Karat.Text);
+                        strQuery = SingletonSonar.Instance.SettingInsertQuery(nCategoryId, txtGoldRate22Karat.Text);
                     }
                     else
                     {
-                        strQuery = UpdateStatement(nCategoryId, txtGoldRate22Karat.Text);
+                        //strQuery = UpdateStatement(nCategoryId, txtGoldRate22Karat.Text);
+                        strQuery = SingletonSonar.Instance.SettingUpdateQueryWithDate(nCategoryId, txtGoldRate22Karat.Text);
                     }
                     bReturn = dbConnect.ExecuteGeneral(strQuery);
+                }
+                if (bReturn == true)
+                {
+                    nCategoryId = 3;
+                    strDataValue = GetDataValue(nCategoryId);
+                    if (String.IsNullOrEmpty(strDataValue) == true)
+                    {
+                        //strQuery = InsertStatement(nCategoryId, txtSilverRate.Text);
+                        strQuery = SingletonSonar.Instance.SettingInsertQuery(nCategoryId, txtSilverRate.Text);
+                    }
+                    else
+                    {
+                        //strQuery = UpdateStatement(nCategoryId, txtSilverRate.Text);
+                        strQuery = SingletonSonar.Instance.SettingUpdateQueryWithDate(nCategoryId, txtSilverRate.Text);
 
-                    if (bReturn == true)
-                    {
-                        nCategoryId = 3;
-                        strDataValue = GetDataValue(nCategoryId);
-                        if (String.IsNullOrEmpty(strDataValue) == true)
-                        {
-                            strQuery = InsertStatement(nCategoryId, txtSilverRate.Text);
-                        }
-                        else
-                        {
-                            strQuery = UpdateStatement(nCategoryId, txtSilverRate.Text);
-                        }
-                        bReturn = dbConnect.ExecuteGeneral(strQuery);
                     }
-                    if (bReturn == true)
-                    {
-                        MessageBox.Show("Records Inserted");
-                        ClearData();
-                        DisplayData();
-                    }
+
+                    bReturn = dbConnect.ExecuteGeneral(strQuery);
+                }
+                if (bReturn == true)
+                {
+                    MessageBox.Show("Records Inserted");
+                    ClearData();
+                    DisplayData();
                 }
             }
         }
 
-        private string InsertStatement(int nCategoryId, string strText)
-        {
-            return "INSERT INTO "
-                    + m_strTableName
-                    + "("
-                    + m_strCategoryID + ","
-                    + m_strValue + ","
-                    + m_strModifiedOn
-                    + ") VALUES("
-                    + nCategoryId + ", "
-                    + strText + ", "
-                    + "'" + m_strModifiedOnValue + "'"
-                    + ")";
-        }
+        //private string InsertStatement(int nCategoryId, string strText)
+        //{
+        //    return "INSERT INTO "
+        //            + m_strTableName
+        //            + "("
+        //            + m_strCategoryID + ","
+        //            + m_strValue + ","
+        //            + m_strModifiedOn
+        //            + ") VALUES("
+        //            + nCategoryId + ", "
+        //            + strText + ", "
+        //            + "'" + m_strModifiedOnValue + "'"
+        //            + ")";
+        //}
 
-        private string UpdateStatement(int nCategoryId, string strText)
-        {
-            return "UPDATE "
-                    + m_strTableName
-                    + " SET "
-                    + m_strValue + "=" + "'" + strText + "'"
-                    + " WHERE "
-                    + m_strCategoryID + "=" + nCategoryId
-                    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'";
-        }
+        //private string UpdateStatement(int nCategoryId, string strText)
+        //{
+        //    return "UPDATE "
+        //            + m_strTableName
+        //            + " SET "
+        //            + m_strValue + "=" + "'" + strText + "'"
+        //            + " WHERE "
+        //            + m_strCategoryID + "=" + nCategoryId
+        //            + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'";
+        //}
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -207,17 +216,18 @@ namespace KPSonar
 
             if (bReturn == true)
             {
-                m_strModifiedOnValue = DateTime.Now.ToString("yyyy-MM-dd");
-                string strQuery =
-                                    "UPDATE "
-                                    + m_strTableName
-                                    + " SET "
-                                    + m_strValue + "=" + "'" + txtValue.Text + "', "
-                                    + m_strModifiedOn + "=" + "'" + m_strModifiedOnValue + "'"
-                                    + " WHERE "
-                                    + m_strID + "=" + m_nID
-                                    ;
+                //m_strModifiedOnValue = DateTime.Now.ToString("yyyy-MM-dd");
+                //string strQuery =
+                //                    "UPDATE "
+                //                    + m_strTableName
+                //                    + " SET "
+                //                    + m_strValue + "=" + "'" + txtValue.Text + "', "
+                //                    + m_strModifiedOn + "=" + "'" + m_strModifiedOnValue + "'"
+                //                    + " WHERE "
+                //                    + m_strID + "=" + m_nID
+                //                    ;
 
+                string strQuery = SingletonSonar.Instance.SettingUpdateQuery(m_nID, txtValue.Text);
                 bReturn = dbConnect.Update(strQuery);
                 if (bReturn == true)
                 {
@@ -282,40 +292,41 @@ namespace KPSonar
         private void btnSet_Click(object sender, EventArgs e)
         {
 
-            MDISonar frm = (MDISonar)this.MdiParent;
-            //frm.NGoldRate24Karat = Convert.ToInt32(txtGoldRate24Karat.Text);
-            //frm.NGoldRate22Karat = Convert.ToInt32(txtGoldRate22Karat.Text);
-            //frm.NSilverRate = Convert.ToInt32(txtSilverRate.Text);
-            int nCategoryId = 1;
-            string strDataValue = "";
-            strDataValue = GetDataValue(nCategoryId);
-            txtGoldRate24Karat.Text = strDataValue;
-            frm.NGoldRate24Karat = Convert.ToInt32(strDataValue);
-            nCategoryId = 2;
-            strDataValue = GetDataValue(nCategoryId);
-            txtGoldRate22Karat.Text = strDataValue;
-            frm.NGoldRate22Karat = Convert.ToInt32(strDataValue);
-            nCategoryId = 3;
-            strDataValue = GetDataValue(nCategoryId);
-            txtSilverRate.Text = strDataValue;
-            frm.NSilverRate = Convert.ToInt32(strDataValue);
+            //MDISonar frm = (MDISonar)this.MdiParent;
+            ////frm.NGoldRate24Karat = Convert.ToInt32(txtGoldRate24Karat.Text);
+            ////frm.NGoldRate22Karat = Convert.ToInt32(txtGoldRate22Karat.Text);
+            ////frm.NSilverRate = Convert.ToInt32(txtSilverRate.Text);
+            //int nCategoryId = 1;
+            //string strDataValue = "";
+            //strDataValue = GetDataValue(nCategoryId);
+            //txtGoldRate24Karat.Text = strDataValue;
+            //frm.NGoldRate24Karat = Convert.ToInt32(strDataValue);
+            //nCategoryId = 2;
+            //strDataValue = GetDataValue(nCategoryId);
+            //txtGoldRate22Karat.Text = strDataValue;
+            //frm.NGoldRate22Karat = Convert.ToInt32(strDataValue);
+            //nCategoryId = 3;
+            //strDataValue = GetDataValue(nCategoryId);
+            //txtSilverRate.Text = strDataValue;
+            //frm.NSilverRate = Convert.ToInt32(strDataValue);
 
         }
 
         private string GetDataValue(int nCategoryId)
         {
-            string strTableCategory = "category";
-            string query =
-                " SELECT "
-                + m_strValue
-                + " FROM  " + m_strTableName
-                + " JOIN " + strTableCategory
-                + "   ON (" + m_strTableName + ".category_id = " + strTableCategory + ".id) "
-                + " WHERE "
-                + " 1 = 1 "
-                + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue+"'"
-                + " AND " + strTableCategory + ".id " + "=" + nCategoryId
-                ;
+            //string strTableCategory = "category";
+            //string query =
+            //    " SELECT "
+            //    + m_strValue
+            //    + " FROM  " + m_strTableName
+            //    + " JOIN " + strTableCategory
+            //    + "   ON (" + m_strTableName + ".category_id = " + strTableCategory + ".id) "
+            //    + " WHERE "
+            //    + " 1 = 1 "
+            //    + " AND " + m_strTableName + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue+"'"
+            //    + " AND " + strTableCategory + ".id " + "=" + nCategoryId
+            //    ;
+            string query = SingletonSonar.Instance.SettingGetValueQuery(nCategoryId);
             string strDataValue;
             strDataValue = dbConnect.GetDataValue(query, m_strValue);
             return strDataValue;

@@ -58,9 +58,9 @@
             this.lblGoldRate24Kart.AutoSize = true;
             this.lblGoldRate24Kart.Location = new System.Drawing.Point(14, 24);
             this.lblGoldRate24Kart.Name = "lblGoldRate24Kart";
-            this.lblGoldRate24Kart.Size = new System.Drawing.Size(107, 13);
+            this.lblGoldRate24Kart.Size = new System.Drawing.Size(86, 13);
             this.lblGoldRate24Kart.TabIndex = 0;
-            this.lblGoldRate24Kart.Text = "Gold 24Karat(per gm)";
+            this.lblGoldRate24Kart.Text = "Gold Bar(per gm)";
             // 
             // btnSet
             // 
@@ -130,9 +130,9 @@
             this.lblGoldRate22Kart.AutoSize = true;
             this.lblGoldRate22Kart.Location = new System.Drawing.Point(14, 72);
             this.lblGoldRate22Kart.Name = "lblGoldRate22Kart";
-            this.lblGoldRate22Kart.Size = new System.Drawing.Size(107, 13);
+            this.lblGoldRate22Kart.Size = new System.Drawing.Size(116, 13);
             this.lblGoldRate22Kart.TabIndex = 2;
-            this.lblGoldRate22Kart.Text = "Gold 22Karat(per gm)";
+            this.lblGoldRate22Kart.Text = "Gold Ornament(per gm)";
             // 
             // dataGridView1
             // 
@@ -179,7 +179,7 @@
             this.chkCurrentDate.AutoSize = true;
             this.chkCurrentDate.Checked = true;
             this.chkCurrentDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCurrentDate.Location = new System.Drawing.Point(46, 158);
+            this.chkCurrentDate.Location = new System.Drawing.Point(17, 159);
             this.chkCurrentDate.Name = "chkCurrentDate";
             this.chkCurrentDate.Size = new System.Drawing.Size(86, 17);
             this.chkCurrentDate.TabIndex = 14;

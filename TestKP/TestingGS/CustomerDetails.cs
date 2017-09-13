@@ -14,13 +14,13 @@ namespace KPSonar
         private DBConnect dbConnect;
         private int m_nID = 0;
 
-        private string m_strTableName = "Customer";
-        private string m_strID = "id";
-        private string m_strFirstName = "firstname";
-        private string m_strMiddleName = "middlename";
-        private string m_strLastName = "lastname";
-        private string m_strAddress = "address";
-        private string m_strPhone = "phone_no";
+        //private string m_strTableName = "Customer";
+        //private string m_strID = "id";
+        //private string m_strFirstName = "firstname";
+        //private string m_strMiddleName = "middlename";
+        //private string m_strLastName = "lastname";
+        //private string m_strAddress = "address";
+        //private string m_strPhone = "phone_no";
 
 
         public CustomerDetails()

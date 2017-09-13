@@ -12,9 +12,9 @@ namespace KPSonar
     public partial class MDISonar : Form
     {
         private int childFormNumber = 0;
-        private int m_nGoldRate24Karat = 0;
-        private int m_nGoldRate22Karat = 0;
-        private int m_nSilverRate = 0;
+        //private int m_nGoldRate24Karat = 0;
+        //private int m_nGoldRate22Karat = 0;
+        //private int m_nSilverRate = 0;
 
         private CustomerDetails frmCustomerDetails;
 
@@ -142,44 +142,45 @@ namespace KPSonar
             frmSettingForm.MdiParent = this;
             frmSettingForm.Show();
         }
-        public int NGoldRate24Karat
-        {
-            get
-            {
-                return m_nGoldRate24Karat;
-            }
 
-            set
-            {
-                m_nGoldRate24Karat = value;
-            }
-        }
+        //public int NGoldRate24Karat
+        //{
+        //    get
+        //    {
+        //        return m_nGoldRate24Karat;
+        //    }
 
-        public int NGoldRate22Karat
-        {
-            get
-            {
-                return m_nGoldRate22Karat;
-            }
+        //    set
+        //    {
+        //        m_nGoldRate24Karat = value;
+        //    }
+        //}
 
-            set
-            {
-                m_nGoldRate22Karat = value;
-            }
-        }
+        //public int NGoldRate22Karat
+        //{
+        //    get
+        //    {
+        //        return m_nGoldRate22Karat;
+        //    }
 
-        public int NSilverRate
-        {
-            get
-            {
-                return m_nSilverRate;
-            }
+        //    set
+        //    {
+        //        m_nGoldRate22Karat = value;
+        //    }
+        //}
 
-            set
-            {
-                m_nSilverRate = value;
-            }
-        }
+        //public int NSilverRate
+        //{
+        //    get
+        //    {
+        //        return m_nSilverRate;
+        //    }
+
+        //    set
+        //    {
+        //        m_nSilverRate = value;
+        //    }
+        //}
 
         private void testToolStripMenuItem1_Click(object sender, EventArgs e)
         {

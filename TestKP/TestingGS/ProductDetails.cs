@@ -13,15 +13,15 @@ namespace KPSonar
     {
         private DBConnect dbConnect;
 
-        private string m_strTableName = "product";
+        //private string m_strTableName = "product";
         private int m_nID = 0;
         private int m_nCategoryID = 0;
         
         private string m_strID = "id";
-        private string m_strName = "name";
-        private string m_strDetails = "details";
-        private string m_strCategory = "category";
-        private string m_strCategoryID = "category_id";
+        //private string m_strName = "name";
+        //private string m_strDetails = "details";
+        //private string m_strCategory = "category";
+        //private string m_strCategoryID = "category_id";
         private string m_strType = "type";
 
 

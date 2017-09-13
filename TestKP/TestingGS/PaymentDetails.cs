@@ -12,16 +12,16 @@ namespace KPSonar
     public partial class PaymentDetails : Form
     {
         private DBConnect dbConnect;
-        private string m_strInvoiceID = "id";
-        private string m_strTableInvoice = "invoices";
-        private string m_strOrderTxn = "order_txn";
-        private string m_strCustomer = "customer";
+        //private string m_strInvoiceID = "id";
+        //private string m_strTableInvoice = "invoices";
+        //private string m_strOrderTxn = "order_txn";
+        //private string m_strCustomer = "customer";
 
-        private string m_strCustomerID = "customer_id";
-        private string m_strModifiedOnValue = "";
-        private string m_strModifiedOn = "invoice_date_modified";
-        private string m_strPayment1 = "paid_price_1";
-        private string m_strPayment2 = "paid_price_2";
+        //private string m_strCustomerID = "customer_id";
+        //private string m_strModifiedOnValue = "";
+        //private string m_strModifiedOn = "invoice_date_modified";
+        //private string m_strPayment1 = "paid_price_1";
+        //private string m_strPayment2 = "paid_price_2";
 
         private int m_nCustomerID = 0;
         private int m_nID = 0;
@@ -29,7 +29,7 @@ namespace KPSonar
         public PaymentDetails()
         {
             InitializeComponent();
-            m_strModifiedOnValue = DateTime.Now.ToString("yyyy-MM-dd");
+            //m_strModifiedOnValue = DateTime.Now.ToString("yyyy-MM-dd");
             dbConnect = new DBConnect();
         }
         private void DisplayInvoiceData()
