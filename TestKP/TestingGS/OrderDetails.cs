@@ -19,12 +19,12 @@ namespace KPSonar
 
         private string m_strID = "id";
         private string m_strCustomerID = "customer_id";
-        private string m_strProductID = "product_id";
-        private string m_strQuantity = "quantity";
-        private string m_strAmount = "price";
-        private string m_strSGST = "SGST";
-        private string m_strCGST = "CGST";
-        private string m_strTotalPrice = "total_price";
+        //private string m_strProductID = "product_id";
+        //private string m_strQuantity = "quantity";
+        //private string m_strAmount = "price";
+        //private string m_strSGST = "SGST";
+        //private string m_strCGST = "CGST";
+        //private string m_strTotalPrice = "total_price";
         private string m_strModifiedOn = "ModifiedOn";
         private string m_strModifiedOnValue = "";
 
@@ -221,18 +221,21 @@ namespace KPSonar
         {
             string strCol = "invoice_id";
 
-            string strQuery = "SELECT DISTINCT " + strCol + " FROM " + m_strOrderTxn
-            + " WHERE "
-            + " 1 = 1 "
-            + " AND " + m_strCustomerID + "=" + m_nCustomerID
-            ;
+            //string strQuery = "SELECT DISTINCT " + strCol + " FROM " + m_strOrderTxn
+            //+ " WHERE "
+            //+ " 1 = 1 "
+            //+ " AND " + m_strCustomerID + "=" + m_nCustomerID
+            //;
 
-            //creating problem because invoice id can be duplicate of this
-            //if (chkWithDate.Checked == true)
-            {
-                strQuery = strQuery
-                    + " AND " + m_strOrderTxn + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
-            }
+            ////creating problem because invoice id can be duplicate of this
+            ////if (chkWithDate.Checked == true)
+            //{
+            //    strQuery = strQuery
+            //        + " AND " + m_strOrderTxn + "." + m_strModifiedOn + " = '" + dtpDate.Value.ToString("yyyy-MM-dd") + "'";
+            //}
+
+            string strQuery = SingletonSonar.Instance.OrderDistinctInvoiceSelectQuery(
+                m_nCustomerID, dtpDate.Value.ToString("yyyy-MM-dd"));
 
             string strDataValue;
             strDataValue = dbConnect.GetDataValue(strQuery, strCol);
@@ -243,16 +246,19 @@ namespace KPSonar
             else
             {
 
-                strCol = "col_id";
-
-                strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice;
+                strCol = "COL";                
+                //strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice;
+                strQuery = SingletonSonar.Instance.OrderInvoiceColCountSelectQuery();
                 strDataValue = dbConnect.GetDataValue(strQuery, strCol);
                 int nCount = Convert.ToInt32(strDataValue);
 
                 if (nCount > 0)
                 {
-                    strQuery = "SELECT MAX(" + m_strID + ") " + strCol + " FROM " + m_strTableInvoice;
+                    //strQuery = "SELECT MAX(" + m_strID + ") " + strCol + " FROM " + m_strTableInvoice;
+                    strQuery = SingletonSonar.Instance.OrderInvoiceMaxIDSelectQuery();
+
                     strDataValue = dbConnect.GetDataValue(strQuery, strCol);
+                    
                     int nInvoiceID = Convert.ToInt32(strDataValue);
                     m_nInvoiceID = nInvoiceID + 1;
                 }
@@ -293,33 +299,35 @@ namespace KPSonar
             {
                 GenerateID();
                 InsertOrUpdateInvoice();
-                string strInvoice_ID = "invoice_id";
+                //string strInvoice_ID = "invoice_id";
 
-                string strQuery =
-                                    "INSERT INTO "
-                                    + m_strOrderTxn
-                                    + "("
-                                    + m_strCustomerID + ","
-                                    + m_strProductID + ","
-                                    + m_strQuantity + ","
-                                    + m_strAmount + ","
-                                    + m_strSGST + ","
-                                    + m_strCGST + ","
-                                    + m_strTotalPrice + ","
-                                    + strInvoice_ID + ","
-                                    + m_strModifiedOn
-                                    + ") VALUES("
-                                    + m_nCustomerID + ", "
-                                    + m_nProductID + ", "
-                                    + txtQuantity.Text + ", "
-                                    + txtCalAmount.Text + ", "
-                                    + txtCGST.Text + ", "
-                                    + txtSGST.Text + ", "
-                                    + txtAmount.Text + ", "
-                                    + m_nInvoiceID + ", "
-                                    + "'" + m_strModifiedOnValue + "'"
-                                    + ")";
-
+                //string strQuery =
+                //                    "INSERT INTO "
+                //                    + m_strOrderTxn
+                //                    + "("
+                //                    + m_strCustomerID + ","
+                //                    + m_strProductID + ","
+                //                    + m_strQuantity + ","
+                //                    + m_strAmount + ","
+                //                    + m_strSGST + ","
+                //                    + m_strCGST + ","
+                //                    + m_strTotalPrice + ","
+                //                    + strInvoice_ID + ","
+                //                    + m_strModifiedOn
+                //                    + ") VALUES("
+                //                    + m_nCustomerID + ", "
+                //                    + m_nProductID + ", "
+                //                    + txtQuantity.Text + ", "
+                //                    + txtCalAmount.Text + ", "
+                //                    + txtCGST.Text + ", "
+                //                    + txtSGST.Text + ", "
+                //                    + txtAmount.Text + ", "
+                //                    + m_nInvoiceID + ", "
+                //                    + "'" + m_strModifiedOnValue + "'"
+                //                    + ")";
+                string strQuery = SingletonSonar.Instance.OrderInsertQuery(m_nCustomerID, m_nProductID, txtQuantity.Text, txtCalAmount.Text,
+                                txtCGST.Text, txtSGST.Text, txtAmount.Text, m_nInvoiceID);
+                
                 bReturn = dbConnect.Insert(strQuery);
                 if (bReturn == true)
                 {

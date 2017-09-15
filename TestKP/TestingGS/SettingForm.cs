@@ -16,14 +16,14 @@ namespace KPSonar
         private int m_nID = 0;
 
 
-        private string m_strTableName = "daily_rates_ex";
-        private string m_strID = "id";
-        private string m_strCategoryID = "category_id";
+        //private string m_strTableName = "daily_rates_ex";
+        //private string m_strID = "id";
+        //private string m_strCategoryID = "category_id";
         private string m_strValue = "value";
         //private string m_strGold24Karat = "gold24karat";
         //private string m_strGold22Karat = "gold22karat";
         //private string m_strSilver = "silver";
-        private string m_strModifiedOn = "ModifiedOn";
+        //private string m_strModifiedOn = "ModifiedOn";
         private string m_strModifiedOnValue = "";
 
         public SettingForm()

@@ -22,8 +22,7 @@ namespace KPSonar
         //private string m_strDetails = "details";
         //private string m_strCategory = "category";
         //private string m_strCategoryID = "category_id";
-        private string m_strType = "type";
-
+        //private string m_strType = "type";
 
         public ProductDetails()
         {
@@ -34,7 +33,6 @@ namespace KPSonar
             cmbCategory.Items.Add("Silver");
             dbConnect = new DBConnect();
         }
-
 
         //Clear Data  
         private void ClearData()
@@ -104,18 +102,19 @@ namespace KPSonar
             }
             if (bReturn == true)
             {
-                string strTableCategory = "category";
+                //string strTableCategory = "category";
 
-                string strQueryID =
-                    " SELECT "
-                    + m_strID 
-                    + " FROM  "
-                    + strTableCategory
-                    + " WHERE "
-                    + " 1 = 1 "
-                    + " AND " + strTableCategory + "." + m_strType + " like '%" + cmbCategory.Text + "%'"
-                    ;
-
+                //string strQueryID =
+                //    " SELECT "
+                //    + m_strID 
+                //    + " FROM  "
+                //    + strTableCategory
+                //    + " WHERE "
+                //    + " 1 = 1 "
+                //    + " AND " + strTableCategory + "." + m_strType + " like '%" + cmbCategory.Text + "%'"
+                //    ;
+                string strQueryID = SingletonSonar.Instance.ProductCategorySelectQuery(cmbCategory.Text);
+                
                 string strDataValue;
                 strDataValue = dbConnect.GetDataValue(strQueryID, m_strID);
                 int nID = Convert.ToInt32(strDataValue);
@@ -132,6 +131,7 @@ namespace KPSonar
                 //    + "'" + txtDetails.Text + "', "
                 //    + nID 
                 //    + ")";
+
                 string strQuery = SingletonSonar.Instance.ProductInsertQuery(txtName.Text, 
                     txtDetails.Text, nID);
                 

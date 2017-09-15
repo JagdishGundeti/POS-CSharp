@@ -157,6 +157,83 @@ namespace KPSonar
 
             return strNewQuery;
         }
+
+        public string OrderDistinctInvoiceSelectQuery(int m_nCustomerID, string strDate)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT DISTINCT invoice_id  "
+                + "FROM   order_txn  "
+                + "WHERE  1 = 1  "
+                + "       AND customer_id = {0}  "
+               ;
+            string strNewQuery = String.Format(strQuery, m_nCustomerID);
+
+            //if (bValue == true)
+            {
+                string strDateQuery = "       AND order_txn.modifiedon = '{0}'  ";
+                string strNewDateQuery = String.Format(strDateQuery, strDate);
+                strNewQuery = strNewQuery + strNewDateQuery;
+            }
+            return strNewQuery;
+        }
+
+
+        public string OrderInvoiceColCountSelectQuery()
+        {
+            string strQuery;
+            strQuery =
+                "SELECT COUNT(*) COL  "
+                + "FROM   invoices  "
+            ;
+            return strQuery;
+        }
+
+        
+        public string OrderInvoiceMaxIDSelectQuery()
+        {
+            string strQuery;
+            strQuery =
+                "SELECT MAX(id) COL  "
+                + "FROM   invoices  "
+            ;
+            return strQuery;
+        }
+
+
+
+        public string OrderInsertQuery(int nCustomerID, int nProductID, string strQuantity, string strCalAmount, 
+            string strCGST, string strSGST, string strAmount, int nInvoiceID)
+        {
+            string strQuery;
+            strQuery =
+            "INSERT INTO order_txn  "
+            + "            (customer_id,  "
+            + "             product_id,  "
+            + "             quantity,  "
+            + "             price,  "
+            + "             sgst,  "
+            + "             cgst,  "
+            + "             total_price,  "
+            + "             invoice_id,  "
+            + "             modifiedon)  "
+            + "VALUES     ({0},  "
+            + "            {1},  "
+            + "            {2},  "
+            + "            {3},  "
+            + "            {4},  "
+            + "            {5},  "
+            + "            {6},  "
+            + "            {7},  "
+            + "            '{8}')  "
+            ;
+            
+            string strNewQuery = String.Format(strQuery, nCustomerID, nProductID, strQuantity, strCalAmount, 
+                                    strCGST, strSGST, strAmount, nInvoiceID,DateTime.Now.ToString("yyyy-MM-dd"));
+
+            return strNewQuery;
+        }
+
         public string ProductSelectQuery(string strName, string strDetails, 
                     string strCategory)
         {
@@ -315,6 +392,20 @@ namespace KPSonar
                 + "       AND invoices.id = {0}  "
                 ;
             string strNewQuery = String.Format(strQuery, nInvoiceID);
+            return strNewQuery;
+        }
+
+        public string ProductCategorySelectQuery(string strCategoryType)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT id  "
+                + "FROM   category  "
+                + "WHERE  1 = 1  "
+                + "       AND category.type LIKE '%{0}%'  "
+                ; 
+            string strNewQuery = String.Format(strQuery, strCategoryType);
+
             return strNewQuery;
         }
         public string InvoiceSelectQuery(bool bValue, string strDate, int nCustomerID)
