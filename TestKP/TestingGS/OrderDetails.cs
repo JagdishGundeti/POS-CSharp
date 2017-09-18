@@ -13,19 +13,19 @@ namespace KPSonar
     public partial class OrderDetails : Form
     {
         private DBConnect dbConnect;
-        private string m_strOrderTxn = "order_txn";
-        private string m_strTableInvoice = "invoices";
-        private string m_strInvoiceID = "id";
+        //private string m_strOrderTxn = "order_txn";
+        //private string m_strTableInvoice = "invoices";
+        //private string m_strInvoiceID = "id";
 
-        private string m_strID = "id";
-        private string m_strCustomerID = "customer_id";
+        //private string m_strID = "id";
+        //private string m_strCustomerID = "customer_id";
         //private string m_strProductID = "product_id";
         //private string m_strQuantity = "quantity";
         //private string m_strAmount = "price";
         //private string m_strSGST = "SGST";
         //private string m_strCGST = "CGST";
         //private string m_strTotalPrice = "total_price";
-        private string m_strModifiedOn = "ModifiedOn";
+        //private string m_strModifiedOn = "ModifiedOn";
         private string m_strModifiedOnValue = "";
 
         private float m_fCGST = 0.015f;
@@ -201,13 +201,15 @@ namespace KPSonar
             }
             if (bReturn == true)
             {
-                string strQuery =
-                                "DELETE FROM "
-                                + m_strOrderTxn
-                                + " WHERE "
-                                + m_strID + "=" + m_nID
-                                ;
+                //string strQuery =
+                //                "DELETE FROM "
+                //                + m_strOrderTxn
+                //                + " WHERE "
+                //                + m_strID + "=" + m_nID
+                //                ;
 
+                string strQuery = SingletonSonar.Instance.OrderDeleteQuery(m_nID);
+                
                 bReturn = dbConnect.Delete(strQuery);
                 if (bReturn == true)
                 {
@@ -343,13 +345,13 @@ namespace KPSonar
             bool bReturn = true;
             bool bInsert = true;
         
-            string strCol = "col_id";
-            string strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice 
-                + " WHERE "
-                + " 1 = 1 AND "
-                + m_strInvoiceID + " = " + m_nInvoiceID
-                ;
-
+            string strCol = "COL";
+            //string strQuery = "SELECT COUNT(*) " + strCol + " FROM " + m_strTableInvoice 
+            //    + " WHERE "
+            //    + " 1 = 1 AND "
+            //    + m_strInvoiceID + " = " + m_nInvoiceID
+            //    ;
+            string strQuery = SingletonSonar.Instance.OrderInvoiceColCountSelectQuery(m_nInvoiceID);
             string strDataValue;
             strDataValue = dbConnect.GetDataValue(strQuery, strCol);
             int nCount = Convert.ToInt32(strDataValue);
@@ -360,22 +362,23 @@ namespace KPSonar
         
             if (bInsert == true)
             {
-                strQuery =
-                                    "INSERT INTO "
-                                    + m_strTableInvoice
-                                    + "("
-                                    + m_strCustomerID + ","
-                                    + "invoice_date_created" + ","
-                                    + "invoice_date_modified" + ","
-                                    + m_strInvoiceID //+ ","
-                                    + ") VALUES("
-                                    + m_nCustomerID + ", "
-                                    + "'" + m_strModifiedOnValue + "'" + ", "
-                                    + "'" + m_strModifiedOnValue + "'" + ", "
-                                    + m_nInvoiceID //+ ", "
-                                    + ")"
-                                    ;
+                //strQuery =
+                //                    "INSERT INTO "
+                //                    + m_strTableInvoice
+                //                    + "("
+                //                    + m_strCustomerID + ","
+                //                    + "invoice_date_created" + ","
+                //                    + "invoice_date_modified" + ","
+                //                    + m_strInvoiceID //+ ","
+                //                    + ") VALUES("
+                //                    + m_nCustomerID + ", "
+                //                    + "'" + m_strModifiedOnValue + "'" + ", "
+                //                    + "'" + m_strModifiedOnValue + "'" + ", "
+                //                    + m_nInvoiceID //+ ", "
+                //                    + ")"
+                //                    ;
 
+                strQuery = SingletonSonar.Instance.OrderInvoiceInsertQuery(m_nCustomerID, m_nInvoiceID);
                 bReturn = dbConnect.Insert(strQuery);
                 if (bReturn == true)
                 {
@@ -414,7 +417,7 @@ namespace KPSonar
             //txtCalAmount->Text = nQuantity *;
             
             string strDataValue = "";
-            strDataValue = GetDataValue(m_nProductID);
+            strDataValue = GetDataValueOfProduct(m_nProductID);
             int nValuePerGm = 0;
             if (String.IsNullOrEmpty(strDataValue) == false)
             {
@@ -431,30 +434,30 @@ namespace KPSonar
             //frm.NGoldRate24Karat = Convert.ToInt32(strDataValue);
         }
 
-        private string GetDataValue(object nProductId)
+        private string GetDataValueOfProduct(int nProductId)
         {
-
-            string strTableCategory = "category";
-            string strTableProduct = "product";
             string strValue = "value";
-            string strProductID = "id";
-            string m_strDailyRatesEx = "daily_rates_ex";
 
-            string strQuery =
-                " SELECT "
-                + strValue
-                + " FROM  " 
-                + m_strDailyRatesEx
-                + " JOIN " + strTableCategory
-                + "   ON (" + m_strDailyRatesEx + ".category_id = " + strTableCategory + ".id) "
-                + " JOIN " + strTableProduct
-                + "   ON (" + strTableProduct + ".category_id = " + strTableCategory + ".id) "
-                + " WHERE "
-                + " 1 = 1 "
-                + " AND " + m_strDailyRatesEx + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'"
-                + " AND " + strTableProduct + "." + strProductID + "=" + nProductId
-                ;
+            //string strTableCategory = "category";
+            //string strTableProduct = "product";
+            //string strProductID = "id";
+            //string m_strDailyRatesEx = "daily_rates_ex";
 
+            //string strQuery =
+            //    " SELECT "
+            //    + strValue
+            //    + " FROM  " 
+            //    + m_strDailyRatesEx
+            //    + " JOIN " + strTableCategory
+            //    + "   ON (" + m_strDailyRatesEx + ".category_id = " + strTableCategory + ".id) "
+            //    + " JOIN " + strTableProduct
+            //    + "   ON (" + strTableProduct + ".category_id = " + strTableCategory + ".id) "
+            //    + " WHERE "
+            //    + " 1 = 1 "
+            //    + " AND " + m_strDailyRatesEx + "." + m_strModifiedOn + " = '" + m_strModifiedOnValue + "'"
+            //    + " AND " + strTableProduct + "." + strProductID + "=" + nProductId
+            //    ;
+            string strQuery = SingletonSonar.Instance.OrderDailyRateValueQuery(nProductId);
             string strDataValue;
             strDataValue = dbConnect.GetDataValue(strQuery, strValue);
             return strDataValue;

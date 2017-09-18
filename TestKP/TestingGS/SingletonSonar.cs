@@ -178,31 +178,43 @@ namespace KPSonar
             return strNewQuery;
         }
 
-
         public string OrderInvoiceColCountSelectQuery()
         {
             string strQuery;
             strQuery =
                 "SELECT COUNT(*) COL  "
-                + "FROM   invoices  "
+                + "FROM invoices  "
             ;
             return strQuery;
         }
 
-        
+
+        public string OrderInvoiceColCountSelectQuery(int nInvoiceID)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT COUNT(*) COL  "
+                + "FROM invoices  "
+                + "WHERE 1 = 1 "
+                + "  AND id = {0} "
+                ;
+
+            string strNewQuery = String.Format(strQuery, DateTime.Now.ToString("yyyy-MM-dd"), nInvoiceID);
+            return strNewQuery;
+        }
+
         public string OrderInvoiceMaxIDSelectQuery()
         {
             string strQuery;
             strQuery =
                 "SELECT MAX(id) COL  "
-                + "FROM   invoices  "
+                + "FROM  invoices  "
             ;
             return strQuery;
         }
 
 
-
-        public string OrderInsertQuery(int nCustomerID, int nProductID, string strQuantity, string strCalAmount, 
+        public string OrderInsertQuery(int nCustomerID, int nProductID, string strQuantity, string strCalAmount,
             string strCGST, string strSGST, string strAmount, int nInvoiceID)
         {
             string strQuery;
@@ -227,10 +239,59 @@ namespace KPSonar
             + "            {7},  "
             + "            '{8}')  "
             ;
-            
-            string strNewQuery = String.Format(strQuery, nCustomerID, nProductID, strQuantity, strCalAmount, 
-                                    strCGST, strSGST, strAmount, nInvoiceID,DateTime.Now.ToString("yyyy-MM-dd"));
 
+            string strNewQuery = String.Format(strQuery, nCustomerID, nProductID, strQuantity, strCalAmount,
+                                    strCGST, strSGST, strAmount, nInvoiceID, DateTime.Now.ToString("yyyy-MM-dd"));
+
+            return strNewQuery;
+        }
+
+        public string OrderInvoiceInsertQuery(int nCustomerID, int nInvoiceID)
+        {
+            string strQuery;
+            strQuery =
+            "INSERT INTO invoices"
+            + "            (customer_id, "
+            + "            invoice_date_created, "
+            + "            invoice_date_modified, "
+            + "            id) "
+            + "VALUES     ({0},  "
+            + "            '{1}',  "
+            + "            '{2}',  "
+            + "            {3} )  "
+            ;
+            ;
+            
+            string strNewQuery = String.Format(strQuery, nCustomerID, DateTime.Now.ToString("yyyy-MM-dd"),
+                DateTime.Now.ToString("yyyy-MM-dd"), nInvoiceID);
+
+            return strNewQuery;
+        }
+
+        public string OrderDeleteQuery(int nOrderID)
+        {
+            string strQuery;
+            strQuery =
+               "DELETE FROM order_txn "
+               + "WHERE id = {0} ";
+
+            string strNewQuery = String.Format(strQuery, nOrderID);
+            return strNewQuery;
+        }
+        public string OrderDailyRateValueQuery(int nProductID)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT value "
+                + "FROM daily_rates_ex "
+                + "JOIN category ON (daily_rates_ex.category_id = category.id) "
+                + "JOIN product ON (product.category_id = category.id) "
+                + "WHERE 1 = 1 "
+                + "  AND daily_rates_ex.ModifiedOn = '{0}' "
+                + "  AND product.id={1} "
+                ;
+
+            string strNewQuery = String.Format(strQuery, DateTime.Now.ToString("yyyy-MM-dd"), nProductID);
             return strNewQuery;
         }
 
@@ -239,7 +300,6 @@ namespace KPSonar
         {
             string strQuery;
             strQuery =
-
             "SELECT product.id,  "
             + "       product.NAME,  "
             + "       product.details,  "
