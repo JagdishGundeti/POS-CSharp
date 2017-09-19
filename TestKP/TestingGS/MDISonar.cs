@@ -15,12 +15,24 @@ namespace KPSonar
         //private int m_nGoldRate24Karat = 0;
         //private int m_nGoldRate22Karat = 0;
         //private int m_nSilverRate = 0;
+        private DBConnect dbConnect;
+
 
         private CustomerDetails frmCustomerDetails;
 
         public MDISonar()
         {
             InitializeComponent();
+            dbConnect = new DBConnect();
+
+            if(dbConnect.IsConnected() == true)
+            {
+                toolStripStatusLabel.Text = "Database is Connected";
+            }
+            else
+            {
+                toolStripStatusLabel.Text = "Database is Not connected";
+            }
         }
 
         private void ShowNewForm(object sender, EventArgs e)

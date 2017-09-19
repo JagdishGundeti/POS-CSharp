@@ -17,6 +17,8 @@ namespace KPSonar
         private string database;
         private string uid;
         private string password;
+        private string m_strMysqlDumpExe = "C:\\xampp\\mysql\\bin\\mysqldump.exe";
+        private string m_strMysqlExe = "C:\\xampp\\mysql\\bin\\mysql.exe";
 
         //Constructor
         public DBConnect()
@@ -87,6 +89,19 @@ namespace KPSonar
             }
         }
 
+        public bool IsConnected()
+        {
+            bool bReturn = false;
+
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                //close connection
+                this.CloseConnection();
+                bReturn = true;
+            }
+            return bReturn;
+        }
         //Insert statement
         public void Insert()
         {
@@ -234,8 +249,9 @@ namespace KPSonar
 
                 
                 ProcessStartInfo psi = new ProcessStartInfo();
-                //psi.FileName = "mysqldump";
-                psi.FileName = "C:\\xampp\\mysql\\bin\\mysqldump.exe";
+                //psi.FileName = "C:\\xampp\\mysql\\bin\\mysqldump.exe";
+                psi.FileName = m_strMysqlDumpExe;
+                
                 psi.RedirectStandardInput = false;
                 psi.RedirectStandardOutput = true;
                 psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
@@ -273,8 +289,8 @@ namespace KPSonar
 
 
                 ProcessStartInfo psi = new ProcessStartInfo();
-                //psi.FileName = "mysql";
-                psi.FileName = "C:\\xampp\\mysql\\bin\\mysql.exe";
+                //psi.FileName = "C:\\xampp\\mysql\\bin\\mysql.exe";
+                psi.FileName = m_strMysqlExe;
                 psi.RedirectStandardInput = true;
                 psi.RedirectStandardOutput = false;
                 psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
@@ -380,5 +396,25 @@ namespace KPSonar
             }
             return strDataValue;
         }
+
+        public string GetMysqlDumpExe()
+        {
+            return m_strMysqlDumpExe;
+        }
+
+        public void SetMysqlDumpExe(string strMysqlDumpExe)
+        {
+            m_strMysqlDumpExe = strMysqlDumpExe;
+        }
+
+        public string GetMysqlExe()
+        {
+            return m_strMysqlExe;
+        }
+        public void SetMysqlExe(string strMysqlExe)
+        {
+            m_strMysqlExe = strMysqlExe;
+        }
+
     }
 }

@@ -115,5 +115,56 @@ namespace KPSonar
                 txtFilePath.Text = openFileDialog1.FileName;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = txtPath.Text;
+            openFileDialog1.Title = "Browse Exe Files";
+
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+
+            openFileDialog1.DefaultExt = "txt";
+            openFileDialog1.Filter = "EXE files (*.exe)|*.exe";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            openFileDialog1.ReadOnlyChecked = true;
+            openFileDialog1.ShowReadOnly = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtSQLDump.Text = openFileDialog1.FileName;
+                dbConnect.SetMysqlDumpExe(txtSQLDump.Text);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = txtPath.Text;
+            openFileDialog1.Title = "Browse Exe Files";
+
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+
+            openFileDialog1.DefaultExt = "txt";
+            openFileDialog1.Filter = "EXE files (*.exe)|*.exe";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            openFileDialog1.ReadOnlyChecked = true;
+            openFileDialog1.ShowReadOnly = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtSQLExe.Text = openFileDialog1.FileName;
+                dbConnect.SetMysqlExe(txtSQLExe.Text);
+
+            }
+        }
     }
 }
