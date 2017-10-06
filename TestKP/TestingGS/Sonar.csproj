@@ -160,6 +160,24 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Add_32431.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_button_ok_3207.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Edit_page_131907.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_trash_100986.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_video-display_118862 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_button_ok_32071.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

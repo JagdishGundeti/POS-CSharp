@@ -39,7 +39,6 @@
             this.btnProductName = new System.Windows.Forms.Button();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.lblProductName = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.lblSGSTValue = new System.Windows.Forms.Label();
             this.lblCGSValue = new System.Windows.Forms.Label();
             this.lblSGST = new System.Windows.Forms.Label();
@@ -53,11 +52,12 @@
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnFirstName = new System.Windows.Forms.Button();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.lblFirstName = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -178,16 +178,20 @@
             // 
             // btnProductName
             // 
-            this.btnProductName.Location = new System.Drawing.Point(226, 64);
+            this.btnProductName.Image = global::KPSonar.Properties.Resources.if_button_ok_32071;
+            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductName.Location = new System.Drawing.Point(229, 57);
             this.btnProductName.Name = "btnProductName";
-            this.btnProductName.Size = new System.Drawing.Size(75, 23);
+            this.btnProductName.Size = new System.Drawing.Size(75, 38);
             this.btnProductName.TabIndex = 61;
             this.btnProductName.Text = "Select";
+            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnProductName.UseVisualStyleBackColor = true;
             this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
             // 
             // txtProductName
             // 
+            this.txtProductName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtProductName.Location = new System.Drawing.Point(96, 64);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
@@ -202,16 +206,6 @@
             this.lblProductName.Size = new System.Drawing.Size(75, 13);
             this.lblProductName.TabIndex = 59;
             this.lblProductName.Text = "Product Name";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(98, 260);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 16;
-            this.btnDelete.Text = "D&elete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblSGSTValue
             // 
@@ -268,6 +262,7 @@
             // 
             // txtSGST
             // 
+            this.txtSGST.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSGST.Location = new System.Drawing.Point(98, 191);
             this.txtSGST.Name = "txtSGST";
             this.txtSGST.Size = new System.Drawing.Size(100, 20);
@@ -275,6 +270,7 @@
             // 
             // txtCGST
             // 
+            this.txtCGST.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCGST.Location = new System.Drawing.Point(98, 165);
             this.txtCGST.Name = "txtCGST";
             this.txtCGST.Size = new System.Drawing.Size(100, 20);
@@ -282,6 +278,7 @@
             // 
             // txtQuantity
             // 
+            this.txtQuantity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtQuantity.Location = new System.Drawing.Point(98, 109);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(100, 20);
@@ -290,6 +287,7 @@
             // 
             // txtCalAmount
             // 
+            this.txtCalAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCalAmount.Location = new System.Drawing.Point(98, 139);
             this.txtCalAmount.Name = "txtCalAmount";
             this.txtCalAmount.Size = new System.Drawing.Size(100, 20);
@@ -297,6 +295,7 @@
             // 
             // txtAmount
             // 
+            this.txtAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAmount.Location = new System.Drawing.Point(98, 217);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(100, 20);
@@ -320,38 +319,9 @@
             this.lblQuantity.TabIndex = 6;
             this.lblQuantity.Text = "Quantity(gms)";
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(15, 260);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 15;
-            this.btnAdd.Text = "AddItem";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnViewOrders
-            // 
-            this.btnViewOrders.Location = new System.Drawing.Point(307, 20);
-            this.btnViewOrders.Name = "btnViewOrders";
-            this.btnViewOrders.Size = new System.Drawing.Size(75, 23);
-            this.btnViewOrders.TabIndex = 3;
-            this.btnViewOrders.Text = "View Orders";
-            this.btnViewOrders.UseVisualStyleBackColor = true;
-            this.btnViewOrders.Click += new System.EventHandler(this.btnViewOrders_Click);
-            // 
-            // btnFirstName
-            // 
-            this.btnFirstName.Location = new System.Drawing.Point(226, 20);
-            this.btnFirstName.Name = "btnFirstName";
-            this.btnFirstName.Size = new System.Drawing.Size(75, 23);
-            this.btnFirstName.TabIndex = 2;
-            this.btnFirstName.Text = "Select";
-            this.btnFirstName.UseVisualStyleBackColor = true;
-            this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click);
-            // 
             // txtFirstName
             // 
+            this.txtFirstName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtFirstName.Location = new System.Drawing.Point(98, 22);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.ReadOnly = true;
@@ -366,6 +336,58 @@
             this.lblFirstName.Size = new System.Drawing.Size(35, 13);
             this.lblFirstName.TabIndex = 0;
             this.lblFirstName.Text = "Name";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::KPSonar.Properties.Resources.if_trash_100986;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(123, 247);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 36);
+            this.btnDelete.TabIndex = 16;
+            this.btnDelete.Text = "D&elete";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::KPSonar.Properties.Resources.if_Add_32431;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(15, 247);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(84, 36);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = "AddItem";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnViewOrders
+            // 
+            this.btnViewOrders.Image = global::KPSonar.Properties.Resources.if_video_display_118862__2_;
+            this.btnViewOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnViewOrders.Location = new System.Drawing.Point(307, 14);
+            this.btnViewOrders.Name = "btnViewOrders";
+            this.btnViewOrders.Size = new System.Drawing.Size(100, 35);
+            this.btnViewOrders.TabIndex = 3;
+            this.btnViewOrders.Text = "View Orders";
+            this.btnViewOrders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnViewOrders.UseVisualStyleBackColor = true;
+            this.btnViewOrders.Click += new System.EventHandler(this.btnViewOrders_Click);
+            // 
+            // btnFirstName
+            // 
+            this.btnFirstName.Image = global::KPSonar.Properties.Resources.if_button_ok_32071;
+            this.btnFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFirstName.Location = new System.Drawing.Point(226, 11);
+            this.btnFirstName.Name = "btnFirstName";
+            this.btnFirstName.Size = new System.Drawing.Size(75, 40);
+            this.btnFirstName.TabIndex = 2;
+            this.btnFirstName.Text = "Select";
+            this.btnFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFirstName.UseVisualStyleBackColor = true;
+            this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click);
             // 
             // OrderDetails
             // 
