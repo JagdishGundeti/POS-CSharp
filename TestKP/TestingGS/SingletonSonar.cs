@@ -381,6 +381,26 @@ namespace KPSonar
                                     strAddress, strPhone);
             return strNewQuery;
         }
+
+        public string EmployeeSelectQuery(string strCode, string strFName, string strMName, string strLName,
+                                    string strAddress, string strPhone)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT *  "
+                + "FROM   employee  "
+                + "WHERE  1 = 1  "
+                + "       AND code LIKE '%{0}%' "
+                + "       AND firstname LIKE '%{1}%'  "
+                + "       AND middlename LIKE '%{2}%'  "
+                + "       AND lastname LIKE '%{3}%'  "
+                + "       AND address LIKE '%{4}%'  "
+                + "       AND phone_no LIKE '%{5}%' "
+                ;
+            string strNewQuery = String.Format(strQuery, strCode, strFName, strMName, strLName,
+                                    strAddress, strPhone);
+            return strNewQuery;
+        }
         public string CustomerInsertQuery(string strFName, string strMName, string strLName,
                                     string strAddress, string strPhone)
         {
@@ -402,8 +422,31 @@ namespace KPSonar
                                     strAddress, strPhone);
             return strNewQuery;
         }
+        public string EmployeeInsertQuery(string strCode, string strFName, string strMName, string strLName,
+                                    string strAddress, string strPhone)
+        {
+            string strQuery;
+            strQuery =
+                "INSERT INTO employee ("
+                + "            code, "
+                + "            firstname, "
+                + "             middlename, "
+                + "             lastname, "
+                + "             address, "
+                + "             phone_no) "
+                + "VALUES('{0}', "
+                + "            '{1}', "
+                + "            '{2}', "
+                + "            '{3}', "
+                + "            '{4}', "
+                + "            '{5}') "
+                ;
+            string strNewQuery = String.Format(strQuery, strCode, strFName, strMName, strLName,
+                                    strAddress, strPhone);
+            return strNewQuery;
+        }
         public string CustomerUpdateQuery(string strFName, string strMName, string strLName,
-                                    string strAddress, string strPhone,int nID)
+                                    string strAddress, string strPhone, int nID)
         {
             string strQuery;
             strQuery =
@@ -419,6 +462,26 @@ namespace KPSonar
                                     strAddress, strPhone, nID);
             return strNewQuery;
         }
+        public string EmployeeUpdateQuery(string strCode, string strFName, string strMName, string strLName,
+                                    string strAddress, string strPhone, int nID)
+        {
+            string strQuery;
+            strQuery =
+                "UPDATE customer "
+                + "SET "
+                + "       code = '{0}', "
+                + "       firstname = '{1}', "
+                + "       middlename = '{2}', "
+                + "       lastname = '{3}', "
+                + "       address = '{4}', "
+                + "       phone_no = '{5}' "
+                + "WHERE id = {6} "
+            ;
+            string strNewQuery = String.Format(strQuery, strCode, strFName, strMName, strLName,
+                                    strAddress, strPhone, nID);
+            return strNewQuery;
+        }
+        
         public string CustomerDeleteQuery(int nID)
         {
             string strQuery;
@@ -427,6 +490,19 @@ namespace KPSonar
                 + "            WHERE  id = {0}  "
                 ;
                 ;
+            string strNewQuery = String.Format(strQuery, nID);
+            return strNewQuery;
+        }
+
+
+        public string EmployeeDeleteQuery(int nID)
+        {
+            string strQuery;
+            strQuery =
+                "DELETE FROM employee  "
+                + "            WHERE  id = {0}  "
+                ;
+            ;
             string strNewQuery = String.Format(strQuery, nID);
             return strNewQuery;
         }

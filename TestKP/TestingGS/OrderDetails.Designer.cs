@@ -36,7 +36,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnProductName = new System.Windows.Forms.Button();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblSGSTValue = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.lblQuantity = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
+            this.btnProductName = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnViewOrders = new System.Windows.Forms.Button();
@@ -175,19 +175,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(413, 355);
             this.panel5.TabIndex = 0;
-            // 
-            // btnProductName
-            // 
-            this.btnProductName.Image = global::KPSonar.Properties.Resources.if_button_ok_32071;
-            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProductName.Location = new System.Drawing.Point(229, 57);
-            this.btnProductName.Name = "btnProductName";
-            this.btnProductName.Size = new System.Drawing.Size(75, 38);
-            this.btnProductName.TabIndex = 61;
-            this.btnProductName.Text = "Select";
-            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProductName.UseVisualStyleBackColor = true;
-            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
             // 
             // txtProductName
             // 
@@ -337,9 +324,22 @@
             this.lblFirstName.TabIndex = 0;
             this.lblFirstName.Text = "Name";
             // 
+            // btnProductName
+            // 
+            this.btnProductName.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductName.Location = new System.Drawing.Point(232, 57);
+            this.btnProductName.Name = "btnProductName";
+            this.btnProductName.Size = new System.Drawing.Size(65, 34);
+            this.btnProductName.TabIndex = 61;
+            this.btnProductName.Text = "Select";
+            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductName.UseVisualStyleBackColor = true;
+            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
+            // 
             // btnDelete
             // 
-            this.btnDelete.Image = global::KPSonar.Properties.Resources.if_trash_100986;
+            this.btnDelete.Image = global::KPSonar.Properties.Resources.img_ok_small;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelete.Location = new System.Drawing.Point(123, 247);
             this.btnDelete.Name = "btnDelete";
@@ -352,7 +352,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Image = global::KPSonar.Properties.Resources.if_Add_32431;
+            this.btnAdd.Image = global::KPSonar.Properties.Resources.img_add;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.Location = new System.Drawing.Point(15, 247);
             this.btnAdd.Name = "btnAdd";
@@ -365,7 +365,7 @@
             // 
             // btnViewOrders
             // 
-            this.btnViewOrders.Image = global::KPSonar.Properties.Resources.if_video_display_118862__2_;
+            this.btnViewOrders.Image = global::KPSonar.Properties.Resources.img_display;
             this.btnViewOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnViewOrders.Location = new System.Drawing.Point(307, 14);
             this.btnViewOrders.Name = "btnViewOrders";
@@ -378,11 +378,11 @@
             // 
             // btnFirstName
             // 
-            this.btnFirstName.Image = global::KPSonar.Properties.Resources.if_button_ok_32071;
+            this.btnFirstName.Image = global::KPSonar.Properties.Resources.img_ok_small;
             this.btnFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFirstName.Location = new System.Drawing.Point(226, 11);
+            this.btnFirstName.Location = new System.Drawing.Point(230, 14);
             this.btnFirstName.Name = "btnFirstName";
-            this.btnFirstName.Size = new System.Drawing.Size(75, 40);
+            this.btnFirstName.Size = new System.Drawing.Size(67, 34);
             this.btnFirstName.TabIndex = 2;
             this.btnFirstName.Text = "Select";
             this.btnFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

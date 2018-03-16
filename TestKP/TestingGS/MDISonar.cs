@@ -148,6 +148,12 @@ namespace KPSonar
             frmPaymentDetails.Show();
         }
 
+        private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmployeeDetails frmEmployeeDetails = new EmployeeDetails();
+            frmEmployeeDetails.MdiParent = this;
+            frmEmployeeDetails.Show();
+        }
         private void dailyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingForm frmSettingForm = new SettingForm();

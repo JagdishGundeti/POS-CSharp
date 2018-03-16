@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentDetails));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtPayment2 = new System.Windows.Forms.TextBox();
@@ -38,16 +39,16 @@
             this.txtPayment1 = new System.Windows.Forms.TextBox();
             this.lblPayment1 = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
-            this.btnProductName = new System.Windows.Forms.Button();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.lblProductName = new System.Windows.Forms.Label();
             this.btnViewInvoices = new System.Windows.Forms.Button();
-            this.btnFirstName = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnProductName = new System.Windows.Forms.Button();
+            this.btnFirstName = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -105,11 +106,14 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(96, 195);
+            this.btnDelete.Image = global::KPSonar.Properties.Resources.img_delete;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(98, 183);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(76, 43);
             this.btnDelete.TabIndex = 59;
             this.btnDelete.Text = "D&elete";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // chkWithDate
@@ -149,22 +153,16 @@
             // 
             // btnPay
             // 
-            this.btnPay.Location = new System.Drawing.Point(15, 195);
+            this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
+            this.btnPay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPay.Location = new System.Drawing.Point(14, 184);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(75, 23);
+            this.btnPay.Size = new System.Drawing.Size(76, 43);
             this.btnPay.TabIndex = 45;
-            this.btnPay.Text = "Pay";
+            this.btnPay.Text = "&Pay";
+            this.btnPay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPay.UseVisualStyleBackColor = true;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
-            // 
-            // btnProductName
-            // 
-            this.btnProductName.Location = new System.Drawing.Point(226, 67);
-            this.btnProductName.Name = "btnProductName";
-            this.btnProductName.Size = new System.Drawing.Size(75, 23);
-            this.btnProductName.TabIndex = 44;
-            this.btnProductName.Text = "Select";
-            this.btnProductName.UseVisualStyleBackColor = true;
             // 
             // txtProductName
             // 
@@ -185,23 +183,16 @@
             // 
             // btnViewInvoices
             // 
-            this.btnViewInvoices.Location = new System.Drawing.Point(307, 20);
+            this.btnViewInvoices.Image = global::KPSonar.Properties.Resources.img_display;
+            this.btnViewInvoices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnViewInvoices.Location = new System.Drawing.Point(340, 11);
             this.btnViewInvoices.Name = "btnViewInvoices";
-            this.btnViewInvoices.Size = new System.Drawing.Size(98, 23);
+            this.btnViewInvoices.Size = new System.Drawing.Size(114, 40);
             this.btnViewInvoices.TabIndex = 41;
             this.btnViewInvoices.Text = "View Invoices";
+            this.btnViewInvoices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnViewInvoices.UseVisualStyleBackColor = true;
             this.btnViewInvoices.Click += new System.EventHandler(this.btnViewInvoices_Click);
-            // 
-            // btnFirstName
-            // 
-            this.btnFirstName.Location = new System.Drawing.Point(226, 20);
-            this.btnFirstName.Name = "btnFirstName";
-            this.btnFirstName.Size = new System.Drawing.Size(75, 23);
-            this.btnFirstName.TabIndex = 40;
-            this.btnFirstName.Text = "Select";
-            this.btnFirstName.UseVisualStyleBackColor = true;
-            this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click_1);
             // 
             // txtFirstName
             // 
@@ -254,6 +245,31 @@
             this.dataGridView1.Size = new System.Drawing.Size(677, 173);
             this.dataGridView1.TabIndex = 61;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // btnProductName
+            // 
+            this.btnProductName.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductName.Location = new System.Drawing.Point(228, 64);
+            this.btnProductName.Name = "btnProductName";
+            this.btnProductName.Size = new System.Drawing.Size(77, 29);
+            this.btnProductName.TabIndex = 44;
+            this.btnProductName.Text = "Select";
+            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductName.UseVisualStyleBackColor = true;
+            // 
+            // btnFirstName
+            // 
+            this.btnFirstName.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFirstName.Location = new System.Drawing.Point(228, 16);
+            this.btnFirstName.Name = "btnFirstName";
+            this.btnFirstName.Size = new System.Drawing.Size(77, 29);
+            this.btnFirstName.TabIndex = 40;
+            this.btnFirstName.Text = "Select";
+            this.btnFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFirstName.UseVisualStyleBackColor = true;
+            this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click_1);
             // 
             // PaymentDetails
             // 

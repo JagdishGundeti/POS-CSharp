@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="if_Add_32431" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_Add_32431.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_Edit_page_131907" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_Edit_page_131907.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_button_ok_3207" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_button_ok_3207.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_ok_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_ok_big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_trash_100986" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_trash_100986.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_video-display_118862 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_video-display_118862 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_display" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_display.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_button_ok_32071" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_button_ok_32071.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_ok_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_ok_small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -63,9 +63,9 @@ namespace KPSonar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_Add_32431 {
+        internal static System.Drawing.Bitmap img_add {
             get {
-                object obj = ResourceManager.GetObject("if_Add_32431", resourceCulture);
+                object obj = ResourceManager.GetObject("img_add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace KPSonar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_button_ok_3207 {
+        internal static System.Drawing.Bitmap img_delete {
             get {
-                object obj = ResourceManager.GetObject("if_button_ok_3207", resourceCulture);
+                object obj = ResourceManager.GetObject("img_delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace KPSonar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_button_ok_32071 {
+        internal static System.Drawing.Bitmap img_display {
             get {
-                object obj = ResourceManager.GetObject("if_button_ok_32071", resourceCulture);
+                object obj = ResourceManager.GetObject("img_display", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace KPSonar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_Edit_page_131907 {
+        internal static System.Drawing.Bitmap img_edit {
             get {
-                object obj = ResourceManager.GetObject("if_Edit_page_131907", resourceCulture);
+                object obj = ResourceManager.GetObject("img_edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace KPSonar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_trash_100986 {
+        internal static System.Drawing.Bitmap img_ok_big {
             get {
-                object obj = ResourceManager.GetObject("if_trash_100986", resourceCulture);
+                object obj = ResourceManager.GetObject("img_ok_big", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace KPSonar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_video_display_118862__2_ {
+        internal static System.Drawing.Bitmap img_ok_small {
             get {
-                object obj = ResourceManager.GetObject("if_video-display_118862 (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("img_ok_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
