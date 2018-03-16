@@ -12,11 +12,11 @@ namespace KPSonar
 {
     class DBConnect
     {
-        private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
+        private MySqlConnection m_cConnection;
+        private string m_strServer;
+        private string m_strDatabase;
+        private string m_nUID;
+        private string m_strPassword;
         private string m_strMysqlDumpExe = "C:\\xampp\\mysql\\bin\\mysqldump.exe";
         private string m_strMysqlExe = "C:\\xampp\\mysql\\bin\\mysql.exe";
 
@@ -29,16 +29,17 @@ namespace KPSonar
         //Initialize values
         private void Initialize()
         {
-            server = "localhost";
-            database = "connectcsharptomysql";
-            uid = "jagdish";
-            password = "jagdish";
+            m_strServer = "localhost";
+            //database = "connectcsharptomysql";
+            m_strDatabase = "kpsonar";
+            m_nUID = "jagdish";
+            m_strPassword = "jagdish";
             string connectionString;
-            connectionString = "SERVER=" + server + ";" 
-                + "DATABASE=" + database + ";" + "UID=" + uid + ";" 
-                + "PASSWORD=" + password + ";";
+            connectionString = "SERVER=" + m_strServer + ";" 
+                + "DATABASE=" + m_strDatabase + ";" + "UID=" + m_nUID + ";" 
+                + "PASSWORD=" + m_strPassword + ";";
 
-            connection = new MySqlConnection(connectionString);
+            m_cConnection = new MySqlConnection(connectionString);
         }
 
 
@@ -47,7 +48,7 @@ namespace KPSonar
         {
             try
             {
-                connection.Open();
+                m_cConnection.Open();
                 return true;
             }
             catch (MySqlException ex)
@@ -79,7 +80,7 @@ namespace KPSonar
         {
             try
             {
-                connection.Close();
+                m_cConnection.Close();
                 return true;
             }
             catch (MySqlException ex)
@@ -111,7 +112,7 @@ namespace KPSonar
             if (this.OpenConnection() == true)
             {
                 //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlCommand cmd = new MySqlCommand(query, m_cConnection);
 
                 //Execute command
                 cmd.ExecuteNonQuery();
@@ -135,7 +136,7 @@ namespace KPSonar
                 //Assign the query using CommandText
                 cmd.CommandText = query;
                 //Assign the connection using Connection
-                cmd.Connection = connection;
+                cmd.Connection = m_cConnection;
 
                 //Execute query
                 cmd.ExecuteNonQuery();
@@ -152,7 +153,7 @@ namespace KPSonar
 
             if (this.OpenConnection() == true)
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlCommand cmd = new MySqlCommand(query, m_cConnection);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
             }
@@ -174,7 +175,7 @@ namespace KPSonar
             if (this.OpenConnection() == true)
             {
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlCommand cmd = new MySqlCommand(query, m_cConnection);
                 //Create a data reader and Execute the command
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 
@@ -211,7 +212,7 @@ namespace KPSonar
             if (this.OpenConnection() == true)
             {
                 //Create Mysql Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlCommand cmd = new MySqlCommand(query, m_cConnection);
 
                 //ExecuteScalar will return one value
                 Count = int.Parse(cmd.ExecuteScalar()+"");
@@ -254,7 +255,7 @@ namespace KPSonar
                 
                 psi.RedirectStandardInput = false;
                 psi.RedirectStandardOutput = true;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
+                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", m_nUID, m_strPassword, m_strServer, m_strDatabase);
                 psi.UseShellExecute = false;
 
                 Process process = Process.Start(psi);
@@ -293,7 +294,7 @@ namespace KPSonar
                 psi.FileName = m_strMysqlExe;
                 psi.RedirectStandardInput = true;
                 psi.RedirectStandardOutput = false;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
+                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", m_nUID, m_strPassword, m_strServer, m_strDatabase);
                 psi.UseShellExecute = false;
 
                 
@@ -335,7 +336,7 @@ namespace KPSonar
                 if (this.OpenConnection() == true)
                 {
                     //create command and assign the query and connection from the constructor
-                    MySqlCommand cmd = new MySqlCommand(strQuery, connection);
+                    MySqlCommand cmd = new MySqlCommand(strQuery, m_cConnection);
 
                     //Execute command
                     cmd.ExecuteNonQuery();
@@ -361,7 +362,7 @@ namespace KPSonar
                 this.CloseConnection();
 
                 //string query = " select * from  " + strTableName; // set query to fetch data "Select * from  tabelname"; 
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection))
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, m_cConnection))
                 {
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
@@ -377,7 +378,7 @@ namespace KPSonar
             if (this.OpenConnection() == true)
             {
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlCommand cmd = new MySqlCommand(query, m_cConnection);
                 //Create a data reader and Execute the command
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 

@@ -125,14 +125,15 @@ namespace KPSonar
             strQuery =
                 "SELECT order_txn.id, "
             + "       customer.firstname, "
-            + "       customer.phone_no, "
+            //+ "       customer.phone_no, "
             + "       product.NAME, "
-            + "       product.details, "
+            //+ "       product.details, "
             + "       category.type, "
             + "       order_txn.quantity, "
             + "       order_txn.price, "
             + "       order_txn.cgst, "
             + "       order_txn.sgst, "
+            + "       employee.firstname as ename, "
             + "       order_txn.total_price, "
             + "       order_txn.modifiedon "
             + "FROM   order_txn "
@@ -141,9 +142,12 @@ namespace KPSonar
             + "       JOIN product "
             + "         ON ( product.id = order_txn.product_id ) "
             + "       JOIN category "
-            + "         ON ( product.category_id = category.id ) "
+            + "         ON ( category.id = product.category_id ) "
+            + "       JOIN employee "
+            + "         ON ( employee.id = order_txn.employee_id ) "
             + "WHERE  1 = 1 "
             + "       AND customer_id = {0} "
+            
             ;
             string strNewQuery = String.Format(strQuery, nCustomerID);
 
@@ -154,6 +158,7 @@ namespace KPSonar
 
                 strNewQuery = strNewQuery + strNewDateQuery;
             }
+            strNewQuery = strNewQuery + "ORDER BY order_txn.modifiedon DESC";
 
             return strNewQuery;
         }
@@ -199,7 +204,7 @@ namespace KPSonar
                 + "  AND id = {0} "
                 ;
 
-            string strNewQuery = String.Format(strQuery, DateTime.Now.ToString("yyyy-MM-dd"), nInvoiceID);
+            string strNewQuery = String.Format(strQuery, nInvoiceID);
             return strNewQuery;
         }
 
@@ -214,7 +219,7 @@ namespace KPSonar
         }
 
 
-        public string OrderInsertQuery(int nCustomerID, int nProductID, string strQuantity, string strCalAmount,
+        public string OrderInsertQuery(int nCustomerID, int nProductID, int nEmployeeID, string strQuantity, string strCalAmount,
             string strCGST, string strSGST, string strAmount, int nInvoiceID)
         {
             string strQuery;
@@ -222,6 +227,7 @@ namespace KPSonar
             "INSERT INTO order_txn  "
             + "            (customer_id,  "
             + "             product_id,  "
+            + "             employee_id,  "
             + "             quantity,  "
             + "             price,  "
             + "             sgst,  "
@@ -237,10 +243,11 @@ namespace KPSonar
             + "            {5},  "
             + "            {6},  "
             + "            {7},  "
-            + "            '{8}')  "
+            + "            {8},  "
+            + "            '{9}')  "
             ;
 
-            string strNewQuery = String.Format(strQuery, nCustomerID, nProductID, strQuantity, strCalAmount,
+            string strNewQuery = String.Format(strQuery, nCustomerID, nProductID, nEmployeeID, strQuantity, strCalAmount,
                                     strCGST, strSGST, strAmount, nInvoiceID, DateTime.Now.ToString("yyyy-MM-dd"));
 
             return strNewQuery;
@@ -401,6 +408,37 @@ namespace KPSonar
                                     strAddress, strPhone);
             return strNewQuery;
         }
+
+        public string AssignmentSelectQuery(bool bValue, string strDate, int nEmployeeID)
+        {
+            string strQuery;
+            strQuery =
+                "SELECT order_txn.id, "
+            + "       employee.firstname, "
+            + "       order_txn.type, "
+            + "       order_txn.work_start_date, "
+            + "       order_txn.work_end_date, "
+            + "       order_txn.modifiedon "
+            + "FROM   order_txn "
+            + "       JOIN employee "
+            + "         ON ( employee.id = order_txn.employee_id ) "
+            + "WHERE  1 = 1 "
+            + "       AND employee.id = {0} "
+            
+            ;
+            string strNewQuery = String.Format(strQuery, nEmployeeID);
+
+            if (bValue == true)
+            {
+                string strDateQuery = "       AND order_txn.modifiedon = '{0}' ";
+                string strNewDateQuery = String.Format(strDateQuery, strDate);
+
+                strNewQuery = strNewQuery + strNewDateQuery;
+            }
+            strNewQuery = strNewQuery + "ORDER BY order_txn.modifiedon DESC";
+
+            return strNewQuery;
+        }
         public string CustomerInsertQuery(string strFName, string strMName, string strLName,
                                     string strAddress, string strPhone)
         {
@@ -467,7 +505,7 @@ namespace KPSonar
         {
             string strQuery;
             strQuery =
-                "UPDATE customer "
+                "UPDATE employee "
                 + "SET "
                 + "       code = '{0}', "
                 + "       firstname = '{1}', "

@@ -12,9 +12,6 @@ namespace KPSonar
     public partial class MDISonar : Form
     {
         private int childFormNumber = 0;
-        //private int m_nGoldRate24Karat = 0;
-        //private int m_nGoldRate22Karat = 0;
-        //private int m_nSilverRate = 0;
         private DBConnect dbConnect;
 
 
@@ -161,44 +158,6 @@ namespace KPSonar
             frmSettingForm.Show();
         }
 
-        //public int NGoldRate24Karat
-        //{
-        //    get
-        //    {
-        //        return m_nGoldRate24Karat;
-        //    }
-
-        //    set
-        //    {
-        //        m_nGoldRate24Karat = value;
-        //    }
-        //}
-
-        //public int NGoldRate22Karat
-        //{
-        //    get
-        //    {
-        //        return m_nGoldRate22Karat;
-        //    }
-
-        //    set
-        //    {
-        //        m_nGoldRate22Karat = value;
-        //    }
-        //}
-
-        //public int NSilverRate
-        //{
-        //    get
-        //    {
-        //        return m_nSilverRate;
-        //    }
-
-        //    set
-        //    {
-        //        m_nSilverRate = value;
-        //    }
-        //}
 
         private void testToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -206,6 +165,13 @@ namespace KPSonar
             TestMysql frmForm = new TestMysql();
             frmForm.MdiParent = this;
             frmForm.Show();
+        }
+
+        private void assignmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Assignment frmAssignment = new Assignment();
+            frmAssignment.MdiParent = this;
+            frmAssignment.Show();
         }
 
     }

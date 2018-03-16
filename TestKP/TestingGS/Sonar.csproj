@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Assignment.Designer.cs">
+      <DependentUpon>Assignment.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Assignment.resx">
+      <DependentUpon>Assignment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeDetails.resx">
       <DependentUpon>EmployeeDetails.cs</DependentUpon>
     </EmbeddedResource>

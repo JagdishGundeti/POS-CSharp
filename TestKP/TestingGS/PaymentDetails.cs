@@ -116,7 +116,6 @@ namespace KPSonar
                 m_nCustomerID = 0;
                 frmCustomerDetails.Dispose();
             }
-
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

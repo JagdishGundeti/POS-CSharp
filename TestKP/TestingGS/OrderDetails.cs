@@ -37,6 +37,7 @@ namespace KPSonar
 
         private int m_nCustomerID = 0;
         private int m_nProductID = 0;
+        private int m_nEmployeeID = 0;
 
         public OrderDetails()
         {
@@ -153,6 +154,7 @@ namespace KPSonar
 
         }
 
+
         private void btnProductName_Click(object sender, EventArgs e)
         {
             ProductDetails frmProductDetails = new ProductDetails();
@@ -169,6 +171,27 @@ namespace KPSonar
                 txtProductName.Text = "";
                 m_nProductID = 0;
                 frmProductDetails.Dispose();
+            }
+
+        }
+
+        private void btnEmployeeCode_Click(object sender, EventArgs e)
+        {
+            EmployeeDetails frmEmployeeDetails = new EmployeeDetails();
+            //frmCustomerDetails.MdiParent = this;
+            DialogResult dr = frmEmployeeDetails.ShowDialog(this);
+            if (dr == DialogResult.OK)
+            {
+                txtEmployeeCode.Text = frmEmployeeDetails.GetFirstName();
+                m_nEmployeeID = frmEmployeeDetails.GetID();
+                frmEmployeeDetails.Dispose();
+                DisplayData();
+            }
+            else
+            {
+                txtFirstName.Text = "";
+                m_nEmployeeID = 0;
+                frmEmployeeDetails.Dispose();
             }
 
         }
@@ -281,10 +304,10 @@ namespace KPSonar
                 bReturn = false;
                 MessageBox.Show("First Name sould not be empty");
             }
-            if ((m_nCustomerID == 0) || (m_nProductID == 0))
+            if ((m_nCustomerID == 0) || (m_nProductID == 0)  || (m_nEmployeeID == 0))
             {
                 bReturn = false;
-                MessageBox.Show("Customer or Product is not selected");
+                MessageBox.Show("Customer/Product/Employee is not selected");
             }
 
             if (bReturn == true)
@@ -327,7 +350,7 @@ namespace KPSonar
                 //                    + m_nInvoiceID + ", "
                 //                    + "'" + m_strModifiedOnValue + "'"
                 //                    + ")";
-                string strQuery = SingletonSonar.Instance.OrderInsertQuery(m_nCustomerID, m_nProductID, txtQuantity.Text, txtCalAmount.Text,
+                string strQuery = SingletonSonar.Instance.OrderInsertQuery(m_nCustomerID, m_nProductID, m_nEmployeeID, txtQuantity.Text, txtCalAmount.Text,
                                 txtCGST.Text, txtSGST.Text, txtAmount.Text, m_nInvoiceID);
                 
                 bReturn = dbConnect.Insert(strQuery);
@@ -350,7 +373,7 @@ namespace KPSonar
             //    + " WHERE "
             //    + " 1 = 1 AND "
             //    + m_strInvoiceID + " = " + m_nInvoiceID
-            //    ;
+            //    ; 
             string strQuery = SingletonSonar.Instance.OrderInvoiceColCountSelectQuery(m_nInvoiceID);
             string strDataValue;
             strDataValue = dbConnect.GetDataValue(strQuery, strCol);
@@ -467,6 +490,7 @@ namespace KPSonar
         {
             m_nID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
+
 
     }
 }

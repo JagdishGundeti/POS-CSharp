@@ -36,8 +36,10 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnProductName = new System.Windows.Forms.Button();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.lblProductName = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.lblSGSTValue = new System.Windows.Forms.Label();
             this.lblCGSValue = new System.Windows.Forms.Label();
             this.lblSGST = new System.Windows.Forms.Label();
@@ -51,13 +53,14 @@
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.lblFirstName = new System.Windows.Forms.Label();
-            this.btnProductName = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnFirstName = new System.Windows.Forms.Button();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.btnEmployeeCode = new System.Windows.Forms.Button();
+            this.txtEmployeeCode = new System.Windows.Forms.TextBox();
+            this.lblEmployeeCode = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -148,6 +151,9 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnEmployeeCode);
+            this.panel5.Controls.Add(this.txtEmployeeCode);
+            this.panel5.Controls.Add(this.lblEmployeeCode);
             this.panel5.Controls.Add(this.btnProductName);
             this.panel5.Controls.Add(this.txtProductName);
             this.panel5.Controls.Add(this.lblProductName);
@@ -176,6 +182,19 @@
             this.panel5.Size = new System.Drawing.Size(413, 355);
             this.panel5.TabIndex = 0;
             // 
+            // btnProductName
+            // 
+            this.btnProductName.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductName.Location = new System.Drawing.Point(232, 57);
+            this.btnProductName.Name = "btnProductName";
+            this.btnProductName.Size = new System.Drawing.Size(65, 34);
+            this.btnProductName.TabIndex = 61;
+            this.btnProductName.Text = "Select";
+            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductName.UseVisualStyleBackColor = true;
+            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
+            // 
             // txtProductName
             // 
             this.txtProductName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -194,10 +213,23 @@
             this.lblProductName.TabIndex = 59;
             this.lblProductName.Text = "Product Name";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(123, 269);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 36);
+            this.btnDelete.TabIndex = 16;
+            this.btnDelete.Text = "D&elete";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // lblSGSTValue
             // 
             this.lblSGSTValue.AutoSize = true;
-            this.lblSGSTValue.Location = new System.Drawing.Point(92, 193);
+            this.lblSGSTValue.Location = new System.Drawing.Point(92, 215);
             this.lblSGSTValue.Name = "lblSGSTValue";
             this.lblSGSTValue.Size = new System.Drawing.Size(0, 13);
             this.lblSGSTValue.TabIndex = 58;
@@ -205,7 +237,7 @@
             // lblCGSValue
             // 
             this.lblCGSValue.AutoSize = true;
-            this.lblCGSValue.Location = new System.Drawing.Point(92, 170);
+            this.lblCGSValue.Location = new System.Drawing.Point(92, 192);
             this.lblCGSValue.Name = "lblCGSValue";
             this.lblCGSValue.Size = new System.Drawing.Size(0, 13);
             this.lblCGSValue.TabIndex = 18;
@@ -213,7 +245,7 @@
             // lblSGST
             // 
             this.lblSGST.AutoSize = true;
-            this.lblSGST.Location = new System.Drawing.Point(15, 193);
+            this.lblSGST.Location = new System.Drawing.Point(15, 215);
             this.lblSGST.Name = "lblSGST";
             this.lblSGST.Size = new System.Drawing.Size(68, 13);
             this.lblSGST.TabIndex = 12;
@@ -222,7 +254,7 @@
             // lblCGST
             // 
             this.lblCGST.AutoSize = true;
-            this.lblCGST.Location = new System.Drawing.Point(15, 170);
+            this.lblCGST.Location = new System.Drawing.Point(15, 192);
             this.lblCGST.Name = "lblCGST";
             this.lblCGST.Size = new System.Drawing.Size(68, 13);
             this.lblCGST.TabIndex = 10;
@@ -233,7 +265,7 @@
             this.chkWithDate.AutoSize = true;
             this.chkWithDate.Checked = true;
             this.chkWithDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWithDate.Location = new System.Drawing.Point(16, 303);
+            this.chkWithDate.Location = new System.Drawing.Point(16, 325);
             this.chkWithDate.Name = "chkWithDate";
             this.chkWithDate.Size = new System.Drawing.Size(74, 17);
             this.chkWithDate.TabIndex = 17;
@@ -242,7 +274,7 @@
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(98, 303);
+            this.dtpDate.Location = new System.Drawing.Point(98, 325);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(200, 20);
             this.dtpDate.TabIndex = 18;
@@ -250,7 +282,7 @@
             // txtSGST
             // 
             this.txtSGST.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSGST.Location = new System.Drawing.Point(98, 191);
+            this.txtSGST.Location = new System.Drawing.Point(98, 213);
             this.txtSGST.Name = "txtSGST";
             this.txtSGST.Size = new System.Drawing.Size(100, 20);
             this.txtSGST.TabIndex = 13;
@@ -258,7 +290,7 @@
             // txtCGST
             // 
             this.txtCGST.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCGST.Location = new System.Drawing.Point(98, 165);
+            this.txtCGST.Location = new System.Drawing.Point(98, 187);
             this.txtCGST.Name = "txtCGST";
             this.txtCGST.Size = new System.Drawing.Size(100, 20);
             this.txtCGST.TabIndex = 11;
@@ -266,7 +298,7 @@
             // txtQuantity
             // 
             this.txtQuantity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtQuantity.Location = new System.Drawing.Point(98, 109);
+            this.txtQuantity.Location = new System.Drawing.Point(98, 131);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(100, 20);
             this.txtQuantity.TabIndex = 7;
@@ -275,7 +307,7 @@
             // txtCalAmount
             // 
             this.txtCalAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCalAmount.Location = new System.Drawing.Point(98, 139);
+            this.txtCalAmount.Location = new System.Drawing.Point(98, 161);
             this.txtCalAmount.Name = "txtCalAmount";
             this.txtCalAmount.Size = new System.Drawing.Size(100, 20);
             this.txtCalAmount.TabIndex = 9;
@@ -283,7 +315,7 @@
             // txtAmount
             // 
             this.txtAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtAmount.Location = new System.Drawing.Point(98, 217);
+            this.txtAmount.Location = new System.Drawing.Point(98, 239);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(100, 20);
             this.txtAmount.TabIndex = 14;
@@ -291,7 +323,7 @@
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(15, 139);
+            this.lblAmount.Location = new System.Drawing.Point(15, 161);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(43, 13);
             this.lblAmount.TabIndex = 8;
@@ -300,61 +332,17 @@
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(15, 109);
+            this.lblQuantity.Location = new System.Drawing.Point(15, 131);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(71, 13);
             this.lblQuantity.TabIndex = 6;
             this.lblQuantity.Text = "Quantity(gms)";
             // 
-            // txtFirstName
-            // 
-            this.txtFirstName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFirstName.Location = new System.Drawing.Point(98, 22);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.ReadOnly = true;
-            this.txtFirstName.Size = new System.Drawing.Size(127, 20);
-            this.txtFirstName.TabIndex = 1;
-            // 
-            // lblFirstName
-            // 
-            this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(15, 22);
-            this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(35, 13);
-            this.lblFirstName.TabIndex = 0;
-            this.lblFirstName.Text = "Name";
-            // 
-            // btnProductName
-            // 
-            this.btnProductName.Image = global::KPSonar.Properties.Resources.img_ok_small;
-            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProductName.Location = new System.Drawing.Point(232, 57);
-            this.btnProductName.Name = "btnProductName";
-            this.btnProductName.Size = new System.Drawing.Size(65, 34);
-            this.btnProductName.TabIndex = 61;
-            this.btnProductName.Text = "Select";
-            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProductName.UseVisualStyleBackColor = true;
-            this.btnProductName.Click += new System.EventHandler(this.btnProductName_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::KPSonar.Properties.Resources.img_ok_small;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(123, 247);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 36);
-            this.btnDelete.TabIndex = 16;
-            this.btnDelete.Text = "D&elete";
-            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // btnAdd
             // 
             this.btnAdd.Image = global::KPSonar.Properties.Resources.img_add;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(15, 247);
+            this.btnAdd.Location = new System.Drawing.Point(15, 269);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(84, 36);
             this.btnAdd.TabIndex = 15;
@@ -380,7 +368,7 @@
             // 
             this.btnFirstName.Image = global::KPSonar.Properties.Resources.img_ok_small;
             this.btnFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFirstName.Location = new System.Drawing.Point(230, 14);
+            this.btnFirstName.Location = new System.Drawing.Point(232, 14);
             this.btnFirstName.Name = "btnFirstName";
             this.btnFirstName.Size = new System.Drawing.Size(67, 34);
             this.btnFirstName.TabIndex = 2;
@@ -388,6 +376,55 @@
             this.btnFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFirstName.UseVisualStyleBackColor = true;
             this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click);
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFirstName.Location = new System.Drawing.Point(98, 22);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.ReadOnly = true;
+            this.txtFirstName.Size = new System.Drawing.Size(127, 20);
+            this.txtFirstName.TabIndex = 1;
+            // 
+            // lblFirstName
+            // 
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.Location = new System.Drawing.Point(15, 22);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(35, 13);
+            this.lblFirstName.TabIndex = 0;
+            this.lblFirstName.Text = "Name";
+            // 
+            // btnEmployeeCode
+            // 
+            this.btnEmployeeCode.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnEmployeeCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEmployeeCode.Location = new System.Drawing.Point(232, 97);
+            this.btnEmployeeCode.Name = "btnEmployeeCode";
+            this.btnEmployeeCode.Size = new System.Drawing.Size(65, 34);
+            this.btnEmployeeCode.TabIndex = 64;
+            this.btnEmployeeCode.Text = "Select";
+            this.btnEmployeeCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEmployeeCode.UseVisualStyleBackColor = true;
+            this.btnEmployeeCode.Click += new System.EventHandler(this.btnEmployeeCode_Click);
+            // 
+            // txtEmployeeCode
+            // 
+            this.txtEmployeeCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtEmployeeCode.Location = new System.Drawing.Point(98, 101);
+            this.txtEmployeeCode.Name = "txtEmployeeCode";
+            this.txtEmployeeCode.ReadOnly = true;
+            this.txtEmployeeCode.Size = new System.Drawing.Size(65, 20);
+            this.txtEmployeeCode.TabIndex = 63;
+            // 
+            // lblEmployeeCode
+            // 
+            this.lblEmployeeCode.AutoSize = true;
+            this.lblEmployeeCode.Location = new System.Drawing.Point(15, 101);
+            this.lblEmployeeCode.Name = "lblEmployeeCode";
+            this.lblEmployeeCode.Size = new System.Drawing.Size(42, 13);
+            this.lblEmployeeCode.TabIndex = 62;
+            this.lblEmployeeCode.Text = "E Code";
             // 
             // OrderDetails
             // 
@@ -442,5 +479,8 @@
         private System.Windows.Forms.Button btnProductName;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Label lblProductName;
+        private System.Windows.Forms.Button btnEmployeeCode;
+        private System.Windows.Forms.TextBox txtEmployeeCode;
+        private System.Windows.Forms.Label lblEmployeeCode;
     }
 }
