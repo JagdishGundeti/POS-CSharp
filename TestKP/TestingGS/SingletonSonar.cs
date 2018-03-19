@@ -413,9 +413,9 @@ namespace KPSonar
         {
             string strQuery;
             strQuery =
-                "SELECT order_txn.id, "
+                "SELECT "
+            + "       employee.id, "
             + "       employee.firstname, "
-            + "       order_txn.type, "
             + "       order_txn.work_start_date, "
             + "       order_txn.work_end_date, "
             + "       order_txn.modifiedon "

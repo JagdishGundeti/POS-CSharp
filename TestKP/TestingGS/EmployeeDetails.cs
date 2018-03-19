@@ -174,11 +174,12 @@ namespace KPSonar
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             m_nID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtMiddleName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txtPhoneNo.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txtCode.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtMiddleName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txtPhoneNo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
         }
 
         private void btnUse_Click(object sender, EventArgs e)
@@ -190,6 +191,11 @@ namespace KPSonar
         public string GetFirstName()
         {
             return txtFirstName.Text;
+        }
+
+        public string GetCode()
+        {
+            return txtCode.Text;
         }
 
         public int GetID()

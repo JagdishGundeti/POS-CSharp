@@ -39,6 +39,7 @@
             this.btnInsert = new System.Windows.Forms.Button();
             this.chkWithDate = new System.Windows.Forms.CheckBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.btnCode = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@
             this.btnUse.TabIndex = 31;
             this.btnUse.Text = "U&se";
             this.btnUse.UseVisualStyleBackColor = true;
+            this.btnUse.Click += new System.EventHandler(this.btnUse_Click);
             // 
             // dataGridView1
             // 
@@ -81,6 +83,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(768, 329);
             this.dataGridView1.TabIndex = 36;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // btnDelete
             // 
@@ -150,11 +153,25 @@
             this.dtpDate.Size = new System.Drawing.Size(200, 20);
             this.dtpDate.TabIndex = 40;
             // 
+            // btnCode
+            // 
+            this.btnCode.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCode.Location = new System.Drawing.Point(264, 5);
+            this.btnCode.Name = "btnCode";
+            this.btnCode.Size = new System.Drawing.Size(67, 34);
+            this.btnCode.TabIndex = 41;
+            this.btnCode.Text = "Select";
+            this.btnCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCode.UseVisualStyleBackColor = true;
+            this.btnCode.Click += new System.EventHandler(this.btnCode_Click);
+            // 
             // Assignment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 508);
+            this.Controls.Add(this.btnCode);
             this.Controls.Add(this.chkWithDate);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.txtCode);
@@ -185,5 +202,6 @@
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.CheckBox chkWithDate;
         private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.Button btnCode;
     }
 }
