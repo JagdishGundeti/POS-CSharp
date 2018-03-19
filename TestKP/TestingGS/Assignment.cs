@@ -14,17 +14,26 @@ namespace KPSonar
         private DBConnect dbConnect;
         private int m_nID = 0;
         private int m_nEmployeeID = 0;
+
         public Assignment()
         {
             InitializeComponent();
             dbConnect = new DBConnect();
         }
 
+        //Clear Data  
+        private void ClearData()
+        {
+            m_nID = 0;
+            //m_nEmployeeID = 0;
+            dtpStartDate.Text = "";
+            dtpEndDate.Text = "";
+        }
         private void DisplayData()
         {
 
             string strQuery = SingletonSonar.Instance.AssignmentSelectQuery(chkWithDate.Checked,
-                dtpDate.Value.ToString("yyyy-MM-dd"), m_nID);
+                dtpDate.Value.ToString("yyyy-MM-dd"), m_nEmployeeID);
 
             dbConnect.GridDisplay(dataGridView1, strQuery);
         }
@@ -34,14 +43,12 @@ namespace KPSonar
             DisplayData();
         }
 
-        private void btnUse_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             m_nID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            dtpStartDate.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            dtpEndDate.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             //txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             //txtMiddleName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             //txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -70,6 +77,47 @@ namespace KPSonar
                 frmEmployeeDetails.Dispose();
             }
 
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            bool bReturn = false;
+
+            if (m_nEmployeeID != 0)
+            {
+                bReturn = true;
+            }
+            else
+            {
+                MessageBox.Show("Record is not selected to Update");
+            }
+
+            if (bReturn == true)
+            {
+                DialogResult dialogResult =
+                    MessageBox.Show("Your are trying to Update record", "Update", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    bReturn = true;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    bReturn = false;
+                }
+            }
+            if (bReturn == true)
+            {
+                string strQuery = SingletonSonar.Instance.EmployeeUpdatetQuery(
+                    dtpStartDate.Value.Date.ToString("yyyy-MM-dd"), dtpEndDate.Value.Date.ToString("yyyy-MM-dd"), m_nID);
+                bReturn = dbConnect.Update(strQuery);
+                if (bReturn == true)
+                {
+                    MessageBox.Show("Record Updated");
+                    ClearData();
+                    DisplayData();
+                }
+            }
         }
     }
 }

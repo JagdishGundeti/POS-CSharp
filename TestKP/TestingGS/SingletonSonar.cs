@@ -409,12 +409,30 @@ namespace KPSonar
             return strNewQuery;
         }
 
+
+        public string EmployeeUpdatetQuery(string strStartDate, string strEndDate,  
+                    int nID)
+        {
+            string strQuery;
+            strQuery =
+            "UPDATE order_txn  "
+            + "SET   "
+            + "   work_start_date = '{0}',  "
+            + "   work_end_date = '{1}'  "
+            + "WHERE  id = {2}  "
+            ;
+            ;
+            string strNewQuery = String.Format(strQuery, strStartDate, strEndDate, 
+                                    nID);
+            return strNewQuery;
+        }
         public string AssignmentSelectQuery(bool bValue, string strDate, int nEmployeeID)
         {
             string strQuery;
             strQuery =
                 "SELECT "
-            + "       employee.id, "
+            + "       order_txn.id, "
+            //+ "       employee.id, "
             + "       employee.firstname, "
             + "       order_txn.work_start_date, "
             + "       order_txn.work_end_date, "

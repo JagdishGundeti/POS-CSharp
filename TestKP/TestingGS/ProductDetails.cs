@@ -28,8 +28,8 @@ namespace KPSonar
         {
             InitializeComponent();
             cmbCategory.Items.Add("");
-            cmbCategory.Items.Add("Gold-24-Karat");
-            cmbCategory.Items.Add("Gold-22-Karat");
+            cmbCategory.Items.Add("Gold-Bar");
+            cmbCategory.Items.Add("Gold-Ornament");
             cmbCategory.Items.Add("Silver");
             dbConnect = new DBConnect();
         }

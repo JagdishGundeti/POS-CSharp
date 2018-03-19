@@ -364,9 +364,16 @@ namespace KPSonar
                 //string query = " select * from  " + strTableName; // set query to fetch data "Select * from  tabelname"; 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, m_cConnection))
                 {
+                    try
+                    {
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
                     DataGridView1.DataSource = ds.Tables[0];
+                    }                    
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }

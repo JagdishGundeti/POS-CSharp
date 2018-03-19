@@ -37,8 +37,8 @@ namespace KPSonar
         private void ClearData()
         {
             m_nID = 0;
-            txtGoldRate24Karat.Text = "";
-            txtGoldRate22Karat.Text = "";
+            txtGoldBarRate.Text = "";
+            txtGoldOrnamentRate.Text = "";
             txtSilverRate.Text = "";
         }
 
@@ -79,8 +79,8 @@ namespace KPSonar
         {
             bool bReturn = true;
 
-            if ((txtGoldRate24Karat.Text == "") ||
-                    (txtGoldRate22Karat.Text == "") || (txtSilverRate.Text == ""))
+            if ((txtGoldBarRate.Text == "") ||
+                    (txtGoldOrnamentRate.Text == "") || (txtSilverRate.Text == ""))
             {
                 MessageBox.Show("input is empty");
                 bReturn = false;
@@ -107,13 +107,13 @@ namespace KPSonar
                 strDataValue = GetDataValue(nCategoryId);
                 if (String.IsNullOrEmpty(strDataValue) == true)
                 {
-                    //strQuery = InsertStatement(nCategoryId, txtGoldRate24Karat.Text);
-                    strQuery = SingletonSonar.Instance.SettingInsertQuery(nCategoryId, txtGoldRate24Karat.Text);
+                    //strQuery = InsertStatement(nCategoryId, txtGoldBarRate.Text);
+                    strQuery = SingletonSonar.Instance.SettingInsertQuery(nCategoryId, txtGoldBarRate.Text);
                 }
                 else
                 {
-                    //strQuery = UpdateStatement(nCategoryId, txtGoldRate24Karat.Text);
-                    strQuery = SingletonSonar.Instance.SettingUpdateQueryWithDate(nCategoryId, txtGoldRate24Karat.Text);
+                    //strQuery = UpdateStatement(nCategoryId, txtGoldBarRate.Text);
+                    strQuery = SingletonSonar.Instance.SettingUpdateQueryWithDate(nCategoryId, txtGoldBarRate.Text);
                 }
                 bReturn = dbConnect.ExecuteGeneral(strQuery);
 
@@ -123,13 +123,13 @@ namespace KPSonar
                     strDataValue = GetDataValue(nCategoryId);
                     if (String.IsNullOrEmpty(strDataValue) == true)
                     {
-                        //strQuery = InsertStatement(nCategoryId, txtGoldRate22Karat.Text);
-                        strQuery = SingletonSonar.Instance.SettingInsertQuery(nCategoryId, txtGoldRate22Karat.Text);
+                        //strQuery = InsertStatement(nCategoryId, txtGoldOrnamentRate.Text);
+                        strQuery = SingletonSonar.Instance.SettingInsertQuery(nCategoryId, txtGoldOrnamentRate.Text);
                     }
                     else
                     {
-                        //strQuery = UpdateStatement(nCategoryId, txtGoldRate22Karat.Text);
-                        strQuery = SingletonSonar.Instance.SettingUpdateQueryWithDate(nCategoryId, txtGoldRate22Karat.Text);
+                        //strQuery = UpdateStatement(nCategoryId, txtGoldOrnamentRate.Text);
+                        strQuery = SingletonSonar.Instance.SettingUpdateQueryWithDate(nCategoryId, txtGoldOrnamentRate.Text);
                     }
                     bReturn = dbConnect.ExecuteGeneral(strQuery);
                 }
@@ -266,12 +266,12 @@ namespace KPSonar
 
         public string GetGoldRate24Karat()
         {
-            return txtGoldRate24Karat.Text;
+            return txtGoldBarRate.Text;
         }
 
         public string GetGoldRate22Karat()
         {
-            return txtGoldRate22Karat.Text;
+            return txtGoldOrnamentRate.Text;
         }
 
         public string GetSilverRate()
@@ -291,19 +291,18 @@ namespace KPSonar
 
         private void btnSet_Click(object sender, EventArgs e)
         {
-
             //MDISonar frm = (MDISonar)this.MdiParent;
-            ////frm.NGoldRate24Karat = Convert.ToInt32(txtGoldRate24Karat.Text);
-            ////frm.NGoldRate22Karat = Convert.ToInt32(txtGoldRate22Karat.Text);
+            ////frm.NGoldRate24Karat = Convert.ToInt32(txtGoldBarRate.Text);
+            ////frm.NGoldRate22Karat = Convert.ToInt32(txtGoldOrnamentRate.Text);
             ////frm.NSilverRate = Convert.ToInt32(txtSilverRate.Text);
             //int nCategoryId = 1;
             //string strDataValue = "";
             //strDataValue = GetDataValue(nCategoryId);
-            //txtGoldRate24Karat.Text = strDataValue;
+            //txtGoldBarRate.Text = strDataValue;
             //frm.NGoldRate24Karat = Convert.ToInt32(strDataValue);
             //nCategoryId = 2;
             //strDataValue = GetDataValue(nCategoryId);
-            //txtGoldRate22Karat.Text = strDataValue;
+            //txtGoldOrnamentRate.Text = strDataValue;
             //frm.NGoldRate22Karat = Convert.ToInt32(strDataValue);
             //nCategoryId = 3;
             //strDataValue = GetDataValue(nCategoryId);

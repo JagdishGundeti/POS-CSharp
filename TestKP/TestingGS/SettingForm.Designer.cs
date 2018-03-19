@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtGoldRate24Karat = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
+            this.txtGoldBarRate = new System.Windows.Forms.TextBox();
             this.lblGoldRate24Kart = new System.Windows.Forms.Label();
             this.btnSet = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.btnInsertOrModify = new System.Windows.Forms.Button();
             this.txtSilverRate = new System.Windows.Forms.TextBox();
             this.lblSilverRate = new System.Windows.Forms.Label();
-            this.txtGoldRate22Karat = new System.Windows.Forms.TextBox();
+            this.txtGoldOrnamentRate = new System.Windows.Forms.TextBox();
             this.lblGoldRate22Kart = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblName = new System.Windows.Forms.Label();
             this.txtValue = new System.Windows.Forms.TextBox();
             this.lblCategory = new System.Windows.Forms.Label();
             this.chkCurrentDate = new System.Windows.Forms.CheckBox();
+            this.btnSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtGoldRate24Karat
+            // txtGoldBarRate
             // 
-            this.txtGoldRate24Karat.Location = new System.Drawing.Point(131, 24);
-            this.txtGoldRate24Karat.Name = "txtGoldRate24Karat";
-            this.txtGoldRate24Karat.Size = new System.Drawing.Size(100, 20);
-            this.txtGoldRate24Karat.TabIndex = 1;
+            this.txtGoldBarRate.Location = new System.Drawing.Point(131, 24);
+            this.txtGoldBarRate.Name = "txtGoldBarRate";
+            this.txtGoldBarRate.Size = new System.Drawing.Size(100, 20);
+            this.txtGoldBarRate.TabIndex = 1;
             // 
             // lblGoldRate24Kart
             // 
@@ -64,12 +65,13 @@
             // 
             // btnSet
             // 
-            this.btnSet.Location = new System.Drawing.Point(46, 205);
+            this.btnSet.Location = new System.Drawing.Point(12, 353);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 6;
             this.btnSet.Text = "Set";
             this.btnSet.UseVisualStyleBackColor = true;
+            this.btnSet.Visible = false;
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             // 
             // btnUpdate
@@ -82,23 +84,16 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnSelect
-            // 
-            this.btnSelect.Location = new System.Drawing.Point(26, 347);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect.TabIndex = 7;
-            this.btnSelect.Text = "Display";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
             // btnInsertOrModify
             // 
-            this.btnInsertOrModify.Location = new System.Drawing.Point(117, 347);
+            this.btnInsertOrModify.Image = global::KPSonar.Properties.Resources.img_add;
+            this.btnInsertOrModify.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInsertOrModify.Location = new System.Drawing.Point(106, 203);
             this.btnInsertOrModify.Name = "btnInsertOrModify";
-            this.btnInsertOrModify.Size = new System.Drawing.Size(104, 23);
+            this.btnInsertOrModify.Size = new System.Drawing.Size(104, 44);
             this.btnInsertOrModify.TabIndex = 8;
             this.btnInsertOrModify.Text = "Insert/Modify";
+            this.btnInsertOrModify.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInsertOrModify.UseVisualStyleBackColor = true;
             this.btnInsertOrModify.Click += new System.EventHandler(this.btnInsertOrModify_Click);
             // 
@@ -118,12 +113,12 @@
             this.lblSilverRate.TabIndex = 4;
             this.lblSilverRate.Text = "Silver Rate(per gm)";
             // 
-            // txtGoldRate22Karat
+            // txtGoldOrnamentRate
             // 
-            this.txtGoldRate22Karat.Location = new System.Drawing.Point(131, 72);
-            this.txtGoldRate22Karat.Name = "txtGoldRate22Karat";
-            this.txtGoldRate22Karat.Size = new System.Drawing.Size(100, 20);
-            this.txtGoldRate22Karat.TabIndex = 3;
+            this.txtGoldOrnamentRate.Location = new System.Drawing.Point(131, 72);
+            this.txtGoldOrnamentRate.Name = "txtGoldOrnamentRate";
+            this.txtGoldOrnamentRate.Size = new System.Drawing.Size(100, 20);
+            this.txtGoldOrnamentRate.TabIndex = 3;
             // 
             // lblGoldRate22Kart
             // 
@@ -186,25 +181,38 @@
             this.chkCurrentDate.Text = "Current Date";
             this.chkCurrentDate.UseVisualStyleBackColor = true;
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Image = ((System.Drawing.Image)(resources.GetObject("btnSelect.Image")));
+            this.btnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSelect.Location = new System.Drawing.Point(17, 200);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(83, 50);
+            this.btnSelect.TabIndex = 15;
+            this.btnSelect.Text = "&Display";
+            this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 388);
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.chkCurrentDate);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txtGoldRate22Karat);
+            this.Controls.Add(this.txtGoldOrnamentRate);
             this.Controls.Add(this.lblGoldRate22Kart);
             this.Controls.Add(this.txtSilverRate);
             this.Controls.Add(this.lblSilverRate);
             this.Controls.Add(this.btnSet);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnInsertOrModify);
-            this.Controls.Add(this.txtGoldRate24Karat);
+            this.Controls.Add(this.txtGoldBarRate);
             this.Controls.Add(this.lblGoldRate24Kart);
             this.Name = "SettingForm";
             this.Text = "Settings";
@@ -217,20 +225,20 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtGoldRate24Karat;
+        private System.Windows.Forms.TextBox txtGoldBarRate;
         private System.Windows.Forms.Label lblGoldRate24Kart;
         private System.Windows.Forms.Button btnSet;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnInsertOrModify;
         private System.Windows.Forms.TextBox txtSilverRate;
         private System.Windows.Forms.Label lblSilverRate;
-        private System.Windows.Forms.TextBox txtGoldRate22Karat;
+        private System.Windows.Forms.TextBox txtGoldOrnamentRate;
         private System.Windows.Forms.Label lblGoldRate22Kart;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtValue;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.CheckBox chkCurrentDate;
+        private System.Windows.Forms.Button btnSelect;
     }
 }

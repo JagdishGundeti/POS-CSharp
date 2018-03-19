@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.21-MariaDB, for Win32 (AMD64)
+-- MySQL dump 10.16  Distrib 10.1.25-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: localhost
+-- Host: localhost    Database: kpsonar
 -- ------------------------------------------------------
--- Server version	10.1.21-MariaDB
+-- Server version	10.1.25-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Gold-24-Karat','Gold-24-Karat',NULL),(2,'Gold-22-Karat','Gold-22-Karat',NULL),(3,'Silver','Silver',NULL);
+INSERT INTO `category` VALUES (1,'Gold-Bar','Gold-24-Karat',NULL),(2,'Gold-Ornament','Gold-22-Karat',NULL),(3,'Silver','Silver',NULL);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (4,'Ramesh','','Pulpati','Add 1','9876543210'),(5,'Suresh','','Prabhu','Add 2','9876543211'),(6,'Subramanyam','','Swamy','Add 3','9876543212'),(7,'Ganesh','','Vamsi','Address 1','888845611'),(8,'LAXMAN','','','WORLI','1234567890');
+INSERT INTO `customer` VALUES (4,'RAMESH','','PULPATI','ADD 1','9876543210'),(5,'SURESH','','PRABHU','ADD 2','9876543211'),(6,'SUBRAMANYAM','','SWAMY','ADD 3','9876543212'),(7,'GANESH','','VAMSI','ADDRESS 1','888845611'),(8,'LAXMAN','','','WORLI','1234567890');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `daily_rates_ex` (
   PRIMARY KEY (`id`),
   KEY `fk_daily_rates_category_id` (`category_id`),
   CONSTRAINT `fk_daily_rates_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `daily_rates_ex` (
 
 LOCK TABLES `daily_rates_ex` WRITE;
 /*!40000 ALTER TABLE `daily_rates_ex` DISABLE KEYS */;
-INSERT INTO `daily_rates_ex` VALUES (37,1,2800,'2017-09-03'),(38,2,2400,'2017-09-03'),(39,3,1200,'2017-09-03'),(40,1,2900,'2017-09-04'),(41,2,2700,'2017-09-04'),(42,3,1500,'2017-09-04'),(43,1,2900,'2017-09-05'),(44,2,2700,'2017-09-05'),(45,3,1050,'2017-09-05'),(46,1,3100,'2017-09-11'),(47,2,3000,'2017-09-11'),(48,3,1000,'2017-09-11'),(49,1,32000,'2018-03-15'),(50,2,31000,'2018-03-15'),(51,3,10000,'2018-03-15'),(52,1,3100,'2018-03-16'),(53,2,3000,'2018-03-16'),(54,3,1000,'2018-03-16'),(55,1,3200,'2018-03-18'),(56,2,3100,'2018-03-18'),(57,3,1000,'2018-03-18');
+INSERT INTO `daily_rates_ex` VALUES (37,1,2800,'2017-09-03'),(38,2,2400,'2017-09-03'),(39,3,1200,'2017-09-03'),(40,1,2900,'2017-09-04'),(41,2,2700,'2017-09-04'),(42,3,1500,'2017-09-04'),(43,1,2900,'2017-09-05'),(44,2,2700,'2017-09-05'),(45,3,1050,'2017-09-05'),(46,1,3100,'2017-09-11'),(47,2,3000,'2017-09-11'),(48,3,1000,'2017-09-11'),(49,1,32000,'2018-03-15'),(50,2,31000,'2018-03-15'),(51,3,10000,'2018-03-15'),(52,1,3100,'2018-03-16'),(53,2,3000,'2018-03-16'),(54,3,1000,'2018-03-16'),(55,1,3200,'2018-03-18'),(56,2,3100,'2018-03-18'),(57,3,1000,'2018-03-18'),(58,1,3100,'2018-03-19'),(59,2,2900,'2018-03-19'),(60,3,100,'2018-03-19');
 /*!40000 ALTER TABLE `daily_rates_ex` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,5 +264,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-19  9:56:08
+-- Dump completed on 2018-03-19 19:55:47
 
