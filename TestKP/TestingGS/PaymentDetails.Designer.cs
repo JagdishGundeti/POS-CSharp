@@ -39,16 +39,16 @@
             this.txtPayment1 = new System.Windows.Forms.TextBox();
             this.lblPayment1 = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
+            this.btnProductName = new System.Windows.Forms.Button();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.lblProductName = new System.Windows.Forms.Label();
             this.btnViewInvoices = new System.Windows.Forms.Button();
+            this.btnFirstName = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnProductName = new System.Windows.Forms.Button();
-            this.btnFirstName = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -62,7 +62,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(677, 279);
+            this.panel2.Size = new System.Drawing.Size(677, 236);
             this.panel2.TabIndex = 23;
             // 
             // panel5
@@ -85,12 +85,12 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(677, 279);
+            this.panel5.Size = new System.Drawing.Size(677, 236);
             this.panel5.TabIndex = 1;
             // 
             // txtPayment2
             // 
-            this.txtPayment2.Location = new System.Drawing.Point(96, 141);
+            this.txtPayment2.Location = new System.Drawing.Point(96, 111);
             this.txtPayment2.Name = "txtPayment2";
             this.txtPayment2.Size = new System.Drawing.Size(67, 20);
             this.txtPayment2.TabIndex = 61;
@@ -98,17 +98,17 @@
             // lblPayment2
             // 
             this.lblPayment2.AutoSize = true;
-            this.lblPayment2.Location = new System.Drawing.Point(15, 143);
+            this.lblPayment2.Location = new System.Drawing.Point(15, 115);
             this.lblPayment2.Name = "lblPayment2";
-            this.lblPayment2.Size = new System.Drawing.Size(54, 13);
+            this.lblPayment2.Size = new System.Drawing.Size(60, 13);
             this.lblPayment2.TabIndex = 60;
-            this.lblPayment2.Text = "Payment2";
+            this.lblPayment2.Text = "Payment2 :";
             // 
             // btnDelete
             // 
             this.btnDelete.Image = global::KPSonar.Properties.Resources.img_delete;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(98, 183);
+            this.btnDelete.Location = new System.Drawing.Point(98, 143);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(76, 43);
             this.btnDelete.TabIndex = 59;
@@ -121,7 +121,7 @@
             this.chkWithDate.AutoSize = true;
             this.chkWithDate.Checked = true;
             this.chkWithDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWithDate.Location = new System.Drawing.Point(15, 238);
+            this.chkWithDate.Location = new System.Drawing.Point(15, 198);
             this.chkWithDate.Name = "chkWithDate";
             this.chkWithDate.Size = new System.Drawing.Size(74, 17);
             this.chkWithDate.TabIndex = 54;
@@ -130,14 +130,14 @@
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(96, 238);
+            this.dtpDate.Location = new System.Drawing.Point(96, 198);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(200, 20);
             this.dtpDate.TabIndex = 53;
             // 
             // txtPayment1
             // 
-            this.txtPayment1.Location = new System.Drawing.Point(96, 107);
+            this.txtPayment1.Location = new System.Drawing.Point(96, 77);
             this.txtPayment1.Name = "txtPayment1";
             this.txtPayment1.Size = new System.Drawing.Size(67, 20);
             this.txtPayment1.TabIndex = 47;
@@ -145,17 +145,17 @@
             // lblPayment1
             // 
             this.lblPayment1.AutoSize = true;
-            this.lblPayment1.Location = new System.Drawing.Point(15, 109);
+            this.lblPayment1.Location = new System.Drawing.Point(15, 81);
             this.lblPayment1.Name = "lblPayment1";
-            this.lblPayment1.Size = new System.Drawing.Size(54, 13);
+            this.lblPayment1.Size = new System.Drawing.Size(60, 13);
             this.lblPayment1.TabIndex = 46;
-            this.lblPayment1.Text = "Payment1";
+            this.lblPayment1.Text = "Payment1 :";
             // 
             // btnPay
             // 
             this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
             this.btnPay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPay.Location = new System.Drawing.Point(14, 184);
+            this.btnPay.Location = new System.Drawing.Point(14, 144);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(76, 43);
             this.btnPay.TabIndex = 45;
@@ -164,9 +164,21 @@
             this.btnPay.UseVisualStyleBackColor = true;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
+            // btnProductName
+            // 
+            this.btnProductName.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductName.Location = new System.Drawing.Point(228, 40);
+            this.btnProductName.Name = "btnProductName";
+            this.btnProductName.Size = new System.Drawing.Size(77, 29);
+            this.btnProductName.TabIndex = 44;
+            this.btnProductName.Text = "Select";
+            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductName.UseVisualStyleBackColor = true;
+            // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(96, 67);
+            this.txtProductName.Location = new System.Drawing.Point(96, 43);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(127, 20);
@@ -175,17 +187,17 @@
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(15, 69);
+            this.lblProductName.Location = new System.Drawing.Point(15, 45);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(75, 13);
+            this.lblProductName.Size = new System.Drawing.Size(81, 13);
             this.lblProductName.TabIndex = 42;
-            this.lblProductName.Text = "Product Name";
+            this.lblProductName.Text = "Product Name :";
             // 
             // btnViewInvoices
             // 
             this.btnViewInvoices.Image = global::KPSonar.Properties.Resources.img_display;
             this.btnViewInvoices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewInvoices.Location = new System.Drawing.Point(340, 11);
+            this.btnViewInvoices.Location = new System.Drawing.Point(340, 1);
             this.btnViewInvoices.Name = "btnViewInvoices";
             this.btnViewInvoices.Size = new System.Drawing.Size(114, 40);
             this.btnViewInvoices.TabIndex = 41;
@@ -194,9 +206,22 @@
             this.btnViewInvoices.UseVisualStyleBackColor = true;
             this.btnViewInvoices.Click += new System.EventHandler(this.btnViewInvoices_Click);
             // 
+            // btnFirstName
+            // 
+            this.btnFirstName.Image = global::KPSonar.Properties.Resources.img_ok_small;
+            this.btnFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFirstName.Location = new System.Drawing.Point(228, 7);
+            this.btnFirstName.Name = "btnFirstName";
+            this.btnFirstName.Size = new System.Drawing.Size(77, 29);
+            this.btnFirstName.TabIndex = 40;
+            this.btnFirstName.Text = "Select";
+            this.btnFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFirstName.UseVisualStyleBackColor = true;
+            this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click_1);
+            // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(96, 22);
+            this.txtFirstName.Location = new System.Drawing.Point(96, 11);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.ReadOnly = true;
             this.txtFirstName.Size = new System.Drawing.Size(127, 20);
@@ -205,11 +230,11 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(15, 22);
+            this.lblFirstName.Location = new System.Drawing.Point(15, 15);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(35, 13);
+            this.lblFirstName.Size = new System.Drawing.Size(41, 13);
             this.lblFirstName.TabIndex = 38;
-            this.lblFirstName.Text = "Name";
+            this.lblFirstName.Text = "Name :";
             // 
             // panel3
             // 
@@ -219,15 +244,15 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(677, 452);
-            this.panel3.TabIndex = 24;
+            this.panel3.TabIndex = 1;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.dataGridView1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 279);
+            this.panel6.Location = new System.Drawing.Point(0, 236);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(677, 173);
+            this.panel6.Size = new System.Drawing.Size(677, 216);
             this.panel6.TabIndex = 24;
             // 
             // dataGridView1
@@ -242,34 +267,9 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(677, 173);
+            this.dataGridView1.Size = new System.Drawing.Size(677, 216);
             this.dataGridView1.TabIndex = 61;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // btnProductName
-            // 
-            this.btnProductName.Image = global::KPSonar.Properties.Resources.img_ok_small;
-            this.btnProductName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProductName.Location = new System.Drawing.Point(228, 64);
-            this.btnProductName.Name = "btnProductName";
-            this.btnProductName.Size = new System.Drawing.Size(77, 29);
-            this.btnProductName.TabIndex = 44;
-            this.btnProductName.Text = "Select";
-            this.btnProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProductName.UseVisualStyleBackColor = true;
-            // 
-            // btnFirstName
-            // 
-            this.btnFirstName.Image = global::KPSonar.Properties.Resources.img_ok_small;
-            this.btnFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFirstName.Location = new System.Drawing.Point(228, 16);
-            this.btnFirstName.Name = "btnFirstName";
-            this.btnFirstName.Size = new System.Drawing.Size(77, 29);
-            this.btnFirstName.TabIndex = 40;
-            this.btnFirstName.Text = "Select";
-            this.btnFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFirstName.UseVisualStyleBackColor = true;
-            this.btnFirstName.Click += new System.EventHandler(this.btnFirstName_Click_1);
             // 
             // PaymentDetails
             // 

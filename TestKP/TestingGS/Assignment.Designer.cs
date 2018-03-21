@@ -49,7 +49,7 @@
             // txtCode
             // 
             this.txtCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCode.Location = new System.Drawing.Point(66, 12);
+            this.txtCode.Location = new System.Drawing.Point(66, 11);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(100, 20);
             this.txtCode.TabIndex = 1;
@@ -57,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 0;
@@ -70,11 +70,11 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 123);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 106);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(870, 305);
+            this.dataGridView1.Size = new System.Drawing.Size(768, 305);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -82,7 +82,7 @@
             // 
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(361, 446);
+            this.btnDelete.Location = new System.Drawing.Point(361, 429);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(83, 50);
             this.btnDelete.TabIndex = 9;
@@ -94,7 +94,7 @@
             // 
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(245, 446);
+            this.btnUpdate.Location = new System.Drawing.Point(245, 429);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(83, 50);
             this.btnUpdate.TabIndex = 8;
@@ -107,7 +107,7 @@
             // 
             this.btnSelect.Image = ((System.Drawing.Image)(resources.GetObject("btnSelect.Image")));
             this.btnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSelect.Location = new System.Drawing.Point(13, 446);
+            this.btnSelect.Location = new System.Drawing.Point(13, 429);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(83, 50);
             this.btnSelect.TabIndex = 6;
@@ -120,7 +120,7 @@
             // 
             this.btnInsert.Image = ((System.Drawing.Image)(resources.GetObject("btnInsert.Image")));
             this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInsert.Location = new System.Drawing.Point(129, 446);
+            this.btnInsert.Location = new System.Drawing.Point(129, 429);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(83, 50);
             this.btnInsert.TabIndex = 7;
@@ -133,7 +133,7 @@
             this.chkWithDate.AutoSize = true;
             this.chkWithDate.Checked = true;
             this.chkWithDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWithDate.Location = new System.Drawing.Point(13, 100);
+            this.chkWithDate.Location = new System.Drawing.Point(13, 81);
             this.chkWithDate.Name = "chkWithDate";
             this.chkWithDate.Size = new System.Drawing.Size(74, 17);
             this.chkWithDate.TabIndex = 3;
@@ -142,7 +142,7 @@
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(95, 98);
+            this.dtpDate.Location = new System.Drawing.Point(95, 79);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(200, 20);
             this.dtpDate.TabIndex = 4;
@@ -162,14 +162,14 @@
             // 
             // dtpStartDate
             // 
-            this.dtpStartDate.Location = new System.Drawing.Point(68, 58);
+            this.dtpStartDate.Location = new System.Drawing.Point(68, 46);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(200, 20);
             this.dtpStartDate.TabIndex = 4;
             // 
             // dtpEndDate
             // 
-            this.dtpEndDate.Location = new System.Drawing.Point(369, 59);
+            this.dtpEndDate.Location = new System.Drawing.Point(343, 46);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(200, 20);
             this.dtpEndDate.TabIndex = 4;
@@ -177,26 +177,26 @@
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(9, 62);
+            this.lblStartDate.Location = new System.Drawing.Point(9, 50);
             this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(55, 13);
+            this.lblStartDate.Size = new System.Drawing.Size(61, 13);
             this.lblStartDate.TabIndex = 0;
-            this.lblStartDate.Text = "Start Date";
+            this.lblStartDate.Text = "Start Date :";
             // 
             // lblEndDate
             // 
             this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(308, 62);
+            this.lblEndDate.Location = new System.Drawing.Point(282, 50);
             this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(52, 13);
+            this.lblEndDate.Size = new System.Drawing.Size(58, 13);
             this.lblEndDate.TabIndex = 0;
-            this.lblEndDate.Text = "End Date";
+            this.lblEndDate.Text = "End Date :";
             // 
             // Assignment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 508);
+            this.ClientSize = new System.Drawing.Size(795, 493);
             this.Controls.Add(this.btnCode);
             this.Controls.Add(this.chkWithDate);
             this.Controls.Add(this.dtpEndDate);

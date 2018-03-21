@@ -53,20 +53,20 @@ namespace KPSonar
 
             return strNewQuery;
         }
-        
+
         public string SettingGetValueQuery(int nCategoryId)
         {
 
             string strQuery;
             strQuery =
-		        "SELECT value  "
-		        +"FROM   daily_rates_ex  "
-		        +"       JOIN category  "
-		        +"         ON ( daily_rates_ex.category_id = category.id )  "
-		        +"WHERE  1 = 1  "
-		        +"       AND daily_rates_ex.modifiedon = '{0}'  "
-		        +"       AND category.id = {1}  "
-		        ;
+                "SELECT value  "
+                + "FROM   daily_rates_ex  "
+                + "       JOIN category  "
+                + "         ON ( daily_rates_ex.category_id = category.id )  "
+                + "WHERE  1 = 1  "
+                + "       AND daily_rates_ex.modifiedon = '{0}'  "
+                + "       AND category.id = {1}  "
+                ;
             string strNewQuery = String.Format(strQuery, DateTime.Now.ToString("yyyy-MM-dd"), nCategoryId);
             return strNewQuery;
         }
@@ -75,14 +75,14 @@ namespace KPSonar
 
             string strQuery;
             strQuery =
-		    "INSERT INTO daily_rates_ex  "
-		    +"            (category_id,  "
-		    +"             value,  "
-		    +"             modifiedon)  "
-		    +"VALUES     ({0},  "
-		    +"            {1},  "
-		    +"            '{2}')  "
-		    ;
+            "INSERT INTO daily_rates_ex  "
+            + "            (category_id,  "
+            + "             value,  "
+            + "             modifiedon)  "
+            + "VALUES     ({0},  "
+            + "            {1},  "
+            + "            '{2}')  "
+            ;
 
             string strNewQuery = String.Format(strQuery, nCategoryId, strValue, DateTime.Now.ToString("yyyy-MM-dd"));
             return strNewQuery;
@@ -92,29 +92,28 @@ namespace KPSonar
 
         public string SettingUpdateQuery(int nID, string strValue)
         {
-
             string strQuery;
             strQuery =
                 "UPDATE daily_rates_ex  "
-                +"SET    value = '{0}',  "
-                +"       modifiedon = '{1}'  "
-                +"WHERE  id = {2}  "
+                + "SET    value = '{0}',  "
+                + "       modifiedon = '{1}'  "
+                + "WHERE  id = {2}  "
                 ;
 
-            string strNewQuery = String.Format(strQuery, strValue, DateTime.Now.ToString("yyyy-MM-dd"),nID);
+            string strNewQuery = String.Format(strQuery, strValue, DateTime.Now.ToString("yyyy-MM-dd"), nID);
             return strNewQuery;
         }
-        
+
         public string SettingUpdateQueryWithDate(int nCategoryId, string strValue)
         {
 
             string strQuery;
             strQuery =
-		        "UPDATE daily_rates_ex  "
-		        +"SET    value = '{0}'  "
-		        +"WHERE  category_id = {1}  "
-		        +"       AND daily_rates_ex.modifiedon = '{2}'  "
-		        ;
+                "UPDATE daily_rates_ex  "
+                + "SET    value = '{0}'  "
+                + "WHERE  category_id = {1}  "
+                + "       AND daily_rates_ex.modifiedon = '{2}'  "
+                ;
 
             string strNewQuery = String.Format(strQuery, strValue, nCategoryId, DateTime.Now.ToString("yyyy-MM-dd"));
             return strNewQuery;
@@ -125,9 +124,9 @@ namespace KPSonar
             strQuery =
                 "SELECT order_txn.id, "
             + "       customer.firstname, "
-            //+ "       customer.phone_no, "
+                //+ "       customer.phone_no, "
             + "       product.NAME, "
-            //+ "       product.details, "
+                //+ "       product.details, "
             + "       category.type, "
             + "       order_txn.quantity, "
             + "       order_txn.price, "
@@ -147,7 +146,7 @@ namespace KPSonar
             + "         ON ( employee.id = order_txn.employee_id ) "
             + "WHERE  1 = 1 "
             + "       AND customer_id = {0} "
-            
+
             ;
             string strNewQuery = String.Format(strQuery, nCustomerID);
 
@@ -268,7 +267,7 @@ namespace KPSonar
             + "            {3} )  "
             ;
             ;
-            
+
             string strNewQuery = String.Format(strQuery, nCustomerID, DateTime.Now.ToString("yyyy-MM-dd"),
                 DateTime.Now.ToString("yyyy-MM-dd"), nInvoiceID);
 
@@ -302,7 +301,7 @@ namespace KPSonar
             return strNewQuery;
         }
 
-        public string ProductSelectQuery(string strName, string strDetails, 
+        public string ProductSelectQuery(string strName, string strDetails,
                     string strCategory)
         {
             string strQuery;
@@ -321,7 +320,7 @@ namespace KPSonar
             ;
             string strNewQuery = String.Format(strQuery, strName, strDetails,
                                     strCategory);
-            
+
             return strNewQuery;
         }
 
@@ -375,7 +374,13 @@ namespace KPSonar
         {
             string strQuery;
             strQuery =
-                "SELECT *  "
+                "SELECT "
+                + "       id,  "
+                + "       firstname,  "
+                + "       middlename,  "
+                + "       lastname,   "
+                + "       address,   "
+                + "       phone_no   "
                 + "FROM   customer  "
                 + "WHERE  1 = 1  "
                 + "       AND firstname LIKE '%{0}%'  "
@@ -394,7 +399,14 @@ namespace KPSonar
         {
             string strQuery;
             strQuery =
-                "SELECT *  "
+                "SELECT "
+                + "       id,  "
+                + "       code,  "
+                + "       firstname,  "
+                + "       middlename,  "
+                + "       lastname,  "
+                + "       address,  "
+                + "       phone_no  "
                 + "FROM   employee  "
                 + "WHERE  1 = 1  "
                 + "       AND code LIKE '%{0}%' "
@@ -410,19 +422,18 @@ namespace KPSonar
         }
 
 
-        public string EmployeeUpdatetQuery(string strStartDate, string strEndDate,  
+        public string EmployeeUpdatetQuery(string strStartDate, string strEndDate,
                     int nID)
         {
             string strQuery;
             strQuery =
-            "UPDATE order_txn  "
-            + "SET   "
-            + "   work_start_date = '{0}',  "
-            + "   work_end_date = '{1}'  "
-            + "WHERE  id = {2}  "
-            ;
-            ;
-            string strNewQuery = String.Format(strQuery, strStartDate, strEndDate, 
+                "UPDATE order_txn  "
+                + "SET   "
+                + "   work_start_date = '{0}',  "
+                + "   work_end_date = '{1}'  "
+                + "WHERE  id = {2}  "
+                ;
+            string strNewQuery = String.Format(strQuery, strStartDate, strEndDate,
                                     nID);
             return strNewQuery;
         }
@@ -431,8 +442,8 @@ namespace KPSonar
             string strQuery;
             strQuery =
                 "SELECT "
-            + "       order_txn.id, "
-            //+ "       employee.id, "
+                + "       order_txn.id, "
+                //+ "       employee.id, "
             + "       employee.firstname, "
             + "       order_txn.id AS order_id, "
             + "       category.type, "
@@ -544,7 +555,7 @@ namespace KPSonar
                                     strAddress, strPhone, nID);
             return strNewQuery;
         }
-        
+
         public string CustomerDeleteQuery(int nID)
         {
             string strQuery;
@@ -552,7 +563,7 @@ namespace KPSonar
                 "DELETE FROM customer  "
                 + "            WHERE  id = {0}  "
                 ;
-                ;
+            ;
             string strNewQuery = String.Format(strQuery, nID);
             return strNewQuery;
         }
@@ -572,7 +583,7 @@ namespace KPSonar
         public string OrderInvoiceSelectQuery(int nInvoiceID)
         {
             string strQuery;
-            strQuery = 
+            strQuery =
                 "SELECT invoices.id, "
                 + "       invoice_date_created, "
                 + "       invoice_date_modified, "
@@ -602,7 +613,7 @@ namespace KPSonar
                 + "FROM   category  "
                 + "WHERE  1 = 1  "
                 + "       AND category.type LIKE '%{0}%'  "
-                ; 
+                ;
             string strNewQuery = String.Format(strQuery, strCategoryType);
 
             return strNewQuery;
