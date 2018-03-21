@@ -74,7 +74,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(768, 305);
+            this.dataGridView1.Size = new System.Drawing.Size(870, 305);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -196,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 508);
+            this.ClientSize = new System.Drawing.Size(895, 508);
             this.Controls.Add(this.btnCode);
             this.Controls.Add(this.chkWithDate);
             this.Controls.Add(this.dtpEndDate);
